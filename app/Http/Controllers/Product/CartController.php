@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Product;
 
-use Illuminate\Http\Request;
+use App\Facades\Cart;
 use App\Http\Controllers\Controller;
+use App\Product;
+use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
@@ -33,9 +35,13 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
-        //
+        $qty = 1;
+
+        Cart::addItem($product->id, $product->name, $qty, $product->price);
+
+        return back();
     }
 
     /**
@@ -80,8 +86,13 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function remove($id)
     {
         //
+    }
+
+    public function empty()
+    {
+        \Session::flush();
     }
 }

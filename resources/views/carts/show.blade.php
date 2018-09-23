@@ -7,7 +7,7 @@
 
         <h3 class="mb-4 pull-right">
             <a href="{{ route('products.index') }}" class="btn btn-success">Continue shopping</a>
-            <button class="btn btn-danger">Empty cart</a>
+            <a href="{{ route('carts.empty') }}" class="btn btn-danger">Empty cart</a>
         </h3>
 
         @if ('there is items in the cart')
