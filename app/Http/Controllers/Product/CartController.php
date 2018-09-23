@@ -74,12 +74,14 @@ class CartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string  $rowId
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $rowId)
     {
-        //
+        Cart::updateContent($rowId, $request->qty);
+
+        return back();
     }
 
     /**

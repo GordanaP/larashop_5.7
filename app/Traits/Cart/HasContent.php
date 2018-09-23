@@ -120,10 +120,31 @@ trait HasContent
     }
 
     /**
+     * Update the cart item quantity.
+     *
+     * @param  string  $rowId
+     * @param  int  $qty
+     * @param  string  $cart
+     * @return void
+     */
+    protected function updateItemQuantity($rowId, $qty, $cart)
+    {
+        $item = $this->getItem($rowId, $cart);
+
+        $item->qty = $qty;
+
+        if ($item->qty <= 0)
+        {
+            $this->removeItem($item->rowId);
+        }
+    }
+
+
+    /**
      * Remove an item from the cart content.
      *
      * @param  \Illuminate\Support\Collection  $content
-     * @param  \App\Services\Utilities\ShoppingCart\CartItem $item
+     * @param  \App\Services\Utilities\ShoppingCart\CartItem  $item
      * @return  void
      */
     private function removeFromCartContent($content, $item)

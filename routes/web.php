@@ -14,3 +14,4 @@ Route::get('/my-cart', 'Product\\CartController@show')->name('carts.show');
 Route::get('/my-cart/empty', 'Product\\CartController@empty')->name('carts.empty');
 Route::post('/my-cart/{product}', 'Product\\CartController@store')->name('carts.store');
 Route::get('/my-cart/{rowId}', 'Product\\CartController@remove')->name('carts.remove');
+Route::patch('/my-cart/{rowId}', 'Product\\CartController@update')->name('carts.update');

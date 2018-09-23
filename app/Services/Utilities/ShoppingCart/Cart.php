@@ -76,11 +76,24 @@ class Cart
     /**
      * Remove all items from the cart.
      *
-     * @param string $cart
-     * @return void
+     * @param  string  $cart
+     * @return  void
      */
     public function empty($cart = 'default')
     {
         $this->emptyCart($cart);
+    }
+
+    /**
+     * Update the item quantity.
+     *
+     * @param  string  $rowId
+     * @param  int  $qty
+     * @param  string  $cart
+     * @return void
+     */
+    public function updateContent($rowId, $qty, $cart = 'default')
+    {
+        $this->updateItemQuantity($rowId, $qty, $cart);
     }
 }
