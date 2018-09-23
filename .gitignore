@@ -4,6 +4,7 @@
 /storage/*.key
 /todo
 /vendor
+/vnotes
 /.idea
 /.vscode
 /.vagrant
