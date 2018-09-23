@@ -1,30 +1,29 @@
 <div class="col-md-4">
     <div class="card mb-4 shadow-sm" style="min-height: 95%">
+
+        <!-- Image -->
         <img class="card-img-top" src="https://via.placeholder.com/225x160" alt="Card image cap">
 
         <div class="card-body">
+
+            <!-- Product Name -->
             <p class="text-lg">
                 <a href="{{ route('products.show', $product) }}">
                     {{ $product->name }}
                 </a>
             </p>
 
+            <!-- Description -->
             <p class="card-text text-xs">{{ $product->description }}</p>
 
             <div class="d-flex justify-content-between align-items-center">
 
-                <div class="btn-group">
-                    <span>{{ $product->present_price }}</span>
-                </div>
+                <!-- Price -->
+                <span>{{ $product->present_price }}</span>
 
-                <form action="{{ route('carts.store', $product) }}" method="POST">
+                <!-- Add to cart -->
+                @include('products.forms._addtocart')
 
-                    @csrf
-
-                    <button>
-                        <span><i class="fa fa-cart-plus"></i></span>
-                    </button>
-                </form>
             </div>
         </div>
     </div>

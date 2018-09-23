@@ -88,9 +88,11 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function remove($id)
+    public function remove($rowId)
     {
-        //
+        Cart::removeItem($rowId);
+
+        return back();
     }
 
     public function empty()

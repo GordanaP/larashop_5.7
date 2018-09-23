@@ -13,8 +13,8 @@
             <a href="{{ route('carts.empty') }}" class="btn btn-danger">Empty cart</a>
         </h3>
 
-        <table class="table mb-0">
-            <thead>
+        <table class="table mb-0 bg-white">
+            <thead class="bg-grey-lighter uppercase">
                 <th width="25%">Item</th>
                 <th width="20%">Description</th>
                 <th width="20%" class="text-center">Price</th>
@@ -30,24 +30,24 @@
 
                 <!-- Cart price -->
                 <tr>
-                    <td colspan="3"></td>
-                    <td class="font-semibold">Subtotal:</td>
-                    <td class="text-right">#32.00</td>
-                    <td></td>
+                    <td colspan="3" class="border-b-0"></td>
+                    <td class="font-semibold border-b-0">Subtotal:</td>
+                    <td class="font-semibold border-b-0  text-right">#32.00</td>
+                    <td class="border-b-0"></td>
                 </tr>
 
                 <tr>
-                    <td colspan="3"></td>
-                    <td class="font-semibold">Tax(taxRate%):</td>
-                    <td class="text-right">#200.00</td>
-                    <td></td>
+                    <td colspan="3" class="border-0"></td>
+                    <td class="font-semibold border-0">Tax(taxRate%):</td>
+                    <td class="font-semibold border-0 text-right">#200.00</td>
+                    <td  class="border-0"></td>
                 </tr>
 
                 <tr>
-                    <td colspan="3"></td>
-                    <td class="font-semibold">Total:</td>
-                    <td class="text-right">#40.00</td>
-                    <td></td>
+                    <td colspan="3" class="border-0"></td>
+                    <td class="font-semibold border-0">Total:</td>
+                    <td class="font-semibold border-0 text-right">#40.00</td>
+                    <td  class="border-0"></td>
                 </tr>
             </tbody>
         </table>

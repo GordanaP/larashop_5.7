@@ -15,25 +15,27 @@ class Cart
     /**
      * Add an item to the cart.
      *
-     * @param int $id
-     * @param string $name
-     * @param int $qty
-     * @param float $price
-     * @return void
+     * @param  int  $id
+     * @param  string  $name
+     * @param  int  $qty
+     * @param  float  $price
+     * @param  string  $cart
+     * @return  void
      */
     public function addItem($id, $name, $qty, $price, $cart = 'default')
     {
         // Create a cart item  from its attributes
-        $cartItem = $this->createCartItem($id, $name, $qty, $price);
+        $item = $this->createCartItem($id, $name, $qty, $price);
 
         // Create a cart with its content
-        $this->createCartContent($cartItem, $cart);
+        $this->createCartContent($item, $cart);
     }
 
     /**
      * Get the cart content.
      *
-     * @return \Illuminate\Support\Collection
+     * @param  string  $cart
+     * @return  \Illuminate\Support\Collection
      */
     public function getItems($cart = 'default')
     {
@@ -45,13 +47,29 @@ class Cart
     /**
      * Get the products related to cart items.
      *
-     * @param  string $cart [description]
-     * @return \Illuminate\Support\Collection
+     * @param  string  $cart
+     * @return  \Illuminate\Support\Collection
      */
     public function getProducts($cart = 'default')
     {
         $products = $this->findProducts($cart);
 
         return $products;
+    }
+
+    /**
+     * Remove the item from the cart.
+     *
+     * @param  string  $rowId
+     * @param  string  $cart
+     * @return  void
+     */
+    public function removeItem($rowId, $cart = 'default')
+    {
+        // Get the item by its rowId
+        $item = $this->getItem($rowId, $cart);
+
+        // Remove from cart
+        $this->removeFromCart($item, $cart = 'default');
     }
 }
