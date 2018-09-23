@@ -19,7 +19,10 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-link">
-                    <a href="{{ route('carts.show') }}">Shopping cart</a>
+                    <a href="{{ route('carts.show') }}">
+                        Shopping cart
+                        <span class="badge bg-grey-darker text-white px-2 py-1 text-xl">{{ Cart::countItems() }}</span>
+                    </a>
                 </li>
 
                 <!-- Authentication Links -->

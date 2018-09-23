@@ -18,8 +18,8 @@
                 <th width="25%">Item</th>
                 <th width="20%">Description</th>
                 <th width="20%" class="text-center">Price</th>
-                <th width="10%">Qty</th>
-                <th width="15%" class="text-right">Subtotal</th>
+                <th width="12%">Qty</th>
+                <th width="13%" class="text-right">Subtotal</th>
                 <th width="10%" class="text-center"><i class="fa fa-cog"></i></th>
             </thead>
             <tbody>
@@ -29,26 +29,8 @@
                 @endforeach
 
                 <!-- Cart price -->
-                <tr>
-                    <td colspan="3" class="border-b-0"></td>
-                    <td class="font-semibold border-b-0">Subtotal:</td>
-                    <td class="font-semibold border-b-0  text-right">#32.00</td>
-                    <td class="border-b-0"></td>
-                </tr>
+                @include('carts.html._price')
 
-                <tr>
-                    <td colspan="3" class="border-0"></td>
-                    <td class="font-semibold border-0">Tax(taxRate%):</td>
-                    <td class="font-semibold border-0 text-right">#200.00</td>
-                    <td  class="border-0"></td>
-                </tr>
-
-                <tr>
-                    <td colspan="3" class="border-0"></td>
-                    <td class="font-semibold border-0">Total:</td>
-                    <td class="font-semibold border-0 text-right">#40.00</td>
-                    <td  class="border-0"></td>
-                </tr>
             </tbody>
         </table>
 

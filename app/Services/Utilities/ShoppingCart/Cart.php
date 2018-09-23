@@ -2,15 +2,13 @@
 
 namespace App\Services\Utilities\ShoppingCart;
 
-use App\Product;
-use App\Services\Utilities\ShoppingCart\CartItem;
 use App\Traits\Cart\HasContent;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Session;
+use App\Traits\Cart\HasPrice;
+use App\Traits\Cart\HasQuantity;
 
 class Cart
 {
-    use HasContent;
+    use HasContent, HasPrice, HasQuantity;
 
     /**
      * Add an item to the cart.
@@ -70,7 +68,7 @@ class Cart
         $item = $this->getItem($rowId, $cart);
 
         // Remove from cart
-        $this->removeFromCart($item, $cart = 'default');
+        $this->removeFromCart($item, $cart);
     }
 
     /**
@@ -95,5 +93,49 @@ class Cart
     public function updateContent($rowId, $qty, $cart = 'default')
     {
         $this->updateItemQuantity($rowId, $qty, $cart);
+    }
+
+    /**
+     * Get the number of cart items.
+     *
+     * @param string $cart
+     * @return int
+     */
+    public function countItems($cart = 'default')
+    {
+        return $this->countCartItems($cart);
+    }
+
+    /**
+     * Get the cart subtotal (total - taxAmount).
+     *
+     * @param  string  $cart
+     * @return float
+     */
+    public function subtotal($cart = 'default')
+    {
+        return $this->calculateCartSubtotal($cart);
+    }
+
+    /**
+     * Get the amount of tax calculated on cart subtotal.
+     *
+     * @param  string  $cart
+     * @return  float;
+     */
+    public function taxAmount($cart = 'default')
+    {
+        return $this->calculateTaxAmount($cart);
+    }
+
+    /**
+     * Get the total price of the cart.
+     *
+     * @param  string  $$cart
+     * @return float
+     */
+    public function total($cart = 'default')
+    {
+        return $this->calculateCartTotal($cart);
     }
 }
