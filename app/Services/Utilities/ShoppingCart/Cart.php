@@ -72,4 +72,15 @@ class Cart
         // Remove from cart
         $this->removeFromCart($item, $cart = 'default');
     }
+
+    /**
+     * Remove all items from the cart.
+     *
+     * @param string $cart
+     * @return void
+     */
+    public function empty($cart = 'default')
+    {
+        $this->emptyCart($cart);
+    }
 }

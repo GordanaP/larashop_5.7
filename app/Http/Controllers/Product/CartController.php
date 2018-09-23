@@ -33,6 +33,7 @@ class CartController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Product $product
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Product $product)
@@ -47,7 +48,6 @@ class CartController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show()
@@ -83,9 +83,9 @@ class CartController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove an item from the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $rowId
      * @return \Illuminate\Http\Response
      */
     public function remove($rowId)
@@ -95,9 +95,14 @@ class CartController extends Controller
         return back();
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function empty()
     {
-        \Session::flush();
+        Cart::empty();
 
         return back();
     }

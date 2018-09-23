@@ -109,6 +109,17 @@ trait HasContent
     }
 
     /**
+     * Empty the cart.
+     *
+     * @param  string $cart
+     * @return void
+     */
+    protected function emptyCart($cart)
+    {
+        Session::forget($cart);
+    }
+
+    /**
      * Remove an item from the cart content.
      *
      * @param  \Illuminate\Support\Collection  $content
