@@ -82,6 +82,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Currency
+    |--------------------------------------------------------------------------
+    |
+    | The application currency determines the default currency that will be used
+    | by the translation service provider.
+    |
+    */
+
+    'currency' => '$',
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Fallback Locale
     |--------------------------------------------------------------------------
     |
@@ -159,6 +171,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ObserverServiceProvider::class,
 
     ],
 
