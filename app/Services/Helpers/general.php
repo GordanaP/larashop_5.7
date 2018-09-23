@@ -21,8 +21,8 @@ function formatNumber($number, $decimals = 2)
  * @param  float $price
  * @return string
  */
-function presentPrice($currency, $price)
+function presentPrice($price)
 {
-    return $currency . $price;
+    return config('app.currency') . $price;
 }
 

@@ -2,6 +2,7 @@
 
 namespace App\Traits\Cart;
 
+use App\Product;
 use App\Services\Utilities\ShoppingCart\CartItem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
@@ -56,6 +57,23 @@ trait HasContent
         $content = Session::has($cart) ? Session::get($cart) : new Collection;
 
         return $content;
+    }
+
+    /**
+     * Find products by item ids.
+     *
+     * @param  string $cart
+     * @return \Illuminate\Support\Collection
+     */
+    protected function findProducts($cart)
+    {
+        $items = $this->getCartContent($cart);
+
+        $ids = $items->pluck('id')->toArray();
+
+        $products = Product::findMany($ids);
+
+        return $products;
     }
 
     /**

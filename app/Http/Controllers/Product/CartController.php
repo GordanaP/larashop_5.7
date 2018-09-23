@@ -52,9 +52,11 @@ class CartController extends Controller
      */
     public function show()
     {
-        // Get cartItems here
+        $cartItems = Cart::getItems();
 
-        return view('carts.show');
+        $products = Cart::getProducts();
+
+        return view('carts.show', compact('cartItems', 'products'));
     }
 
     /**
@@ -94,5 +96,7 @@ class CartController extends Controller
     public function empty()
     {
         \Session::flush();
+
+        return back();
     }
 }

@@ -38,7 +38,7 @@ class Product extends Model
      */
     public function getPresentPriceAttribute()
     {
-        $presented_price = presentPrice(config('app.currency'), $this->price);
+        $presented_price = presentPrice($this->price);
 
         return $presented_price;
     }

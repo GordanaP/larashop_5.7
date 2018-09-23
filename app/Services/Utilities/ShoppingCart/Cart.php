@@ -2,6 +2,7 @@
 
 namespace App\Services\Utilities\ShoppingCart;
 
+use App\Product;
 use App\Services\Utilities\ShoppingCart\CartItem;
 use App\Traits\Cart\HasContent;
 use Illuminate\Support\Collection;
@@ -27,5 +28,30 @@ class Cart
 
         // Create a cart with its content
         $this->createCartContent($cartItem, $cart);
+    }
+
+    /**
+     * Get the cart content.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function getItems($cart = 'default')
+    {
+        $items = $this->getCartContent($cart);
+
+        return $items;
+    }
+
+    /**
+     * Get the products related to cart items.
+     *
+     * @param  string $cart [description]
+     * @return \Illuminate\Support\Collection
+     */
+    public function getProducts($cart = 'default')
+    {
+        $products = $this->findProducts($cart);
+
+        return $products;
     }
 }
