@@ -18,9 +18,9 @@ trait HasContent
      * @param  float  $price
      * @return \App\Services\Utilities\ShoppingCart\CartItem
      */
-    protected function createCartItem($id, $name, $qty, $price)
+    protected function createCartItem($id, $name, $qty, $price, $options)
     {
-        $item = CartItem::fromAttributes($id, $name, $price);
+        $item = CartItem::fromAttributes($id, $name, $price, $options);
 
         $item->setQuantity($qty);
 

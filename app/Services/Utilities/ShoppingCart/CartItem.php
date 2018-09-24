@@ -2,6 +2,7 @@
 
 namespace App\Services\Utilities\ShoppingCart;
 
+use App\Services\Utilities\ShoppingCart\CartItemOptions;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 
@@ -43,19 +44,28 @@ class CartItem implements Arrayable, Jsonable
     public $price;
 
     /**
+     * The cart item options.
+     *
+     * @var array
+     */
+    public $options = [];
+
+    /**
      *  Instantiate a new model instance.
      *
      * @param int     $id
      * @param string    $name
      * @param float     $price
+     * @param array     $options
      * @return  void
      */
-    public function __construct($id, $name, $price)
+    public function __construct($id, $name, $price, $options)
     {
         $this->rowId    = $this->generateRowId($id);
         $this->id       = $id;
         $this->name     = $name;
         $this->price    = $price;
+        $this->options  = new CartItemOptions($options);
     }
 
     /**
@@ -90,14 +100,15 @@ class CartItem implements Arrayable, Jsonable
     /**
      * Create a new instance of the cart item from the attributes.
      *
-     * @param int $id
-     * @param string     $name
-     * @param float      $price
+     * @param  int  $id
+     * @param  string  $name
+     * @param  float  $price
+     * @param  array  $options
      * @return App\Services\Utilities\ShoppingCart\CartItem
      */
-    public static function fromAttributes($id, $name, $price)
+    public static function fromAttributes($id, $name, $price, $options)
     {
-        return new self($id, $name, $price);
+        return new self($id, $name, $price, $options);
     }
 
     /**
@@ -108,12 +119,13 @@ class CartItem implements Arrayable, Jsonable
     public function toArray()
     {
         return [
-            'rowId'    => $this->rowId,
-            'id'       => $this->id,
-            'name'     => $this->name,
-            'qty'      => $this->qty,
-            'price'    => $this->price,
-            'subtotal' => $this->subtotal
+            'rowId'     => $this->rowId,
+            'id'        => $this->id,
+            'name'      => $this->name,
+            'qty'       => $this->qty,
+            'price'     => $this->price,
+            'options'   => $this->options,
+            'subtotal'  => $this->subtotal
         ];
     }
 

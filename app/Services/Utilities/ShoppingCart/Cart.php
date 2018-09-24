@@ -6,6 +6,7 @@ use App\Traits\Cart\HasContent;
 use App\Traits\Cart\HasPrice;
 use App\Traits\Cart\HasQuantity;
 
+
 class Cart
 {
     use HasContent, HasPrice, HasQuantity;
@@ -17,13 +18,14 @@ class Cart
      * @param  string  $name
      * @param  int  $qty
      * @param  float  $price
+     * @param  array  $options
      * @param  string  $cart
      * @return  void
      */
-    public function addItem($id, $name, $qty, $price, $cart = 'default')
+    public function addItem($id, $name, $qty, $price, $options = [], $cart = 'default')
     {
         // Create a cart item  from its attributes
-        $item = $this->createCartItem($id, $name, $qty, $price);
+        $item = $this->createCartItem($id, $name, $qty, $price, $options);
 
         // Create a cart with its content
         $this->createCartContent($item, $cart);
@@ -137,5 +139,14 @@ class Cart
     public function total($cart = 'default')
     {
         return $this->calculateCartTotal($cart);
+    }
+
+    private function isMulti($item)
+    {
+        // if ( ! is_array($item)) return false;
+        // return is_array(head($item)) || head($item) instanceof Buyable;
+        //
+        if ( ! is_array($item)) return false;
+        return is_array(head($item));
     }
 }

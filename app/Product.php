@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Traits\Product\HasPrice;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use HasPrice;
+
     /**
      * Get the route key for the model.
      *
@@ -14,32 +17,5 @@ class Product extends Model
     public function getRouteKeyName()
     {
         return 'slug';
-    }
-
-    /**
-     * Get the product price.
-     *
-     * @param  int $value
-     * @return float
-     */
-    public function getPriceAttribute($value)
-    {
-        $price = $value/100;
-
-        $formatted_price = formatNumber($price);
-
-        return $formatted_price;
-    }
-
-    /**
-     * Display the currency along with the product price.
-     *
-     * @return string
-     */
-    public function getPresentPriceAttribute()
-    {
-        $presented_price = presentPrice($this->price);
-
-        return $presented_price;
     }
 }

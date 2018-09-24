@@ -4,6 +4,7 @@
         <a href="{{ route('products.show', $products->find($item->id)->slug) }}">
              {{ $item->name }}
         </a>
+        <p>{{ $item->options->color }}</p>
     </td>
 
     <!-- Description -->

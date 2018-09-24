@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
 
-        <a href="{{ route('products.index') }}" class="btn btn-success">Continue shopping</a>
+        <a href="{{ route('products.index') }}" class="btn bg-indigo-light text-white">Continue shopping</a>
 
         @if ($cartItems->count())
 
