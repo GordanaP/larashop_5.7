@@ -140,13 +140,4 @@ class Cart
     {
         return $this->calculateCartTotal($cart);
     }
-
-    private function isMulti($item)
-    {
-        // if ( ! is_array($item)) return false;
-        // return is_array(head($item)) || head($item) instanceof Buyable;
-        //
-        if ( ! is_array($item)) return false;
-        return is_array(head($item));
-    }
 }

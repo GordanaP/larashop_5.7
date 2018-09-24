@@ -13,7 +13,7 @@
             <a href="{{ route('carts.empty') }}" class="btn btn-danger">Empty cart</a>
         </h3>
 
-        <table class="table mb-0 bg-white">
+        <table class="table bg-white">
             <thead class="bg-grey-lighter uppercase">
                 <th width="25%">Item</th>
                 <th width="20%">Description</th>
@@ -24,6 +24,7 @@
             </thead>
             <tbody>
 
+                <!-- Cart items -->
                 @foreach ($cartItems as $item)
                     @include('carts.html._item')
                 @endforeach
@@ -33,6 +34,10 @@
 
             </tbody>
         </table>
+
+        <a href="{{ route('orders.create') }}" class="btn btn-lg bg-grey-darker text-white uppercase pull-right">
+            Checkout
+        </a>
 
         @else
             <span class="pull-left mr-3">No items in the cart.</span>

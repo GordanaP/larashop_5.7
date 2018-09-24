@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Product;
+namespace App\Http\Controllers\Cart;
 
-use App\Facades\Cart;
 use App\Http\Controllers\Controller;
-use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class CartController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,46 +25,38 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+        return view('orders.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Product $product)
+    public function store(Request $request)
     {
-        $qty = 1;
-
-        Cart::addItem($product->id, $product->name, $qty, $product->price);
-
-        return back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Order $order)
     {
-        $cartItems = Cart::getItems();
-
-        $products = Cart::getProducts();
-
-        return view('carts.show', compact('cartItems', 'products'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
         //
     }
@@ -74,38 +65,22 @@ class CartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  string  $rowId
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $rowId)
+    public function update(Request $request, Order $order)
     {
-        Cart::updateContent($rowId, $request->qty);
-
-        return back();
-    }
-
-    /**
-     * Remove an item from the specified resource.
-     *
-     * @param  string  $rowId
-     * @return \Illuminate\Http\Response
-     */
-    public function remove($rowId)
-    {
-        Cart::removeItem($rowId);
-
-        return back();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function empty()
+    public function destroy(Order $order)
     {
-        Cart::empty();
-
-        return back();
+        //
     }
 }

@@ -10,8 +10,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('products', 'Product\ProductController');
 
-Route::get('/my-cart', 'Product\\CartController@show')->name('carts.show');
-Route::get('/my-cart/empty', 'Product\\CartController@empty')->name('carts.empty');
-Route::post('/my-cart/{product}', 'Product\\CartController@store')->name('carts.store');
-Route::get('/my-cart/{rowId}', 'Product\\CartController@remove')->name('carts.remove');
-Route::patch('/my-cart/{rowId}', 'Product\\CartController@update')->name('carts.update');
+Route::namespace('Cart')->group(function(){
+    Route::prefix('my-cart')->as('carts.')->group(function(){
+        Route::get('/', 'CartController@show')->name('show');
+        Route::get('/empty', 'CartController@empty')->name('empty');
+        Route::post('/{product}', 'CartController@store')->name('store');
+        Route::get('/{rowId}', 'CartController@remove')->name('remove');
+        Route::patch('/{rowId}', 'CartController@update')->name('update');
+    });
+
+    Route::resource('orders', 'OrderController');
+
+});
