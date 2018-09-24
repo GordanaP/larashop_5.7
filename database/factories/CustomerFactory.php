@@ -10,5 +10,6 @@ $factory->define(App\Customer::class, function (Faker $faker) {
         'postcode' => $faker->postcode,
         'city' => $faker->city,
         'phone' => $faker->phoneNumber,
+        'email' => $faker->email,
     ];
 });
