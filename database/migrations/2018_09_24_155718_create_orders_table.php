@@ -19,7 +19,9 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('customer_id')->index();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
 
-            $table->integer('amount');
+            $table->integer('subtotal');
+            $table->integer('tax');
+            $table->integer('total');
             $table->boolean('paid')->default(0);
 
             $table->timestamps();

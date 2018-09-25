@@ -79,7 +79,7 @@ class Cart
      * @param  string  $cart
      * @return  void
      */
-    public function empty($cart = 'default')
+    public function emptyContent($cart = 'default')
     {
         $this->emptyCart($cart);
     }

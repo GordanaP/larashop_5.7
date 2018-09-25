@@ -4,6 +4,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('/thank-you-for-your-order', 'orders.thankyou')->name('orders.thankyou');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -20,5 +22,4 @@ Route::namespace('Cart')->group(function(){
     });
 
     Route::resource('orders', 'OrderController');
-
 });

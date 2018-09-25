@@ -104,7 +104,7 @@ class CartController extends Controller
      */
     public function empty()
     {
-        Cart::empty();
+        Cart::emptyContent();
 
         return back();
     }

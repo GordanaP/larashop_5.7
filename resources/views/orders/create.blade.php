@@ -39,8 +39,8 @@
                     </div>
 
                     <div class="flex justify-between align-center mt-2">
-                        <a type="submit" class="btn btn-block bg-grey-dark uppercase text-white font-bold mr-1 tracking-wide" style="border: none !important; font-weight: bold;">
-                            BACK
+                        <a href="{{ route('carts.show') }}" class="btn btn-block bg-grey-dark uppercase text-white font-bold mr-1 tracking-wide" style="border: none !important; font-weight: bold;">
+                            Back
                         </a>
 
                         <button type="submit" class="btn btn-block bg-orange mt-0 uppercase text-white tracking-wide border-0 ml-1" style="border-radius: 0 !important">

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Cart;
 
 use App\Http\Controllers\Controller;
+use App\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -36,7 +36,9 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        //Order::placeNew($request);
+
+        return redirect()->route('orders.thankyou');
     }
 
     /**
