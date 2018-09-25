@@ -16,6 +16,12 @@ class Customer extends Model
         return $this->hasMany(Order::class);
     }
 
+    /**
+     * Create new order from an array of attributes.
+     *
+     * @param  array $data
+     * @return \App\Customer
+     */
     public static function createNew($data)
     {
         $customer = new static;

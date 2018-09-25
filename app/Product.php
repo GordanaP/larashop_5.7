@@ -18,4 +18,14 @@ class Product extends Model
     {
         return 'slug';
     }
+
+    /**
+     * Get the orders that have products.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class)->as('attribute')->withPivot('qty', 'price');
+    }
 }

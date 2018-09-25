@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Cart;
 
+use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //Order::placeNew($request);
+        Order::placeNew($request);
 
         return redirect()->route('orders.thankyou');
     }
