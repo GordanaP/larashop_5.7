@@ -17,7 +17,7 @@ class Customer extends Model
     }
 
     /**
-     * Create new order from an array of attributes.
+     * Create the new customer from an array of attributes.
      *
      * @param  array $data
      * @return \App\Customer

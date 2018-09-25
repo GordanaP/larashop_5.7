@@ -8,7 +8,7 @@ use App\Facades\Cart;
 trait IsPlaced
 {
     /**
-     * Place new order.
+     * Place a new order.
      *
      * @param  array $data
      * @return void
@@ -16,6 +16,7 @@ trait IsPlaced
     public static function placeNew($data)
     {
         $customer = Customer::createNew($data);
+
         $cartItems = Cart::getItems();
 
         $order = static::createNew($customer);
@@ -26,7 +27,7 @@ trait IsPlaced
     }
 
     /**
-     * Create new order for the customer.
+     * Create a new order for the customer.
      *
      * @param  \App\Customer $customer
      * @return \App\Order
