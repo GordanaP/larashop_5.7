@@ -39,7 +39,7 @@ class OrderRequest extends FormRequest
                 'required', 'string', 'max:50',
                 new AlphaNumSpace()
             ],
-            'phone' => 'required|integer|max:15',
+            'phone' => 'required',
             'email' => 'required|email|max:100',
         ];
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Cart;
 
+use App\Events\OrderHasBeenPlaced;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Order;
@@ -37,7 +38,9 @@ class OrderController extends Controller
      */
     public function store(OrderRequest $request)
     {
-        Order::placeNew($request);
+        $order = Order::placeNew($request);
+
+        event(new OrderHasBeenPlaced($order));
 
         return redirect()->route('orders.thankyou');
     }
