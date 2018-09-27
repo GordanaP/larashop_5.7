@@ -14,7 +14,7 @@
     @endslot
 
     @slot('value')
-        {{ presentPrice(Cart::taxAmount()) }}
+        {{ presentPrice(Cart::tax()) }}
     @endslot
 @endprice
 

@@ -11,7 +11,7 @@ trait IsPlaced
      * Place a new order.
      *
      * @param  array $data
-     * @return void
+     * @return \App\Order
      */
     public static function placeNew($data)
     {
@@ -39,7 +39,7 @@ trait IsPlaced
         $order = new static;
 
         $order->subtotal = formatFloat(Cart::subtotal());
-        $order->tax = formatFloat(Cart::taxAmount());
+        $order->tax = formatFloat(Cart::tax());
         $order->total = formatFloat(Cart::total());
         $order->customer()->associate($customer);
 
@@ -49,7 +49,7 @@ trait IsPlaced
     }
 
     /**
-     * Link the order to the products
+     * Link the order to the products.
      *
      * @param  \App\Order $order
      * @param  \App\Services\Utilities\ShoppingCart\Cart $cartItems

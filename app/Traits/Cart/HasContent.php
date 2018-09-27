@@ -55,22 +55,6 @@ trait HasContent
     }
 
     /**
-     * Find the cart item.
-     *
-     * @param  string $rowId
-     * @param  string $cart
-     * @return \App\Product
-     */
-    protected function findCartItem($rowId, $cart)
-    {
-        $content = $this->getCartContent($cart);
-
-        $item = $content->get($rowId);
-
-        return $item;
-    }
-
-    /**
      * Update the cart item quantity.
      *
      * @param  string $rowId
@@ -80,7 +64,7 @@ trait HasContent
      */
     protected function updateItemQuantity($rowId, $qty, $cart)
     {
-        $product = $this->getItem($rowId);
+        $product = $this->findCartItem($rowId, $cart);
 
         $this->createCartItem($product, $qty);
 
@@ -118,29 +102,17 @@ trait HasContent
     }
 
     /**
-     * Add an item to the cart.
+     * Add the item to the cart.
      *
      * @param  \App\Product $product
      * @param  \Illuminate\Support\Collection $content
-     * @return  void
+     * @return void
      */
     private function addToCart($product, $content)
     {
         $rowId = $this-> generateRowId($product->id);
 
         $content->put($rowId, $product);
-    }
-
-    /**
-     * Remove an item from the cart.
-     *
-     * @param  string $rowId
-     * @param  \Illuminate\Support\Collection $content
-     * @return void
-     */
-    private function removeFromCart($rowId, $content)
-    {
-        $content->pull($rowId);
     }
 
     /**
@@ -153,6 +125,34 @@ trait HasContent
     private function updateCart($cart, $content)
     {
         Session::put($cart, $content);
+    }
+
+    /**
+     * Remove the item from the cart.
+     *
+     * @param  string $rowId
+     * @param  \Illuminate\Support\Collection $content
+     * @return void
+     */
+    private function removeFromCart($rowId, $content)
+    {
+        $content->pull($rowId);
+    }
+
+    /**
+     * Find the cart item.
+     *
+     * @param  string $rowId
+     * @param  string $cart
+     * @return \App\Product
+     */
+    private function findCartItem($rowId, $cart)
+    {
+        $content = $this->getCartContent($cart);
+
+        $item = $content->get($rowId);
+
+        return $item;
     }
 
     /**

@@ -49,20 +49,6 @@ class Cart
     }
 
     /**
-     * Get the cart item.
-     *
-     * @param string $rowId
-     * @param string $cart
-     * @return \App\Product
-     */
-    public function getItem($rowId, $cart = 'default')
-    {
-        $item = $this->findCartItem($rowId, $cart);
-
-        return $item;
-    }
-
-    /**
      * Update the cart content.
      *
      * @param string $rowId
@@ -114,7 +100,7 @@ class Cart
      * @param string $cart
      * @return float;
      */
-    public function taxAmount($cart = 'default')
+    public function tax($cart = 'default')
     {
         return $this->calculateCartTax($cart);
     }
