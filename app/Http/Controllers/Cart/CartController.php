@@ -39,7 +39,6 @@ class CartController extends Controller
     public function store(Request $request, Product $product)
     {
         // $qty = $request->qty ?: 1;
-
         Cart::addItem($product);
 
         return back();
