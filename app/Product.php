@@ -28,4 +28,14 @@ class Product extends Model
     {
         return $this->belongsToMany(Order::class)->as('attribute')->withPivot('qty', 'price');
     }
+
+    /**
+     * Get the buyables that belong to the product.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function buyables()
+    {
+        return $this->hasMany(Buyable::class);
+    }
 }
