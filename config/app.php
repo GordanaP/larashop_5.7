@@ -173,6 +173,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ObserverServiceProvider::class,
         App\Providers\UtilityServiceProvider::class,
+        App\Providers\BladeServiceProvider::class,
     ],
 
     /*

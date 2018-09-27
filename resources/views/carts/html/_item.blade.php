@@ -1,14 +1,13 @@
 <tr>
     <!-- Name -->
     <td>
-        <a href="{{ route('products.show', $products->find($item->id)->slug) }}">
+        <a href="{{ route('products.show', $item->slug) }}">
              {{ $item->name }}
         </a>
-        <p>{{ $item->options->color }}</p>
     </td>
 
     <!-- Description -->
-    <td class="text-xs">{{ $products->find($item->id)->description }}</td>
+    <td class="text-xs">{{ $item->description }}</td>
 
     <!-- Price -->
     <td class="text-center">{{ presentPrice($item->price) }}</td>
@@ -21,9 +20,9 @@
     <!-- Item subtotal -->
     <td class="text-right">{{ presentPrice($item->subtotal) }}</td>
 
-    <!-- Trash bin -->
+    <!-- Trash -->
     <td class="text-center">
-        <a href="{{ route('carts.remove', $item->rowId) }}">
+        <a href="{{ route('carts.remove', $key) }}">
             <i class="icon icon_trash_alt text-lg"></i>
         </a>
     </td>

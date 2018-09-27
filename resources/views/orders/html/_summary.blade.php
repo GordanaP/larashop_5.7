@@ -1,25 +1,55 @@
 <!-- Subtotal -->
-<p class="flex justify-between">
-    <span class="font-semibold">Subtotal:</span>
-    <span class="font-semibold">{{ presentPrice(Cart::subtotal()) }}</span>
-</p>
+@summary
+    @slot('title')
+        Subtotal
+    @endslot
+
+    @slot('class')
+        class="font-semibold"
+    @endslot
+
+    @slot('value')
+        {{ presentPrice(Cart::subtotal()) }}
+    @endslot
+@endsummary
+
 
 <!-- Shipping -->
-<p class="flex justify-between">
-    <span>Shipping:</span>
-    <span>$00.00</span>
-</p>
+@summary
+    @slot('title')
+        Shipping
+    @endslot
+
+    @slot('value')
+        $0.00
+    @endslot
+@endsummary
+
 
 <!-- Tax -->
-<p class="flex justify-between">
-    <span>Sales Tax:</span>
-    <span>{{ presentPrice(Cart::taxAmount()) }}</span>
-</p>
+@summary
+    @slot('title')
+        Sales Tax
+    @endslot
+
+    @slot('value')
+        {{ presentPrice(Cart::taxAmount()) }}
+    @endslot
+@endsummary
 
 <hr>
 
 <!-- Total -->
-<p class="flex justify-between">
-    <span class="font-semibold">Total: <span class="font-normal">({{ Cart::countItems() }} items)</span></span>
-    <span class="font-semibold">{{ presentPrice(Cart::total()) }}</span>
-</p>
+@summary
+    @slot('title')
+        Grand Total
+    @endslot
+
+    @slot('class')
+        class="font-semibold"
+    @endslot
+
+    @slot('value')
+        {{ presentPrice(Cart::total()) }}
+    @endslot
+@endsummary

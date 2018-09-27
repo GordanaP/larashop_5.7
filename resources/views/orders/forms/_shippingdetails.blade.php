@@ -1,3 +1,8 @@
+<p class="text-sm font-gabriela">
+    <span class="text-red">*</span> Required fields
+</p>
+
+
 <div class="row">
 
     <!-- First name -->

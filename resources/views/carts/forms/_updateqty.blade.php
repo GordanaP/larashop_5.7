@@ -1,11 +1,11 @@
-<form action="{{ route('carts.update', $item->rowId) }}" method="POST">
+<form action="{{ route('carts.update', $key) }}" method="POST">
 
     @csrf
     @method("PATCH")
 
     <div class="flex">
         <div class="form-group">
-            <input type="text" name="qty" id="qty" class="form-control text-center" value="{{ $item->qty ?: 1 }}" />
+            <input type="text" name="qty" id="qty" class="form-control text-center" value="{{ $item->qty }}" />
         </div>
 
         <div class="form-group">

@@ -23,7 +23,7 @@ trait IsPlaced
 
         static::linkToItems($order, $cartItems);
 
-        Cart::emptyContent();
+        Cart::empty();
 
         return $order;
     }

@@ -2,6 +2,6 @@
 
     @csrf
 
-    <button><i class="fa fa-cart-plus"></i></button>
+    <button><i class="icon icon_cart_alt"></i></button>
 
 </form>

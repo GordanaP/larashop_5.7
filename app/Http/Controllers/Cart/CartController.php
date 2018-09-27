@@ -38,9 +38,9 @@ class CartController extends Controller
      */
     public function store(Request $request, Product $product)
     {
-        $qty = 1;
+        // $qty = $request->qty ?: 1;
 
-        Cart::addItem($product->id, $product->name, $qty, $product->price);
+        Cart::addItem($product);
 
         return back();
     }
@@ -54,9 +54,9 @@ class CartController extends Controller
     {
         $cartItems = Cart::getItems();
 
-        $products = Cart::getProducts();
+        // $products = Cart::getProducts();
 
-        return view('carts.show', compact('cartItems', 'products'));
+        return view('carts.show', compact('cartItems'));
     }
 
     /**
@@ -79,7 +79,7 @@ class CartController extends Controller
      */
     public function update(Request $request, $rowId)
     {
-        Cart::updateContent($rowId, $request->qty);
+        Cart::updateItem($rowId, $request->qty);
 
         return back();
     }
@@ -104,7 +104,7 @@ class CartController extends Controller
      */
     public function empty()
     {
-        Cart::emptyContent();
+        Cart::empty();
 
         return back();
     }

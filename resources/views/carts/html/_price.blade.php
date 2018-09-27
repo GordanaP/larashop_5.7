@@ -1,20 +1,33 @@
-<tr>
-    <td colspan="3" class="border-b-0"></td>
-    <td class="font-semibold border-b-0">Subtotal:</td>
-    <td class="font-semibold border-b-0  text-right">{{ presentPrice(Cart::subtotal()) }}</td>
-    <td class="border-b-0"></td>
-</tr>
+@price
+    @slot('title')
+        Subtitle
+    @endslot
 
-<tr>
-    <td colspan="3" class="border-0"></td>
-    <td class="font-semibold border-0">Tax ({{ config('cart.tax').'%' }}):</td>
-    <td class="font-semibold border-0 text-right">{{ presentPrice(Cart::taxAmount()) }}</td>
-    <td  class="border-0"></td>
-</tr>
+    @slot('value')
+        {{ presentPrice(Cart::subtotal()) }}
+    @endslot
+@endprice
 
-<tr>
-    <td colspan="3" class="border-0"></td>
-    <td class="font-semibold border-0 uppercase">Grand Total:</td>
-    <td class="font-semibold border-0 text-right">{{ presentPrice(Cart::total()) }}</td>
-    <td  class="border-0"></td>
-</tr>
+@price
+    @slot('title')
+        Tax ({{ config('cart.tax').'%' }})
+    @endslot
+
+    @slot('value')
+        {{ presentPrice(Cart::taxAmount()) }}
+    @endslot
+@endprice
+
+@price
+    @slot('class')
+        uppercase
+    @endslot
+
+    @slot('title')
+        Grand total
+    @endslot
+
+    @slot('value')
+        {{ presentPrice(Cart::total()) }}
+    @endslot
+@endprice

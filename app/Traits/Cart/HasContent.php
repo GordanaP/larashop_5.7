@@ -2,55 +2,34 @@
 
 namespace App\Traits\Cart;
 
-use App\Product;
-use App\Services\Utilities\ShoppingCart\CartItem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
 
 trait HasContent
 {
     /**
-     * Create the cart item.
+     * Create the cart content.
      *
-     * @param  int  $id
-     * @param  string  $name
-     * @param  int  $qty
-     * @param  float  $price
-     * @return \App\Services\Utilities\ShoppingCart\CartItem
+     * @param  \App\Product $product
+     * @param  integer $qty
+     * @param  string $cart
+     * @return void
      */
-    protected function createCartItem($id, $name, $qty, $price, $options)
+    protected function createCartContent($product, $qty, $cart)
     {
-        $item = CartItem::fromAttributes($id, $name, $price, $options);
-
-        $item->setQuantity($qty);
-
-        return $item;
-    }
-
-    /**
-     * Create a cart with its content.
-     *
-     * @param  \App\Services\Utilities\ShoppingCart\CartItem  $item
-     * @param  string  $cart
-     * @return  void
-     */
-    protected function createCartContent($item, $cart)
-    {
-        // Get the content
+        $item    = $this->createCartItem($product, $qty);
         $content = $this->getCartContent($cart);
 
-        // Add an item to the cart
-        $this->addToCart($content, $item);
+        $this->addToCart($item, $content);
 
-        // Update the content
-        $this->updateCartContent($content, $cart);
+        $this->updateCart($cart, $content);
     }
 
     /**
-     * Get the cart content or an empty collection.
+     * Get the cart content.
      *
-     * @param  string  $cart
-     * @return  \Illuminate\Support\Collection
+     * @param  string $cart
+     * @return \Illuminate\Support\Collection
      */
     protected function getCartContent($cart)
     {
@@ -60,30 +39,29 @@ trait HasContent
     }
 
     /**
-     * Find products by item ids.
+     * Remove the item from the cart.
      *
-     * @param  string  $cart
-     * @return  \Illuminate\Support\Collection
+     * @param  string $rowId
+     * @param  string $cart
+     * @return void
      */
-    protected function findProducts($cart)
+    protected function removeFromCartContent($rowId, $cart)
     {
-        $items = $this->getCartContent($cart);
+        $content = $this->getCartContent($cart);
 
-        $ids = $items->pluck('id')->toArray();
+        $this->removeFromCart($rowId, $content);
 
-        $products = Product::findMany($ids);
-
-        return $products;
+        $this->updateCart($cart, $content);
     }
 
     /**
-     * Get the cart item.
+     * Find the cart item.
      *
-     * @param  string  $rowId
-     * @param  string  $cart
-     * @return  \App\Services\Utilities\ShoppingCart\CartItem
+     * @param  string $rowId
+     * @param  string $cart
+     * @return \App\Product
      */
-    protected function getItem($rowId, $cart)
+    protected function findCartItem($rowId, $cart)
     {
         $content = $this->getCartContent($cart);
 
@@ -93,23 +71,27 @@ trait HasContent
     }
 
     /**
-     * Remove the item from the cart.
+     * Update the cart item quantity.
      *
-     * @param  \App\Services\Utilities\ShoppingCart\CartItem  $item
-     * @param  string  $cart
-     * @return  void
+     * @param  string $rowId
+     * @param  integer $qty
+     * @param  string $cart
+     * @return void
      */
-    protected function removeFromCart($item, $cart)
+    protected function updateItemQuantity($rowId, $qty, $cart)
     {
-        $content = $this->getCartContent($cart);
+        $product = $this->getItem($rowId);
 
-        $this->removeFromCartContent($content, $item);
+        $this->createCartItem($product, $qty);
 
-        $this->updateCartContent($content, $cart);
+        if ($qty <= 0)
+        {
+            $this->removeFromCartContent($rowId, $cart);
+        }
     }
 
     /**
-     * Empty the cart.
+     * Empty cart.
      *
      * @param  string $cart
      * @return void
@@ -120,59 +102,69 @@ trait HasContent
     }
 
     /**
-     * Update the cart item quantity.
+     * Create the cart item.
      *
-     * @param  string  $rowId
-     * @param  int  $qty
-     * @param  string  $cart
-     * @return void
+     * @param  \App\Product $product
+     * @param  integer $qty
+     * @return \App\Product
      */
-    protected function updateItemQuantity($rowId, $qty, $cart)
+    private function createCartItem($product, $qty)
     {
-        $item = $this->getItem($rowId, $cart);
+        $product->qty = $qty;
 
-        $item->qty = $qty;
+        $product->subtotal = formatNumber($product->price * $product->qty);
 
-        if ($item->qty <= 0)
-        {
-            $this->removeItem($item->rowId);
-        }
-    }
-
-
-    /**
-     * Remove an item from the cart content.
-     *
-     * @param  \Illuminate\Support\Collection  $content
-     * @param  \App\Services\Utilities\ShoppingCart\CartItem  $item
-     * @return  void
-     */
-    private function removeFromCartContent($content, $item)
-    {
-        $content->pull($item->rowId);
+        return $product;
     }
 
     /**
      * Add an item to the cart.
      *
-     * @param  \Illuminate\Support\Collection  $content
-     * @param  \App\Services\Utilities\ShoppingCart\CartItem  $item
+     * @param  \App\Product $product
+     * @param  \Illuminate\Support\Collection $content
      * @return  void
      */
-    private function addToCart($content, $item)
+    private function addToCart($product, $content)
     {
-        $content->put($item->rowId, $item);
+        $rowId = $this-> generateRowId($product->id);
+
+        $content->put($rowId, $product);
     }
 
     /**
-     * Update the cart content.
+     * Remove an item from the cart.
      *
-     * @param  \Illuminate\Support\Collection  $content
-     * @param  string  $cart
+     * @param  string $rowId
+     * @param  \Illuminate\Support\Collection $content
      * @return void
      */
-    private function updateCartContent($content, $cart)
+    private function removeFromCart($rowId, $content)
+    {
+        $content->pull($rowId);
+    }
+
+    /**
+     * Update the cart.
+     *
+     * @param  string $cart
+     * @param  \Illuminate\Support\Collection $content
+     * @return void
+     */
+    private function updateCart($cart, $content)
     {
         Session::put($cart, $content);
+    }
+
+    /**
+     * Generate the item's rowId.
+     *
+     * @param  integer $id
+     * @return string
+     */
+    private function generateRowId($id)
+    {
+        $rowId = md5($id);
+
+        return $rowId;
     }
 }

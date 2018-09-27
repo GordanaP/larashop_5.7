@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Utilities\ShoppingCart\Cart;
 use Illuminate\Support\ServiceProvider;
 
 class UtilityServiceProvider extends ServiceProvider
@@ -28,7 +29,7 @@ class UtilityServiceProvider extends ServiceProvider
          */
         $this->app->bind('cart', function()
         {
-            return new \App\Services\Utilities\ShoppingCart\Cart;
+            return new Cart;
         });
     }
 }

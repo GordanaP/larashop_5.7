@@ -20,8 +20,10 @@
 
                 <li class="nav-link">
                     <a href="{{ route('carts.show') }}">
-                        Shopping cart
-                        <span class="badge bg-grey-darker text-white px-2 py-1 text-xl">{{ Cart::countItems() }}</span>
+                        <i class="icon icon_cart_alt text-xl text-l absolute"></i>
+                        <span id="cartTotalBadge" class="bg-grey-darker text-xs text-white rounded-full relative mr-2">
+                            {{ Cart::itemsCount() }}
+                        </span>
                     </a>
                 </li>
 

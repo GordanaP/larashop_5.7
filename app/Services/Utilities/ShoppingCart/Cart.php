@@ -4,38 +4,30 @@ namespace App\Services\Utilities\ShoppingCart;
 
 use App\Traits\Cart\HasContent;
 use App\Traits\Cart\HasPrice;
-use App\Traits\Cart\HasQuantity;
-
 
 class Cart
 {
-    use HasContent, HasPrice, HasQuantity;
+    use HasContent, HasPrice;
 
     /**
      * Add an item to the cart.
      *
-     * @param  int  $id
-     * @param  string  $name
-     * @param  int  $qty
-     * @param  float  $price
-     * @param  array  $options
-     * @param  string  $cart
+     * @param \App\Product $product
+     * @param integer $qty
+     * @param string $cart
      * @return  void
      */
-    public function addItem($id, $name, $qty, $price, $options = [], $cart = 'default')
+    public function addItem($product, $qty = 1, $cart = 'default')
     {
-        // Create a cart item  from its attributes
-        $item = $this->createCartItem($id, $name, $qty, $price, $options);
-
-        // Create a cart with its content
-        $this->createCartContent($item, $cart);
+        $this->createCartContent($product, $qty, $cart);
     }
 
     /**
+
      * Get the cart content.
      *
-     * @param  string  $cart
-     * @return  \Illuminate\Support\Collection
+     * @param string $cart
+     * @return \Illuminate\Support\Collection
      */
     public function getItems($cart = 'default')
     {
@@ -45,73 +37,70 @@ class Cart
     }
 
     /**
-     * Get the products related to cart items.
-     *
-     * @param  string  $cart
-     * @return  \Illuminate\Support\Collection
-     */
-    public function getProducts($cart = 'default')
-    {
-        $products = $this->findProducts($cart);
-
-        return $products;
-    }
-
-    /**
      * Remove the item from the cart.
      *
-     * @param  string  $rowId
-     * @param  string  $cart
-     * @return  void
+     * @param string $rowId
+     * @param string $cart
+     * @return void
      */
     public function removeItem($rowId, $cart = 'default')
     {
-        // Get the item by its rowId
-        $item = $this->getItem($rowId, $cart);
-
-        // Remove from cart
-        $this->removeFromCart($item, $cart);
+        $this->removeFromCartContent($rowId, $cart);
     }
 
     /**
-     * Remove all items from the cart.
+     * Get the cart item.
      *
-     * @param  string  $cart
-     * @return  void
+     * @param string $rowId
+     * @param string $cart
+     * @return \App\Product
      */
-    public function emptyContent($cart = 'default')
+    public function getItem($rowId, $cart = 'default')
     {
-        $this->emptyCart($cart);
+        $item = $this->findCartItem($rowId, $cart);
+
+        return $item;
     }
 
     /**
-     * Update the item quantity.
+     * Update the cart content.
      *
-     * @param  string  $rowId
-     * @param  int  $qty
-     * @param  string  $cart
+     * @param string $rowId
+     * @param integer  $qty
+     * @param string $cart
      * @return void
      */
-    public function updateContent($rowId, $qty, $cart = 'default')
+    public function updateItem($rowId, $qty, $cart = 'default')
     {
         $this->updateItemQuantity($rowId, $qty, $cart);
     }
 
     /**
-     * Get the number of cart items.
+     * Remove all items from cart.
      *
      * @param string $cart
-     * @return int
+     * @return void
      */
-    public function countItems($cart = 'default')
+    public function empty($cart = 'default')
     {
-        return $this->countCartItems($cart);
+        $this->emptyCart($cart);
     }
 
     /**
-     * Get the cart subtotal (total - taxAmount).
+     * Get the number of items in the cart.
      *
-     * @param  string  $cart
+     * @param string $cart
+     * @return integer
+     */
+    public function itemsCount($cart = 'default')
+    {
+        return $this->calculateCartItemsCount($cart);
+    }
+
+     /**
+     * Get the cart subtotal (total - tax).
+     *
+     * @param string $cart
      * @return float
      */
     public function subtotal($cart = 'default')
@@ -122,18 +111,18 @@ class Cart
     /**
      * Get the amount of tax calculated on cart subtotal.
      *
-     * @param  string  $cart
-     * @return  float;
+     * @param string $cart
+     * @return float;
      */
     public function taxAmount($cart = 'default')
     {
-        return $this->calculateTaxAmount($cart);
+        return $this->calculateCartTax($cart);
     }
 
     /**
-     * Get the total price of the cart.
+     * Get the cart total price.
      *
-     * @param  string  $$cart
+     * @param string $cart
      * @return float
      */
     public function total($cart = 'default')

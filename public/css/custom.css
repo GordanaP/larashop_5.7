@@ -1,1 +1,8 @@
+div.card-product {min-height: 95%}
+span#cartTotalBadge {left: 15px; top: -10px; padding: 1px 6px; }
+
+
 .invalid-feedback {display: inline-block;}
+.bg-card-header { background: #f1f5f8; }
+.bold {font-weight: bold;}
+.font-gabriela {font-family: 'Gabriela', serif;}
