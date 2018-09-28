@@ -1,6 +1,6 @@
 @price
     @slot('title')
-        Subtitle
+        Subtotal
     @endslot
 
     @slot('value')

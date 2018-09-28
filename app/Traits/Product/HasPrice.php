@@ -4,31 +4,22 @@ namespace App\Traits\Product;
 
 trait HasPrice
 {
-
-    /**
-     * Get the product price.
-     *
-     * @param  int $value
-     * @return float
-     */
-    public function getPriceAttribute($value)
+    public function getPriceAttribute()
     {
-        $price = $value/100;
+        $price = $this->buyables->pluck('price')->unique()->first();
 
-        $formatted_price = formatNumber($price);
-
-        return $formatted_price;
+        return $price;
     }
 
     /**
-     * Display the currency along with the product price.
+     * Get the currency along with the price.
      *
      * @return string
      */
     public function getPresentPriceAttribute()
     {
-        $presented_price = presentPrice($this->price);
+        $price = $this->price;
 
-        return $presented_price;
+        return presentPrice($price);
     }
 }

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Product;
 
-use App\Http\Controllers\Controller;
-use App\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ProductController extends Controller
+class SizeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('buyables')->inRandomOrder()->paginate(6);
-
-        return view('products.index', compact('products'));
+        //
     }
 
     /**
@@ -44,27 +41,21 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        if(request()->ajax()) {
-            return response([
-                'product' => $product->load('buyables'),
-            ]);
-        }
-
-        return view('products.show', compact('product'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
         //
     }
@@ -73,10 +64,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -84,10 +75,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         //
     }

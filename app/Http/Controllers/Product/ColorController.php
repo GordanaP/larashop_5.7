@@ -2,22 +2,29 @@
 
 namespace App\Http\Controllers\Product;
 
+use App\Color;
 use App\Http\Controllers\Controller;
-use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
-class ProductController extends Controller
+class ColorController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('buyables')->inRandomOrder()->paginate(6);
+        $colors = Color::findMany($request->colors_ids);
 
-        return view('products.index', compact('products'));
+        $view = View::make('products.html._sizecolors', compact('colors'))->render();
+
+        if(request()->ajax()) {
+            return response([
+                'view' => $view,
+            ]);
+        }
     }
 
     /**
@@ -44,27 +51,21 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Color $color)
     {
-        if(request()->ajax()) {
-            return response([
-                'product' => $product->load('buyables'),
-            ]);
-        }
-
-        return view('products.show', compact('product'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Color $color)
     {
         //
     }
@@ -73,10 +74,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Color $color)
     {
         //
     }
@@ -84,10 +85,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Color $color)
     {
         //
     }

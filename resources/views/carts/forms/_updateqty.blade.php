@@ -1,4 +1,4 @@
-<form action="{{ route('carts.update', $key) }}" method="POST">
+<form action="{{ route('carts.update', $rowId) }}" method="POST">
 
     @csrf
     @method("PATCH")

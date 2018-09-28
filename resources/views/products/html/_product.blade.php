@@ -7,6 +7,7 @@
         <div class="card-body flex flex-col justify-between">
 
             <div class="mb-4">
+
                 <!-- Product Name -->
                 <p class="text-lg">
                     <a href="{{ route('products.show', $product) }}">
@@ -23,8 +24,9 @@
                 <!-- Price -->
                 <span>{{ $product->present_price }}</span>
 
-                <!-- Form add-to-cart -->
-                @include('products.forms._addtocart')
+                <a href="{{ route('products.show', $product) }}">
+                    <i class="icon icon_cart_alt"></i>
+                </a>
 
             </div>
         </div>

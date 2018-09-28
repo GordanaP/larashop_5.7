@@ -110,7 +110,7 @@ trait HasContent
      */
     private function addToCart($product, $content)
     {
-        $rowId = $this-> generateRowId($product->id);
+        $rowId = $this->generateRowId($product->id);
 
         $content->put($rowId, $product);
     }

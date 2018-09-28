@@ -10,6 +10,7 @@ $factory->define(App\Buyable::class, function (Faker $faker) {
         'product_id' => Product::all()->random()->id,
         'color_id' => Color::all()->random()->id,
         'size_id' => Size::all()->random()->id,
-        'name' => $faker->sentence(3)
+        'name' => $faker->sentence(3),
+        'price' => rand(1000, 10000)
     ];
 });

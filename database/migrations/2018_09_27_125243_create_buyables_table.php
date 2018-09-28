@@ -27,6 +27,7 @@ class CreateBuyablesTable extends Migration
             $table->unsignedInteger('size_id')->nullable();
             $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');
 
+            $table->integer('price');
             $table->timestamps();
         });
     }

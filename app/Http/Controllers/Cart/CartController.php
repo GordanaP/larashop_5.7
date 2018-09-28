@@ -38,8 +38,9 @@ class CartController extends Controller
      */
     public function store(Request $request, Product $product)
     {
-        // $qty = $request->qty ?: 1;
-        Cart::addItem($product);
+        $product = \App\Buyable::where('product_id', $product->id)->where('size_id', $request->size_id)->where('color_id', $request->color_id)->first();
+
+        Cart::addItem($product, $request->qty);
 
         return back();
     }

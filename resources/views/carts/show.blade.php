@@ -27,7 +27,7 @@
                 <tbody>
 
                     <!-- Cart items -->
-                    @foreach ($cartItems as $key => $item)
+                    @foreach ($cartItems as $rowId => $item)
                         @include('carts.html._item')
                     @endforeach
 

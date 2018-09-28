@@ -29,7 +29,6 @@ function formatFloat($float)
     return $formatted_float;
 }
 
-
 /**
  * Display currency along with the price.
  *
@@ -40,4 +39,16 @@ function formatFloat($float)
 function presentPrice($price)
 {
     return config('app.currency') . $price;
+}
+
+/**
+ * Respond to an if statement.
+ *
+ * @param  string $value1
+ * @param  string $value2
+ * @return string
+ */
+function getIfStat($value1, $value2, $response)
+{
+    return $value1 === $value2 ? $confirm : '';
 }

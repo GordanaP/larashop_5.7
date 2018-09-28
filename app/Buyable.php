@@ -2,10 +2,14 @@
 
 namespace App;
 
+use App\Size;
+use App\Traits\Buyable\HasPrice;
 use Illuminate\Database\Eloquent\Model;
 
 class Buyable extends Model
 {
+    use HasPrice;
+
     /**
      * Get the product that owns the byuable.
      *
@@ -35,4 +39,6 @@ class Buyable extends Model
     {
         return $this->belongsTo(Size::class);
     }
+
+
 }

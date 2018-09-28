@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\Traits\Product\HasAttributes;
 use App\Traits\Product\HasPrice;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasPrice;
+    use HasAttributes, HasPrice;
 
     /**
      * Get the route key for the model.
