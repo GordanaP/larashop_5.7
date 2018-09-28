@@ -6,7 +6,7 @@
 
         <div class="card-body flex flex-col justify-between">
 
-            <div class="mb-4">
+            <div class="mb-3">
 
                 <!-- Product Name -->
                 <p class="text-lg">
@@ -18,16 +18,27 @@
                 <!-- Description -->
                 <p class="card-text text-xs">{{ $product->description }}</p>
             </div>
+            <div>
+                <div class="mb-2">
+                    @if ($product->hasColors())
+                        <p class="card-text text-xs mb-2">
+                            Colors:
+                            @foreach ($product->getColors() as $color)
+                                <i class="fa fa-circle" style="color: {{ $color->code }}"></i>
+                            @endforeach
+                        </p>
+                    @endif
+                </div>
 
-            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
 
-                <!-- Price -->
-                <span>{{ $product->present_price }}</span>
+                    <!-- Price -->
+                    <span>{{ $product->present_price }}</span>
 
-                <a href="{{ route('products.show', $product) }}">
-                    <i class="icon icon_cart_alt"></i>
-                </a>
-
+                    <a href="{{ route('products.show', $product) }}">
+                        <i class="icon icon_cart_alt"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

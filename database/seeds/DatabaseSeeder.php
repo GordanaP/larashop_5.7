@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder
      *
      * @var array
      */
-    protected $tables = ['products', 'customers', 'orders', 'colors', 'sizes', 'buyables'];
+    protected $tables = ['products', 'customers', 'orders', 'colors', 'sizes', 'buyables', 'buyable_order'];
 
     /**
      * Seed the application's database.

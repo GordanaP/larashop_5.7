@@ -17,11 +17,11 @@ trait IsPlaced
     {
         $customer = Customer::createNew($data);
 
-        $cartItems = Cart::getItems();
+        $buyables = Cart::getItems();
 
         $order = static::createNew($customer);
 
-        static::linkToItems($order, $cartItems);
+        static::linkToBuyables($order, $buyables);
 
         Cart::empty();
 
@@ -52,16 +52,16 @@ trait IsPlaced
      * Link the order to the products.
      *
      * @param  \App\Order $order
-     * @param  \App\Services\Utilities\ShoppingCart\Cart $cartItems
+     * @param  \Illuminate\Support\Collection $buyables
      * @return void
      */
-    private static function linkToItems($order, $cartItems)
+    private static function linkToBuyables($order, $buyables)
     {
-        foreach ($cartItems as $item)
+        foreach ($buyables as $buyable)
         {
-            $order->products()->attach($item->id, [
-                'qty' => $item->qty,
-                'price' => formatFloat($item->price),
+            $order->buyables()->attach($buyable->id, [
+                'qty' => $buyable->qty,
+                'price' => formatFloat($buyable->price),
             ]);
         }
     }

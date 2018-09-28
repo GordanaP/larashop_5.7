@@ -40,5 +40,13 @@ class Buyable extends Model
         return $this->belongsTo(Size::class);
     }
 
-
+    /**
+     * Get the orders that have buyables.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class)->as('attribute')->withPivot('qty', 'price');
+    }
 }

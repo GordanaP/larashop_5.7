@@ -25,8 +25,8 @@ class Order extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function products()
+    public function buyables()
     {
-        return $this->belongsToMany(Product::class)->as('attribute')->withPivot('qty', 'price');
+        return $this->belongsToMany(Buyable::class)->as('attribute')->withPivot('qty', 'price');
     }
 }
