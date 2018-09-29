@@ -45,5 +45,6 @@
 
         @include('products.js._sizecolors')
 
+        removeErrorOnNewInput()
     </script>
 @endsection

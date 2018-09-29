@@ -12,7 +12,7 @@
 
                     @foreach ($product->getSizes() as $size)
                         <option value="{{ $size->id }}"
-                            {{ getIfStat($size->id, old('size_id'), 'selected') }}
+                           {{ getSelected($size->id , old('size_id')) }}
                         >
                             {{ $size->name }}
                         </option>
@@ -73,6 +73,14 @@
             <button class="btn bg-indigo-dark text-white uppercase ml-2 w-60">
                 Add to Cart
             </button>
+        </div>
+
+        <div class="col-sm-8 offset-sm-2">
+            @if ($errors->has('qty'))
+                <span class="invalid-feedback qty m-r-22" role="alert">
+                    <strong>{{ $errors->first('qty') }}</strong>
+                </span>
+            @endif
         </div>
     </div>
 

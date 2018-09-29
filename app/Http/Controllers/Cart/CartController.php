@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Cart;
 
 use App\Facades\Cart;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CartRequest;
 use App\Product;
-use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
@@ -36,11 +36,11 @@ class CartController extends Controller
      * @param  \App\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Product $product)
+    public function store(CartRequest $request, Product $product)
     {
-        $product = \App\Buyable::where('product_id', $product->id)->where('size_id', $request->size_id)->where('color_id', $request->color_id)->first();
+        $buyable = $product->findBuyable($product->id, $request->size_id, $request->color_id);
 
-        Cart::addItem($product, $request->qty);
+        Cart::addItem($buyable, $request->qty);
 
         return back();
     }
@@ -53,8 +53,6 @@ class CartController extends Controller
     public function show()
     {
         $cartItems = Cart::getItems();
-
-        // $products = Cart::getProducts();
 
         return view('carts.show', compact('cartItems'));
     }

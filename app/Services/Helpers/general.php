@@ -50,5 +50,29 @@ function presentPrice($price)
  */
 function getIfStat($value1, $value2, $response)
 {
-    return $value1 === $value2 ? $confirm : '';
+    return $value1 == $value2 ? $response : '';
+}
+
+/**
+ * Get active class.
+ *
+ * @param  string $value1
+ * @param  string $value2
+ * @return string
+ */
+function getActiveClass($value1, $value2)
+{
+    return $value1 == $value2 ? 'active' : '';
+}
+
+/**
+ * Get selected option.
+ *
+ * @param  string $value1
+ * @param  string $value2
+ * @return string
+ */
+function getSelected($value1 , $value2)
+{
+    return $value1 == $value2 ? 'selected' : '';
 }
