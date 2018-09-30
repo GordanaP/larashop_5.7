@@ -53,3 +53,17 @@
         {{ presentPrice(Cart::total()) }}
     @endslot
 @endsummary
+
+<div>
+    <p class="mb-2">
+      <a data-toggle="collapse" href="#orderedItems" aria-expanded="false" aria-controls="orderedItems" id="toggleOrderedItems">
+        Show more
+      </a>
+    </p>
+
+    <div class="collapse" id="orderedItems">
+
+        <!-- append ajax call response -->
+
+    </div>
+</div>

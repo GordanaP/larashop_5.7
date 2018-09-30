@@ -38,4 +38,18 @@ class Customer extends Model
 
         return $customer;
     }
+
+    public function getFullNameAttribute()
+    {
+        $full_name = $this->first_name .' '.$this->last_name;
+
+        return $full_name;
+    }
+
+    public function getFullCityAttribute()
+    {
+        $full_city = $this->postcode .' '.$this->city;
+
+        return $full_city;
+    }
 }

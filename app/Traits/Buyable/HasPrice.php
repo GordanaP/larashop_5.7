@@ -30,4 +30,19 @@ trait HasPrice
 
         return $presented_price;
     }
+
+
+    public function getSubtotal($qty)
+    {
+        $subtotal =  $this->price * $qty;
+
+        return $subtotal;
+    }
+
+    public function presentSubtotal($qty)
+    {
+        $presented_subtotal = presentPrice($this->getSubtotal($qty));
+
+        return $presented_subtotal;
+    }
 }

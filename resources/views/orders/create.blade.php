@@ -48,3 +48,13 @@
         </form>
     </div>
 @endsection
+
+@section('scripts')
+    <script>
+
+        @include('orders.js._displayitems')
+
+         removeErrorOnNewInput()
+
+    </script>
+@endsection

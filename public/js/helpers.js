@@ -65,6 +65,7 @@ function removeErrorOnNewInput()
     });
 
     $("input, textarea").on('keydown', function() {
+        $(this).siblings(".invalid-feedback").hide().text('');
         $(this).parent().siblings().find(".invalid-feedback.qty").hide().text('');
     });
 }

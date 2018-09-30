@@ -4,7 +4,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/thank-you-for-your-order', 'orders.thankyou')->name('orders.thankyou');
 
 Auth::routes();
 
@@ -26,5 +25,8 @@ Route::namespace('Cart')->group(function(){
     });
 
     Route::resource('orders', 'OrderController');
+
     Route::resource('buyables', 'BuyableController');
 });
+
+Route::get('/print-order-pdf/{order}', 'PDFController@pdfOrder')->name('pdf.order');

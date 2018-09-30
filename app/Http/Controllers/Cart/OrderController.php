@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Cart;
 
 use App\Events\OrderHasBeenPlaced;
+use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Order;
+// use Barryvdh\DomPDF\Facade as PDF;
+use PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class OrderController extends Controller
 {
@@ -28,6 +32,16 @@ class OrderController extends Controller
     public function create()
     {
         return view('orders.create');
+
+        if (request()->ajax()) {
+
+            $cartItems = Cart::getItems();
+
+            $view = View::make('orders.html._items', compact('cartItems'))->render();
+
+            return response([ 'view' => $view ]);
+        }
+
     }
 
     /**
@@ -42,7 +56,7 @@ class OrderController extends Controller
 
         event(new OrderHasBeenPlaced($order));
 
-        return redirect()->route('orders.thankyou');
+        return redirect()->route('orders.show', $order);
     }
 
     /**
@@ -53,7 +67,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('orders.show', compact('order'));
     }
 
     /**
@@ -88,5 +102,12 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function printPDF()
+    {
+        $pdf = PDF::loadView('invoice');
+
+        return $pdf->download('order.pdf');
     }
 }
