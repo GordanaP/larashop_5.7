@@ -10,7 +10,7 @@
                 <div class="col-md-4">
 
                     <!-- Image -->
-                    <img class="image w-full" src="{{ asset('images/products/default.jpg') }}" alt="Card image cap">
+                    <img src="{{ $product->image }}" alt="{{ $product->name }}" class="image min-h-full">
                 </div>
 
                 <div class="col-md-6 py-4 pl-5">

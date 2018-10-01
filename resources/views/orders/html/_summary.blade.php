@@ -17,7 +17,7 @@
 <!-- Shipping -->
 @summary
     @slot('title')
-        Shipping
+        Shipping & Handling
     @endslot
 
     @slot('value')

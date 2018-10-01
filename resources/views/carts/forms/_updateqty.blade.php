@@ -9,7 +9,9 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn"><i class="fa fa-refresh"></i></button>
+            <button type="submit" class="btn">
+                <i class="fa fa-refresh"></i>
+            </button>
         </div>
     </div>
 

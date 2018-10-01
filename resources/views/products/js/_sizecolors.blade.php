@@ -8,7 +8,7 @@ $(document).on('change', '#size_id', function(){
     var size_id = this.value;
     var colors_ids = [];
 
-    // Get available color_ids for the specific size
+    // Get available colors_ids for the specific size
     $.ajax({
         url: showProductUrl,
         type: "GET",
@@ -26,7 +26,7 @@ $(document).on('change', '#size_id', function(){
         }
     });
 
-    // Get view with the colors above
+    // Get the view with the select box for the above colors
     $.ajax({
         url: indexColorsUrl,
         type: "POST",

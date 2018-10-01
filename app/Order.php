@@ -2,13 +2,23 @@
 
 namespace App;
 
-use App\Facades\Cart;
+use App\Traits\Order\HasPrice;
 use App\Traits\Order\IsPlaced;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use IsPlaced;
+    use IsPlaced, HasPrice;
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'number';
+    }
 
     /**
      * Get the customer who owns the order.
@@ -28,54 +38,5 @@ class Order extends Model
     public function buyables()
     {
         return $this->belongsToMany(Buyable::class)->as('attribute')->withPivot('qty', 'price');
-    }
-
-    public function getSubtotalAttribute($value)
-    {
-        $subtotal = formatNumber($value/100);
-
-        return $subtotal;
-    }
-
-    public function getPresentSubtotalAttribute()
-    {
-        $presented_subtotal = presentPrice($this->subtotal);
-
-        return $presented_subtotal;
-    }
-
-    public function getTaxAttribute($value)
-    {
-        $tax = formatNumber($value/100);
-
-        return $tax;
-    }
-
-    public function getPresentTaxAttribute()
-    {
-        $presented_tax = presentPrice($this->tax);
-
-        return $presented_tax;
-    }
-
-    public function getTotalAttribute($value)
-    {
-        $total = formatNumber($value/100);
-
-        return $total;
-    }
-
-    public function getPresentTotalAttribute()
-    {
-        $presented_total = presentPrice($this->total);
-
-        return $presented_total;
-    }
-
-    public function getPlacedAtAttribute()
-    {
-        $placed_at = date_format($this->created_at,"d/m/Y");
-
-        return $placed_at;
     }
 }

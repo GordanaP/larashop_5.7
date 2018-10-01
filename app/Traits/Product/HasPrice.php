@@ -4,6 +4,11 @@ namespace App\Traits\Product;
 
 trait HasPrice
 {
+    /**
+     * Get the product price provided that all buyables have the same price.
+     *
+     * @return float
+     */
     public function getPriceAttribute()
     {
         $price = $this->buyables->pluck('price')->unique()->first();
@@ -18,8 +23,8 @@ trait HasPrice
      */
     public function getPresentPriceAttribute()
     {
-        $price = $this->price;
+        $presented_price = presentPrice($this->price);
 
-        return presentPrice($price);
+        return $presented_price;
     }
 }

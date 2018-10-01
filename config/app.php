@@ -225,6 +225,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => App\Facades\Cart::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Keygen' => Keygen\Keygen::class
     ],
 
 ];

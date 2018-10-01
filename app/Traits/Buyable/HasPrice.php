@@ -31,17 +31,32 @@ trait HasPrice
         return $presented_price;
     }
 
-
+    /**
+     * Get the buyable subtotal.
+     *
+     * @param  integer $qty
+     * @return float
+     */
     public function getSubtotal($qty)
     {
         $subtotal =  $this->price * $qty;
 
-        return $subtotal;
+        $formatted_subtotal = formatNumber($subtotal);
+
+        return $formatted_subtotal;
     }
 
+    /**
+     * Get the currency along with the subtotal.
+     *
+     * @param  integer $qty
+     * @return string
+     */
     public function presentSubtotal($qty)
     {
-        $presented_subtotal = presentPrice($this->getSubtotal($qty));
+        $subtotal = $this->getSubtotal($qty);
+
+        $presented_subtotal = presentPrice($subtotal);
 
         return $presented_subtotal;
     }

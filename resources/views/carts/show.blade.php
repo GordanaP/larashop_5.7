@@ -5,25 +5,28 @@
 @section('content')
     <div class="container">
 
-        <a href="{{ route('products.index') }}" class="btn bg-indigo-light text-white">
+        <a href="{{ route('products.index') }}" class="btn bg-indigo-light text-white hover:bg-indigo">
             Continue shopping
         </a>
 
         @if ($cartItems->count())
 
             <h3 class="mb-4 pull-right">
-                <a href="{{ route('carts.empty') }}" class="btn btn-danger">Empty cart</a>
+                <a href="{{ route('carts.empty') }}" class="btn bg-orange text-white hover:bg-orange-dark">
+                    Empty cart
+                </a>
             </h3>
 
-            <table class="table bg-white">
+            <table class="table bg-white border-b border-grey-light" id="displayCartTable">
                 <thead class="bg-grey-lighter uppercase">
-                    <th width="25%">Item</th>
-                    <th width="20%">Description</th>
+                    <th width="10%">Item</th>
+                    <th width="23%"></th>
                     <th width="20%" class="text-center">Price</th>
                     <th width="12%">Qty</th>
                     <th width="13%" class="text-right">Subtotal</th>
-                    <th width="10%" class="text-center"><i class="fa fa-cog"></i></th>
+                    <th width="12%" class="text-center"><i class="fa fa-cog"></i></th>
                 </thead>
+
                 <tbody>
 
                     <!-- Cart items -->

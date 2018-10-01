@@ -18,6 +18,7 @@ trait HasContent
     protected function createCartContent($product, $qty, $cart)
     {
         $item    = $this->createCartItem($product, $qty);
+
         $content = $this->getCartContent($cart);
 
         $this->addToCart($item, $content);

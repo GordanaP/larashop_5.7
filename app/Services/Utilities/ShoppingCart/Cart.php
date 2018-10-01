@@ -62,7 +62,7 @@ class Cart
     }
 
     /**
-     * Remove all items from cart.
+     * Remove all items from the cart.
      *
      * @param string $cart
      * @return void
@@ -80,7 +80,9 @@ class Cart
      */
     public function itemsCount($cart = 'default')
     {
-        return $this->calculateCartItemsCount($cart);
+        $items_count = $this->calculateCartItemsCount($cart);
+
+        return $items_count;
     }
 
      /**
@@ -91,7 +93,9 @@ class Cart
      */
     public function subtotal($cart = 'default')
     {
-        return $this->calculateCartSubtotal($cart);
+        $subtotal = $this->calculateCartSubtotal($cart);
+
+        return $subtotal;
     }
 
     /**
@@ -102,17 +106,21 @@ class Cart
      */
     public function tax($cart = 'default')
     {
-        return $this->calculateCartTax($cart);
+        $tax_amount = $this->calculateCartTax($cart);
+
+        return $tax_amount;
     }
 
     /**
-     * Get the cart total price.
+     * Get the cart total.
      *
      * @param string $cart
      * @return float
      */
     public function total($cart = 'default')
     {
-        return $this->calculateCartTotal($cart);
+        $total = $this->calculateCartTotal($cart);
+
+        return $total;
     }
 }

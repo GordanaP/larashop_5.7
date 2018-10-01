@@ -1,9 +1,14 @@
 <table class="table mb-0">
     <body>
+
         @foreach ($cartItems as $item)
 
             <tr class="text-xs">
-                <td class="pl-0">
+                <td class="pl-0 width="20%>
+                    <img src="{{ $item->product->image }}" alt="{{ $item->name }}" class="image" >
+                </td>
+
+                <td >
                     {{ $item->name }}
                 </td>
 
@@ -17,5 +22,6 @@
             </tr>
 
         @endforeach
+
     </body>
 </table>

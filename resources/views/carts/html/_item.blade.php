@@ -1,27 +1,34 @@
 <tr>
     <!-- Name -->
-    <td>
-        <a href="{{ route('products.show', $item->product->slug) }}">
-             {{ $item->name }}
-        </a>
+    <td class="border-b border-grey-light">
+        <img src="{{ $item->product->image }}" alt="{{ $item->name }}">
     </td>
 
     <!-- Description -->
-    <td class="text-xs">{{ $item->product->description }}</td>
+    <td class="border-b border-grey-light">
+        <p class="mb-1">
+            <a href="{{ route('products.show', $item->product) }}">
+                {{ $item->name }}
+            </a>
+        </p>
+        <p class="text-xs mb-0">
+            {{ $item->product->description }}
+        </p>
+    </td>
 
     <!-- Price -->
-    <td class="text-center">{{ presentPrice($item->price) }}</td>
+    <td class="border-b border-grey-light text-center">{{ presentPrice($item->price) }}</td>
 
     <!-- Qty -->
-    <td>
+    <td class="border-b border-grey-light">
         @include('carts.forms._updateqty')
     </td>
 
     <!-- Item subtotal -->
-    <td class="text-right">{{ presentPrice($item->subtotal) }}</td>
+    <td class="border-b border-grey-light text-right">{{ presentPrice($item->subtotal) }}</td>
 
     <!-- Trash -->
-    <td class="text-center">
+    <td class="border-b border-grey-light text-center">
         <a href="{{ route('carts.remove', $rowId) }}">
             <i class="icon icon_trash_alt text-lg"></i>
         </a>

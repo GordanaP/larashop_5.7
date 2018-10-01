@@ -5,6 +5,7 @@
     <!-- Size -->
     <div class="form-group row mb-4">
         <label for="size_id" class="col-sm-2 col-form-label">Size</label>
+
         <div class="col-sm-8 {{ $product->hasSizes() ? '' : 'pt-7' }}">
             @if ( $product->hasSizes())
                 <select name="size_id" id="size_id" class="form-control">
@@ -33,6 +34,7 @@
     <!-- Color -->
     <div class="form-group row mb-4">
         <label for="color_id" class="col-sm-2 col-form-label">Color</label>
+
         <div class="col-sm-8 {{ $product->hasColors() ? '' : 'pt-7' }}">
             @if ($product->hasColors())
                 <select name="color_id" id="color_id" class="form-control">
@@ -67,6 +69,7 @@
     <!-- Qty -->
     <div class="form-group row">
         <label for="size_id" class="col-sm-2 col-form-label">Qty</label>
+
         <div class="col-sm-8 flex">
             <input type="text" name="qty" id="qty" class="form-control text-center mr-2 w-40" value="{{ old('qty') ?: 1 }}">
 

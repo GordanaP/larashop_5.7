@@ -7,7 +7,6 @@ use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Order;
-// use Barryvdh\DomPDF\Facade as PDF;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -31,8 +30,6 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('orders.create');
-
         if (request()->ajax()) {
 
             $cartItems = Cart::getItems();
@@ -42,6 +39,7 @@ class OrderController extends Controller
             return response([ 'view' => $view ]);
         }
 
+        return view('orders.create');
     }
 
     /**

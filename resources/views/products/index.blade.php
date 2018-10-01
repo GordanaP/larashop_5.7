@@ -27,7 +27,9 @@
                 <div class="pagination pull-right">
                     {{ $products->links() }}
                 </div>
+
             </div>
+
         </div>
     </div>
 @endsection

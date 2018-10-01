@@ -2,7 +2,7 @@
     <div class="card mb-4 shadow-sm card-product">
 
         <!-- Image -->
-        <img class="card-img-top" src="https://via.placeholder.com/225x160" alt="Card image cap">
+        <img class="card-img-top" src="{{ $product->image }}" alt="Card image cap">
 
         <div class="card-body flex flex-col justify-between">
 

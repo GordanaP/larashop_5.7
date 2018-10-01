@@ -39,6 +39,11 @@ class Customer extends Model
         return $customer;
     }
 
+    /**
+     * Get the customer fuul name.
+     *
+     * @return string
+     */
     public function getFullNameAttribute()
     {
         $full_name = $this->first_name .' '.$this->last_name;
@@ -46,6 +51,11 @@ class Customer extends Model
         return $full_name;
     }
 
+    /**
+     * Get the postcode along with the customer city.
+     *
+     * @return string
+     */
     public function getFullCityAttribute()
     {
         $full_city = $this->postcode .' '.$this->city;

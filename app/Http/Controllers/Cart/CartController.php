@@ -6,6 +6,7 @@ use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CartRequest;
 use App\Product;
+use Illuminate\Http\Request;
 
 class CartController extends Controller
 {

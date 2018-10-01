@@ -23,63 +23,42 @@
 
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="mb-1 mt-3 pl-3 text-muted"><span class="font-semibold">Order number:</span> #{{ $order->id }}</p>
+                                <p class="mb-1 mt-3 pl-3 text-muted">
+                                    <span class="font-semibold">Order number:</span> {{ $order->present_number }}
+                                </p>
                                 <p class="pl-3 text-muted">
                                     <span class="font-semibold">Date:</span> {{ $order->placed_at }};
                                 </p>
                             </div>
                             <div>
                                 <a href="{{ route('pdf.order', $order) }}" class="btn bg-indigo-dark btn-sm text-white">
-                                    Print order
+                                    <i class="fa fa-print"></i> Print order
                                 </a>
                             </div>
                         </div>
 
-                        <table class="table mb-4" style="border-bottom: 1px solid #ddd">
+                        <table class="table mb-4 border-b border-grey-light">
+
                             <thead class="bg-card-header uppercase text-muted">
-                                <th width="45%">Item</th>
-                                <th width="20%" class="text-center">Price</th>
-                                <th width="12%" class="text-center">Qty</th>
-                                <th width="23%" class="text-right">Subtotal</th>
+                                <th width="15%">Item</th>
+                                <th width="33%"></th>
+                                <th width="23%" class="text-center">Price</th>
+                                <th width="15%" class="text-center">Qty</th>
+                                <th width="14%" class="text-right">Subtotal</th>
                             </thead>
+
+                            <!-- Buyable -->
                             <tbody>
-                                @foreach ($order->buyables as $buyable)
-                                    <tr>
-                                        <td>{{ $buyable->name }}</td>
-                                        <td class="text-center">{{ $buyable->present_price }}</td>
-                                        <td class="text-center">{{ $buyable->attribute->qty }}</td>
-                                        <td class="text-right">{{ $buyable->presentSubtotal($buyable->attribute->qty) }}</td>
-                                    </tr>
-                                @endforeach
+                                @each ('orders.html._buyable', $order->buyables, 'buyable')
                             </tbody>
-                            <tr>
-                                <td class="border-0"></td>
 
-                                <td colspan="2" class="text-right">
-                                    <p class="mb-2">Subtotal:</p>
-                                    <p class="mb-2">Shipping & handling:</p>
-                                    <p class="mb-2">Tax (20%):</p>
-                                    <p class="font-semibold uppercase mb-0">
-                                        Order total:
-                                    </p>
-                                </td>
-
-                                <td class="text-right">
-                                    <p class="mb-2">{{ $order->present_subtotal }}</p>
-                                    <p class="mb-2">$0.00</p>
-                                    <p class="mb-2">{{ presentPrice($order->present_tax) }}</p>
-                                    <p class="mb-0 font-semibold">{{ presentPrice($order->present_total) }}</p>
-                                </td>
-                            </tr>
+                            <!-- Order Price -->
+                            @include('orders.html._price')
 
                         </table>
 
-
-                        <p class="text-lg font-semibold mb-2">Shipping Information:</p>
-
-                        <p class="mb-0">{{ $order->customer->first_name }}</p>
-                        <p class="mb-0">{{ $order->customer->address }}</p>
-                        <p>{{ $order->customer->postcode }} {{ $order->customer->city }}</p>
+                        <!-- Shipping Customer -->
+                        @include('orders.html._shipping')
 
                     </div>
                 </div>

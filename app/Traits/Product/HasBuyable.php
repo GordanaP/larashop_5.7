@@ -8,22 +8,13 @@ use App\Size;
 trait HasBuyable
 {
     /**
-     * Find a specific product buyable by its attributes.
+     * Find the model by its attributes.
      *
-     * @param  array $data
+     * @param  integer $productId
+     * @param  integer $size
+     * @param  integer $color
      * @return \App\Buyable
      */
-    // public function findBuyable($data)
-    // {
-    //     $buyable = $this->buyables
-    //         ->where('product_id', $this->id)
-    //         ->where('size_id', $data['size_id'])
-    //         ->where('color_id', $data['color_id'])
-    //         ->first();
-
-    //     return $buyable;
-    // }
-
     public function findBuyable($productId, $size, $color)
     {
         $buyable = $this->buyables

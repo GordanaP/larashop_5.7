@@ -5,6 +5,15 @@
 @section('content')
     <div class="container">
 
+        <div class="flex justify-between mb-4">
+            <a href="{{ route('products.index') }}" class="btn bg-indigo-light text-white hover:bg-indigo">
+                Continue shopping
+            </a>
+            <a href="{{ route('carts.show') }}" class="btn bg-orange text-white hover:bg-orange-dark">
+                Back to cart
+            </a>
+        </div>
+
         <form action="{{ route('orders.store') }}" method="POST">
 
             @csrf
@@ -38,7 +47,7 @@
                             Cancel
                         </a>
 
-                        <button class="btn btn-block bg-orange hover:bg-orange-dark uppercase text-white font-medium tracking-wide bold ml-1 mt-0">
+                        <button class="btn btn-block bg-grey-darkest hover:bg-black uppercase text-white font-medium tracking-wide bold ml-1 mt-0">
                             Place Order
                         </button>
                     </div>

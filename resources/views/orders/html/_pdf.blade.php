@@ -34,25 +34,27 @@
     <div class="clearfix"></div>
 
     <p class="mb-3 font-semibold text-grey-darkest">Order summary</p>
-    <p class="mb-1 text-sm"><span class="text-grey-darkest">Order number:</span> #{{ $order->id }}</p>
+    <p class="mb-1 text-sm"><span class="text-grey-darkest">Order number:</span> {{ $order->present_number }}</p>
     <p class="text-sm"><span class="text-grey-darkest">Date:</span> {{ $order->placed_at }}</p>
 
     <table class="w-full text-sm border-b border-t border-grey-light mt-4">
         <thead class="bg-card-header">
             <tr>
-                <td width="35%" class="border-b border-grey-light p-2 uppercase">Item</td>
+                <td width="10%" class="border-b border-grey-light p-2 uppercase">Item</td>
+                <td width="35%" class="border-b border-grey-light p-2 uppercase"></td>
                 <td width="20%" class="text-center border-b border-grey-light p-2 uppercase">Price</td>
                 <td width="22%" class="text-center border-b border-grey-light p-2 uppercase">Qty</td>
-                <td width="23%" class="text-right border-b border-grey-light p-2 uppercase">Subtotal</td>
+                <td width="13%" class="text-right border-b border-grey-light p-2 uppercase">Subtotal</td>
             </tr>
         </thead>
 
         <tbody>
             @foreach ($order->buyables as $buyable)
             <tr>
+                <td class="p-2"><img src="{{ $buyable->product->image }}" alt="{{ $buyable->name }}"></td>
                 <td class="p-2">{{ $buyable->name }}</td>
-                <td  class="text-center p-2">{{ $buyable->present_price }}</td>
-                <td  class="text-center p-3">{{ $buyable->attribute->qty }}</td>
+                <td class="text-center p-2">{{ $buyable->present_price }}</td>
+                <td class="text-center p-3">{{ $buyable->attribute->qty }}</td>
                 <td class="text-right p-2">{{ $buyable->presentSubtotal($buyable->attribute->qty) }}</td>
             </tr>
             @endforeach
@@ -63,18 +65,20 @@
                 <td colspan="2" class="text-right border-t border-grey-light p-2">
                     <p class="mb-2">Subtotal:</p>
                     <p class="mb-2">Shipping & handling:</p>
-                    <p class="mb-2">Tax (20%):</p>
+                    <p class="mb-2">Tax ({{ config('cart.tax') .'%' }}):</p>
                     <p class="font-semibold uppercase mb-0">
                         Order total:
                     </p>
                 </td>
 
                 <td class="text-right border-t border-grey-light p-2">
-                    <p class="mb-2">$60.00</p>
+                    <p class="mb-2">{{ $order->present_subtotal }}</p>
                     <p class="mb-2">$0.00</p>
-                    <p class="mb-2">$14.00</p>
-                    <p class="mb-0 font-semibold">$84.00</p>
+                    <p class="mb-2">{{ $order->present_tax }}</p>
+                    <p class="mb-0 font-semibold">{{ $order->present_total }}</p>
                 </td>
+
+                <td class="text-right border-t border-grey-light p-2"></td>
             </tr>
 
         </tbody>
@@ -82,12 +86,20 @@
 
     <p class="font-semibold text-grey-darkest mb-2">Shipping Information:</p>
 
-    <p class="mb-0 text-sm">{{ $order->customer->full_name }}</p>
-    <p class="mb-0 text-sm">{{ $order->customer->address }}</p>
-    <p class="text-sm">{{ $order->customer->full_city }}</p>
+    <p class="mb-0 text-sm">
+        {{ $order->customer->full_name }}
+    </p>
+    <p class="mb-0 text-sm">
+        {{ $order->customer->address }}
+    </p>
+    <p class="text-sm">
+        {{ $order->customer->full_city }}
+    </p>
 
     <div>
-        <p class="text-center mt-4">Thank you for purchase from <a href="#">larashop.com</a></p>
+        <p class="text-center mt-4">
+            Thank you for purchase from <a href="#">larashop.com</a>
+        </p>
     </div>
 </body>
 
