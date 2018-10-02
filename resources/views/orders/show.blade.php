@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
-@section('meta')
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-@endsection
-
-@section('title', 'Order completed')
+@section('title', 'The order has been comppleted')
 
 @section('content')
     <div class="container">
@@ -49,7 +45,7 @@
 
                             <!-- Buyable -->
                             <tbody>
-                                @each ('orders.html._buyable', $order->buyables, 'buyable')
+                                @each ('orders.html._inventory', $order->inventories, 'inventory')
                             </tbody>
 
                             <!-- Order Price -->
@@ -65,15 +61,14 @@
             </div>
 
             <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body" id="createAccount">
-                            <p>You may want to create account?</p>
-                            <p></p>
-                        </div>
+                <div class="card">
+                    <div class="card-body" id="createAccount">
+                        <p>You may want to create account?</p>
+                        <p></p>
                     </div>
+                </div>
             </div>
         </div>
 
     </div>
 @endsection
-

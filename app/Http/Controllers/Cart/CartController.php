@@ -39,9 +39,10 @@ class CartController extends Controller
      */
     public function store(CartRequest $request, Product $product)
     {
-        $buyable = $product->findBuyable($product->id, $request->size_id, $request->color_id);
+        // $buyable = $product->findBuyable($product->id, $request->size_id, $request->color_id);
+        $inventory = $product->findInventory($product->id, $request->size_id, $request->color_id);
 
-        Cart::addItem($buyable, $request->qty);
+        Cart::addItem($inventory, $request->qty);
 
         return back();
     }

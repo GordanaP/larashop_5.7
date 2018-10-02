@@ -32,7 +32,7 @@ class ExistsInProductSizes implements Rule
      */
     public function passes($attribute, $value)
     {
-        $sizes = $this->product->collectBuyableAttrValues('size_id');
+        $sizes = $this->product->collectInventoryAttrValues('size_id');
 
         return $sizes->contains($value);
     }

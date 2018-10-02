@@ -27,6 +27,7 @@ Route::namespace('Cart')->group(function(){
     Route::resource('orders', 'OrderController');
 
     Route::resource('buyables', 'BuyableController');
+    Route::resource('inventories', 'InventoryController');
 });
 
 Route::get('/print-order-pdf/{order}', 'PDFController@pdfOrder')->name('pdf.order');

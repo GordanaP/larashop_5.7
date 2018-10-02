@@ -31,12 +31,12 @@ class Order extends Model
     }
 
     /**
-     * Get the products that have products.
+     * Get the products that have inventories.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function buyables()
+    public function inventories()
     {
-        return $this->belongsToMany(Buyable::class)->as('attribute')->withPivot('qty', 'price');
+        return $this->belongsToMany(Inventory::class)->as('attribute')->withPivot('qty', 'price');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBuyablesTable extends Migration
+class CreateInventoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateBuyablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('buyables', function (Blueprint $table) {
-
+        Schema::create('inventories', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('sku');
             $table->string('name');
 
             $table->unsignedInteger('product_id')->index();
@@ -28,6 +28,7 @@ class CreateBuyablesTable extends Migration
             $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');
 
             $table->integer('price');
+            $table->integer('cost')->nullable();
             $table->timestamps();
         });
     }
@@ -39,6 +40,6 @@ class CreateBuyablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buyables');
+        Schema::dropIfExists('inventories');
     }
 }

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Product;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Product;
+use App\Inventory;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class InventoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = Product::with('buyables')->inRandomOrder()->paginate(6);
-        $products = Product::with('inventories')->inRandomOrder()->paginate(6);
-
-        return view('products.index', compact('products'));
+        //
     }
 
     /**
@@ -45,28 +41,21 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Inventory $inventory)
     {
-        if(request()->ajax()) {
-            return response([
-                // 'product' => $product->load('buyables'),
-                'product' => $product->load('inventories'),
-            ]);
-        }
-
-        return view('products.show', compact('product'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Inventory $inventory)
     {
         //
     }
@@ -75,10 +64,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Inventory $inventory)
     {
         //
     }
@@ -86,10 +75,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Inventory $inventory)
     {
         //
     }

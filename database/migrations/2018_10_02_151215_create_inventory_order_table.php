@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBuyableOrderTable extends Migration
+class CreateInventoryOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateBuyableOrderTable extends Migration
      */
     public function up()
     {
-        Schema::create('buyable_order', function (Blueprint $table) {
-
-            $table->primary(['buyable_id', 'order_id']);
+        Schema::create('inventory_order', function (Blueprint $table) {
+            $table->primary(['inventory_id', 'order_id']);
 
             $table->unsignedInteger('order_id')->index();
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 
-            $table->unsignedInteger('buyable_id')->index();
-            $table->foreign('buyable_id')->references('id')->on('buyables')->onDelete('cascade');
+            $table->unsignedInteger('inventory_id')->index();
+            $table->foreign('inventory_id')->references('id')->on('inventories')->onDelete('cascade');
 
             $table->integer('qty');
             $table->integer('price');
@@ -35,6 +34,6 @@ class CreateBuyableOrderTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buyable_order');
+        Schema::dropIfExists('inventory_order');
     }
 }

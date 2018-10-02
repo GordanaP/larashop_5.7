@@ -24,4 +24,6 @@
             {{ $order->present_total }}
         </p>
     </td>
+
+    <td></td>
 </tr>

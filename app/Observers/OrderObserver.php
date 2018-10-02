@@ -2,18 +2,16 @@
 
 namespace App\Observers;
 
-use App\Order;
-
 class OrderObserver
 {
     /**
      * Listen to the Order creating event.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Model $model
      * @return void
      */
-    public function creating(Order $order)
+    public function creating($model)
     {
-        $order->number =  $order->generateNumericKey();
+        $model->number =  $model->generateNumericKey();
     }
 }

@@ -2,13 +2,13 @@
 
 namespace App;
 
-use App\Traits\Product\HasBuyable;
+use App\Traits\Product\HasInventory;
 use App\Traits\Product\HasPrice;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasBuyable, HasPrice;
+    use HasInventory, HasPrice;
 
     /**
      * Get the route key for the model.
@@ -21,12 +21,12 @@ class Product extends Model
     }
 
     /**
-     * Get the buyables that belong to the product.
+     * Get the inventories that belong to the product.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function buyables()
+    public function inventories()
     {
-        return $this->hasMany(Buyable::class);
+        return $this->hasMany(Inventory::class);
     }
 }

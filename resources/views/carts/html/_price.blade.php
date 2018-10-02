@@ -20,4 +20,6 @@
             {{ presentPrice(Cart::total()) }}
         </p>
     </td>
+
+    <td></td>
 </tr>

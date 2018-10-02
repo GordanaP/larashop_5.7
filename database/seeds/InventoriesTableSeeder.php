@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class BuyablesTableSeeder extends Seeder
+class InventoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class BuyablesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Buyable', 15)->create();
+        factory('App\Inventory', 15)->create();
     }
 }

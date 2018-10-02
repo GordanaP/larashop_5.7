@@ -14,7 +14,7 @@ class BelongsToProductSize implements Rule
     protected $product;
 
     /**
-     * The product's buyable size
+     * The product's inventory size
      *
      * @var integer
      */
@@ -41,9 +41,10 @@ class BelongsToProductSize implements Rule
      */
     public function passes($attribute, $value)
     {
-        $buyable = $this->product->findBuyable($this->product->id, $this->size_id, $value);
+        // $buyable = $this->product->findBuyable($this->product->id, $this->size_id, $value);
+        $inventory = $this->product->findInventory($this->product->id, $this->size_id, $value);
 
-        return optional($buyable)->exists;
+        return optional($inventory)->exists;
     }
 
     /**

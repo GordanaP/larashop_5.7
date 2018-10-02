@@ -9,7 +9,9 @@ class DatabaseSeeder extends Seeder
      *
      * @var array
      */
-    protected $tables = ['products', 'customers', 'orders', 'colors', 'sizes', 'buyables', 'buyable_order'];
+    protected $tables = [
+        'products', 'customers', 'orders', 'colors', 'sizes', 'inventories', 'inventory_order'
+    ];
 
     /**
      * Seed the application's database.
@@ -26,7 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OrdersTableSeeder::class);
         $this->call(ColorsTableSeeder::class);
         $this->call(SizesTableSeeder::class);
-        $this->call(BuyablesTableSeeder::class);
+        $this->call(InventoriesTableSeeder::class);
     }
 
     /**

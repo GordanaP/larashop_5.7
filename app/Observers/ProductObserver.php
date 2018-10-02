@@ -2,18 +2,16 @@
 
 namespace App\Observers;
 
-use App\Product;
-
 class ProductObserver
 {
     /**
      * Listen to the Product creating event.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Model  $model
      * @return void
      */
-    public function creating(Product $product)
+    public function creating($model)
     {
-        $product->slug = str_slug($product->name);
+        $model->slug = str_slug($model->name);
     }
 }

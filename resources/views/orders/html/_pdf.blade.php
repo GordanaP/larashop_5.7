@@ -15,6 +15,8 @@
         .text-grey-pdf { color: #555 }
         .float-left {float: left}
         .float-right {float: right}
+        .w-100 { width: 100px }
+        .h-100 { height: 100px }
     </style>
 </head>
 
@@ -49,13 +51,23 @@
         </thead>
 
         <tbody>
-            @foreach ($order->buyables as $buyable)
+            @foreach ($order->inventories as $inventory)
             <tr>
-                <td class="p-2"><img src="{{ $buyable->product->image }}" alt="{{ $buyable->name }}"></td>
-                <td class="p-2">{{ $buyable->name }}</td>
-                <td class="text-center p-2">{{ $buyable->present_price }}</td>
-                <td class="text-center p-3">{{ $buyable->attribute->qty }}</td>
-                <td class="text-right p-2">{{ $buyable->presentSubtotal($buyable->attribute->qty) }}</td>
+                <td class="p-2">
+                    <img src="{{ $inventory->product->image }}" alt="{{ $inventory->name }}">
+                </td>
+                <td class="p-2">
+                    {{ $inventory->name }}
+                </td>
+                <td class="text-center p-2">
+                    {{ $inventory->present_price }}
+                </td>
+                <td class="text-center p-3">
+                    {{ $inventory->attribute->qty }}
+                </td>
+                <td class="text-right p-2">
+                    {{ $inventory->presentSubtotal($inventory->attribute->qty) }}
+                </td>
             </tr>
             @endforeach
 

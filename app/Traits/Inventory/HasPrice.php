@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Traits\Buyable;
+namespace App\Traits\Inventory;
 
 trait HasPrice
 {
     /**
-     * Get the product price.
+     * Get the inventory price.
      *
      * @param  int $value
      * @return float
@@ -20,7 +20,7 @@ trait HasPrice
     }
 
     /**
-     * Display the currency along with the product price.
+     * Display the currency along with the inventory price.
      *
      * @return string
      */
@@ -32,7 +32,7 @@ trait HasPrice
     }
 
     /**
-     * Get the buyable subtotal.
+     * Get the inventory subtotal.
      *
      * @param  integer $qty
      * @return float
@@ -47,7 +47,7 @@ trait HasPrice
     }
 
     /**
-     * Get the currency along with the subtotal.
+     * Get the currency along with the inventory subtotal.
      *
      * @param  integer $qty
      * @return string

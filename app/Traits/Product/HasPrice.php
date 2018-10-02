@@ -5,13 +5,13 @@ namespace App\Traits\Product;
 trait HasPrice
 {
     /**
-     * Get the product price provided that all buyables have the same price.
+     * Get the product price provided that all inventories have the same price.
      *
      * @return float
      */
     public function getPriceAttribute()
     {
-        $price = $this->buyables->pluck('price')->unique()->first();
+        $price = $this->inventories->pluck('price')->unique()->first();
 
         return $price;
     }

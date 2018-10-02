@@ -16,11 +16,13 @@ $(document).on('change', '#size_id', function(){
         async: false,
         success: function(response)
         {
-            var buyables = response.product.buyables;
+            var inventories = response.product.inventories;
 
-            $.each(buyables, function(index, buyable) {
-                 if (size_id == buyable.size_id) {
-                      colors_ids.push(buyable.color_id);
+            console.log(response)
+
+            $.each(inventories, function(index, inventory) {
+                 if (size_id == inventory.size_id) {
+                      colors_ids.push(inventory.color_id);
                  }
             });
         }
