@@ -12,7 +12,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::namespace('Product')->group(function(){
     Route::resource('products', 'ProductController');
     Route::resource('sizes', 'SizeController');
-    Route::post('/colors', 'ColorController@index')->name('colors.index');
+    Route::post('colors', 'ColorController@index')->name('colors.index');
 });
 
 Route::namespace('Cart')->group(function(){
@@ -26,7 +26,6 @@ Route::namespace('Cart')->group(function(){
 
     Route::resource('orders', 'OrderController');
 
-    Route::resource('buyables', 'BuyableController');
     Route::resource('inventories', 'InventoryController');
 });
 

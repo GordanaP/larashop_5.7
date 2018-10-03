@@ -15,7 +15,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = Product::with('buyables')->inRandomOrder()->paginate(6);
         $products = Product::with('inventories')->inRandomOrder()->paginate(6);
 
         return view('products.index', compact('products'));
@@ -52,7 +51,6 @@ class ProductController extends Controller
     {
         if(request()->ajax()) {
             return response([
-                // 'product' => $product->load('buyables'),
                 'product' => $product->load('inventories'),
             ]);
         }

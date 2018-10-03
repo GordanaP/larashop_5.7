@@ -4,7 +4,7 @@
 
     <!-- Size -->
     <div class="form-group row mb-4">
-        <label for="size_id" class="col-sm-2 col-form-label">Size</label>
+        <label for="size_id" class="col-sm-3 col-form-label">Size</label>
 
         <div class="col-sm-8 {{ $product->hasSizes() ? '' : 'pt-7' }}">
             @if ( $product->hasSizes())
@@ -32,8 +32,8 @@
     </div>
 
     <!-- Color -->
-    <div class="form-group row mb-4">
-        <label for="color_id" class="col-sm-2 col-form-label">Color</label>
+    <div class="form-group row mb-3">
+        <label for="color_id" class="col-sm-3 col-form-label">Color</label>
 
         <div class="col-sm-8 {{ $product->hasColors() ? '' : 'pt-7' }}">
             @if ($product->hasColors())
@@ -68,7 +68,7 @@
 
     <!-- Qty -->
     <div class="form-group row">
-        <label for="size_id" class="col-sm-2 col-form-label">Qty</label>
+        <label for="size_id" class="col-sm-3 col-form-label">Qty</label>
 
         <div class="col-sm-8 flex">
             <input type="text" name="qty" id="qty" class="form-control text-center mr-2 w-40" value="{{ old('qty') ?: 1 }}">

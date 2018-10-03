@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Color extends Model
 {
     /**
-     * Get the buyables that belong to the color.
+     * Get the inventories that belong to the color.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function buyables()
+    public function inventories()
     {
-        return $this->hasMany(Buyable::class);
+        return $this->hasMany(Inventory::class);
     }
 }

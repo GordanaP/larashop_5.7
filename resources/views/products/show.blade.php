@@ -7,7 +7,7 @@
         <div class="card">
             <div class="row">
 
-                <div class="col-md-4">
+                <div class="col-md-6">
 
                     <!-- Image -->
                     <img src="{{ $product->image }}" alt="{{ $product->name }}" class="image min-h-full">
@@ -33,6 +33,8 @@
 
                     <!-- Add to cart form -->
                     @include('products.forms._addtocart')
+
+                    <p class="mb-0 mt-4">Category: </p>
                 </div>
 
             </div>
