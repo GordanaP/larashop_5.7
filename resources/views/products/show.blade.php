@@ -7,9 +7,8 @@
         <div class="card">
             <div class="row">
 
+                <!-- Image -->
                 <div class="col-md-6">
-
-                    <!-- Image -->
                     <img src="{{ $product->image }}" alt="{{ $product->name }}" class="image min-h-full">
                 </div>
 
@@ -34,7 +33,14 @@
                     <!-- Add to cart form -->
                     @include('products.forms._addtocart')
 
-                    <p class="mb-0 mt-4">Category: </p>
+                    <!-- Categories -->
+                    <p class="mb-0 mt-5">
+                        <span class="uppercase">Category:</span>
+
+                        @foreach ($product->categories as $category)
+                            {{ $category->name }}
+                        @endforeach
+                    </p>
                 </div>
 
             </div>

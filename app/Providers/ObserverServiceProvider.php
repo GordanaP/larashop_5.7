@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Category;
 use App\Inventory;
+use App\Observers\CategoryObserver;
 use App\Observers\InventoryObserver;
 use App\Observers\OrderObserver;
 use App\Observers\ProductObserver;
@@ -19,9 +21,10 @@ class ObserverServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Product::observe(ProductObserver::class);
-        Order::observe(OrderObserver::class);
+        Category::observe(CategoryObserver::class);
         Inventory::observe(InventoryObserver::class);
+        Order::observe(OrderObserver::class);
+        Product::observe(ProductObserver::class);
     }
 
     /**
