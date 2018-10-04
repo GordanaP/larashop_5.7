@@ -10,3 +10,12 @@ table#displayCartTable tr:last-child td {margin-bottom: 20px}
 .w-40 {width: 40%}
 .w-60 {width: 60%}
 .pt-7 {padding-top: 7px}
+.mb-6 {margin-bottom: 24px;}
+.active {color: #F6993F; font-weight: bold;}
+.text-medium {font-size: 15px}
+.bg-gold { background: #DFA938}
+.text-gold { color: #DFA938}
+.bg-gold-dark { background: #000}
+
+a { color: inherit; text-decoration: none}
+a:hover { color: #000;}

@@ -1,5 +1,5 @@
 <p class="text-sm font-gabriela">
-    <span class="text-red">*</span> Required fields
+    <span class="text-red">*</span> <span class="text-grey-dark">Required fields</span>
 </p>
 
 

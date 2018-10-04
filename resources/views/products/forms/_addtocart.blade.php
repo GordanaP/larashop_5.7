@@ -4,8 +4,6 @@
 
     <!-- Size -->
     <div class="form-group row mb-4">
-        <label for="size_id" class="col-sm-3 col-form-label">Size</label>
-
         <div class="col-sm-8 {{ $product->hasSizes() ? '' : 'pt-7' }}">
             @if ( $product->hasSizes())
                 <select name="size_id" id="size_id" class="form-control">
@@ -33,8 +31,6 @@
 
     <!-- Color -->
     <div class="form-group row mb-3">
-        <label for="color_id" class="col-sm-3 col-form-label">Color</label>
-
         <div class="col-sm-8 {{ $product->hasColors() ? '' : 'pt-7' }}">
             @if ($product->hasColors())
                 <select name="color_id" id="color_id" class="form-control">
@@ -59,7 +55,7 @@
             @endif
 
             @if ($errors->has('color_id'))
-                <span class="invalid-feedback m-r-22" role="alert">
+                <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('color_id') }}</strong>
                 </span>
             @endif
@@ -68,19 +64,17 @@
 
     <!-- Qty -->
     <div class="form-group row">
-        <label for="size_id" class="col-sm-3 col-form-label">Qty</label>
-
         <div class="col-sm-8 flex">
             <input type="text" name="qty" id="qty" class="form-control text-center mr-2 w-40" value="{{ old('qty') ?: 1 }}">
 
-            <button class="btn bg-indigo-dark text-white uppercase ml-2 w-60">
+            <button class="btn bg-indigo-light hover:bg-indigo text-white uppercase ml-2 w-60">
                 Add to Cart
             </button>
         </div>
 
         <div class="col-sm-8 offset-sm-2">
             @if ($errors->has('qty'))
-                <span class="invalid-feedback qty m-r-22" role="alert">
+                <span class="invalid-feedback qty" role="alert">
                     <strong>{{ $errors->first('qty') }}</strong>
                 </span>
             @endif

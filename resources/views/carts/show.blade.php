@@ -2,20 +2,21 @@
 
 @section('title', 'My cart')
 
+@section('page_title', 'My Cart')
+
+@section('action_buttons')
+    <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker">
+        Continue shopping
+    </a>
+    |
+    <a href="{{ route('carts.empty') }}" class="ml-1 text-indigo-dark hover:text-indigo-darker">
+        <span class="icon icon_trash"></span> Empty cart
+    </a>
+@endsection
+
 @section('content')
     <div class="container">
-
-        <a href="{{ route('products.index') }}" class="btn bg-indigo-light text-white hover:bg-indigo">
-            Continue shopping
-        </a>
-
         @if ($cartItems->count())
-
-            <h3 class="mb-4 pull-right">
-                <a href="{{ route('carts.empty') }}" class="btn bg-orange text-white hover:bg-orange-dark">
-                    Empty cart
-                </a>
-            </h3>
 
             <table class="table bg-white border-b border-grey-light" id="displayCartTable">
                 <thead class="bg-grey-lighter uppercase">
@@ -40,7 +41,7 @@
                 </tbody>
             </table>
 
-            <a href="{{ route('orders.create') }}" class="btn btn-lg bg-grey-darker text-white uppercase pull-right">
+            <a href="{{ route('orders.create') }}" class="btn btn-lg bg-indigo-darker hover:bg-indigo-darkest text-white uppercase pull-right">
                 Checkout
             </a>
 

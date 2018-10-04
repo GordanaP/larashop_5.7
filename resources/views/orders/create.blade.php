@@ -2,17 +2,20 @@
 
 @section('title', 'My order')
 
+@section('page_title', 'Place Order')
+
+@section('action_buttons')
+    <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker">
+        Continue shopping
+    </a>
+    |
+    <a href="{{ route('carts.show') }}" class="ml-1 text-indigo-dark hover:text-indigo-darker">
+        <i class="fa fa-shopping-cart"></i> View Cart
+    </a>
+@endsection
+
 @section('content')
     <div class="container">
-
-        <div class="flex justify-between mb-4">
-            <a href="{{ route('products.index') }}" class="btn bg-indigo-light text-white hover:bg-indigo">
-                Continue shopping
-            </a>
-            <a href="{{ route('carts.show') }}" class="btn bg-orange text-white hover:bg-orange-dark">
-                Back to cart
-            </a>
-        </div>
 
         <form action="{{ route('orders.store') }}" method="POST">
 
@@ -43,11 +46,11 @@
                     @endinc
 
                     <div class="flex justify-between align-center mt-2">
-                        <a href="{{ route('carts.empty') }}" class="btn btn-block bg-grey-dark hover:bg-grey-darker uppercase text-white tracking-wide bold mr-1">
+                        <a href="{{ route('carts.empty') }}" class="btn btn-block bg-gold uppercase text-white tracking-wide bold mr-1">
                             Cancel
                         </a>
 
-                        <button class="btn btn-block bg-grey-darkest hover:bg-black uppercase text-white font-medium tracking-wide bold ml-1 mt-0">
+                        <button class="btn btn-block bg-indigo-darker hover:bg-indigo-darkest uppercase text-white font-medium tracking-wide bold ml-1 mt-0">
                             Place Order
                         </button>
                     </div>

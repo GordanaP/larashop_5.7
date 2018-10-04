@@ -2,9 +2,21 @@
 
 @section('title', '| Product')
 
+@section('page_title', $product->name)
+
+@section('action_buttons')
+    <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker">
+        Continue shopping
+    </a>
+    |
+    <a href="{{ route('carts.show') }}" class="ml-1 text-indigo-dark hover:text-indigo-darker">
+        <i class="fa fa-shopping-cart"></i> View Cart
+    </a>
+@endsection
+
 @section('content')
     <div class="container">
-        <div class="card">
+        <div>
             <div class="row">
 
                 <!-- Image -->
@@ -12,23 +24,20 @@
                     <img src="{{ $product->image }}" alt="{{ $product->name }}" class="image min-h-full">
                 </div>
 
-                <div class="col-md-6 py-4 pl-5">
-
-                    <!-- Stars -->
-                    <span class="fa fa-star text-orange"></span>
-                    <span class="fa fa-star text-orange"></span>
-                    <span class="fa fa-star text-orange"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-
-                    <!-- Name -->
-                    <h3 class="mb-2 mt-3 font-semibold">{{ $product->name }}</h3>
+                <div class="col-md-6 pl-5">
 
                     <!-- Price -->
-                    <div class="mb-4 text-muted text-lg">{{ $product->present_price }}</div>
+                    <div class="text-xl font-bold mb-2">{{ $product->present_price }}</div>
+
+                    <!-- Stars -->
+                    <span class="fa fa-star text-gold"></span>
+                    <span class="fa fa-star text-gold"></span>
+                    <span class="fa fa-star text-gold"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
 
                     <!-- Descrption -->
-                    <p class="card-text mb-5">{{ $product->description }}</p>
+                    <p class="card-text mt-3 mb-5 text-muted">{{ $product->description }}</p>
 
                     <!-- Add to cart form -->
                     @include('products.forms._addtocart')

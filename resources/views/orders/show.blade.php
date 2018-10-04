@@ -2,11 +2,22 @@
 
 @section('title', 'The order has been comppleted')
 
+@section('page_title')
+    Thank you for your purchase from <a href="#" class="text-blue">larashop.com</a>
+@endsection
+
+@section('notification')
+    <p class="text-grey-dark">You will receive an email confirmation at g@gmail.com</p>
+@endsection
+
+@section('action_buttons')
+    <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker">
+        Continue shopping
+    </a>
+@endsection
+
 @section('content')
     <div class="container">
-
-        <h3 class="font-semibold">Thank you for your purchase from <a href="#">larashop.com</a></h3>
-        <p class="mb-5 mt-1">You will receive an email confirmation at g@gmail.com</p>
 
         <div class="row">
             <div class="col-md-8">
@@ -27,7 +38,7 @@
                                 </p>
                             </div>
                             <div>
-                                <a href="{{ route('pdf.order', $order) }}" class="btn bg-indigo-dark btn-sm text-white">
+                                <a href="{{ route('pdf.order', $order) }}" class="btn btn-sm bg-grey-darkest text-white">
                                     <i class="fa fa-print"></i> Print order
                                 </a>
                             </div>

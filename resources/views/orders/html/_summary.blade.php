@@ -56,7 +56,7 @@
 
 <div>
     <p class="mb-2">
-      <a data-toggle="collapse" href="#orderedItems" aria-expanded="false" aria-controls="orderedItems" id="toggleOrderedItems">
+      <a data-toggle="collapse" href="#orderedItems" aria-expanded="false" aria-controls="orderedItems" id="toggleOrderedItems" class="text-blue">
         Show more
       </a>
     </p>

@@ -2,8 +2,17 @@
 
 @section('title', 'All Products')
 
+@section('page_title', 'All Products')
+
+@section('action_buttons')
+    <a href="{{ route('carts.show') }}" class="text-indigo-dark hover:text-indigo-darker">
+        <i class="fa fa-shopping-cart"></i> View Cart
+    </a>
+@endsection
+
 @section('content')
     <div class="container">
+
         <div class="row">
 
             <div class="col-md-3">
@@ -15,7 +24,7 @@
                 <!-- Products -->
                 @if ($products->count())
                     @foreach ($products->chunk(3) as $chunk)
-                        <div class="row">
+                        <div class="row mb-20">
                             @each ('products.html._product', $chunk, 'product')
                         </div>
                     @endforeach

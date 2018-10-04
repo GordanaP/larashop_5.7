@@ -1,45 +1,38 @@
 <div class="col-md-4">
-    <div class="card mb-4 shadow-sm card-product">
 
-        <!-- Image -->
-        <img class="card-img-top" src="{{ $product->image }}" alt="Card image cap">
+    <div class="flex flex-col justify-between">
+        <div>
+            <!-- Image -->
+            <a href="{{ route('products.show', $product) }}" class="font-semibold text-base">
+                <img src="{{ $product->image }}" alt="{{ $product->name }}" class="mb-2">
+            </a>
 
-        <div class="card-body flex flex-col justify-between">
+            <!-- Colors -->
+                @if ($product->hasColors())
+                    <p class="card-text text-xs mb-2">
+                        @foreach ($product->getColors() as $color)
+                            <i class="fa fa-stop text-lg" style="color: {{ $color->code }}"></i>
+                        @endforeach
+                    </p>
+                @endif
 
-            <div class="mb-3">
+            <!-- Product Name -->
+            <p class="mt-0 mb-0">
+                <a href="{{ route('products.show', $product) }}" class="font-semibold text-base">
+                    {{ $product->name }}
+                </a>
+            </p>
 
-                <!-- Product Name -->
-                <p class="text-lg">
-                    <a href="{{ route('products.show', $product) }}">
-                        {{ $product->name }}
-                    </a>
-                </p>
+            <!-- Price -->
+            <p class=" text-grey-dark">{{ $product->present_price }}</p>
 
-                <!-- Description -->
-                <p class="card-text text-xs">{{ $product->description }}</p>
-            </div>
-            <div>
-                <div class="mb-2">
-                    @if ($product->hasColors())
-                        <p class="card-text text-xs mb-2">
-                            Colors:
-                            @foreach ($product->getColors() as $color)
-                                <i class="fa fa-circle" style="color: {{ $color->code }}"></i>
-                            @endforeach
-                        </p>
-                    @endif
-                </div>
+        </div>
 
-                <div class="d-flex justify-content-between align-items-center">
-
-                    <!-- Price -->
-                    <span>{{ $product->present_price }}</span>
-
-                    <a href="{{ route('products.show', $product) }}">
-                        <i class="icon icon_cart_alt"></i>
-                    </a>
-                </div>
-            </div>
+        <!-- Cart Icon -->
+        <div>
+            <a href="{{ route('products.show', $product) }}" class=" text-grey-darker">
+                <i class="icon icon_cart_alt"></i> <span class="uppercase text-xs font-semibold">Add to cart</span>
+            </a>
         </div>
     </div>
 </div>
