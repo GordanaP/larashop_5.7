@@ -16,6 +16,15 @@ trait HasPrice
         return $price;
     }
 
+
+
+    public function getMinPriceAttribute()
+    {
+        $min_price = $this->inventories->pluck('price')->min();
+
+        return $min_price;
+    }
+
     /**
      * Get the currency along with the price.
      *

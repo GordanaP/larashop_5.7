@@ -7,7 +7,7 @@
         <div class="row">
 
             <div class="col-md-3">
-                <h5>Filters</h5>
+                @include('products.html._sidebar')
             </div>
 
             <div class="col-md-9">
@@ -25,7 +25,7 @@
 
                 <!-- Pagination -->
                 <div class="pagination pull-right">
-                    {{ $products->links() }}
+                    {{ $products->appends(request()->query())->links() }}
                 </div>
 
             </div>

@@ -3,13 +3,17 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Color;
 use App\Inventory;
 use App\Observers\CategoryObserver;
+use App\Observers\ColorObserver;
 use App\Observers\InventoryObserver;
 use App\Observers\OrderObserver;
 use App\Observers\ProductObserver;
+use App\Observers\SizeObserver;
 use App\Order;
 use App\Product;
+use App\Size;
 use Illuminate\Support\ServiceProvider;
 
 class ObserverServiceProvider extends ServiceProvider
@@ -25,6 +29,8 @@ class ObserverServiceProvider extends ServiceProvider
         Inventory::observe(InventoryObserver::class);
         Order::observe(OrderObserver::class);
         Product::observe(ProductObserver::class);
+        Color::observe(ColorObserver::class);
+        Size::observe(SizeObserver::class);
     }
 
     /**

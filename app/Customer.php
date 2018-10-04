@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+    protected $appends = ['full_name'];
+
     /**
      * Get the orders that belong to the customer
      *

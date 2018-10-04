@@ -10,6 +10,15 @@ class Product extends Model
 {
     use HasInventory, HasPrice;
 
+     protected $appends = ['max_price'];
+
+     public function getMaxPriceAttribute()
+     {
+         $max_price = $this->inventories->pluck('price')->max();
+
+         return $max_price;
+     }
+
     /**
      * Get the route key for the model.
      *
@@ -38,6 +47,18 @@ class Product extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    /**
+     * Scope a query to include filtered products only.
+     *
+     * @param \App\Filters\Filters  $filters
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+    */
+    public function scopeFilter($query, $filters)
+    {
+        return $filters->apply($query);  //App\Filters\Filters.php - apply(Builder $builder);
     }
 
 }

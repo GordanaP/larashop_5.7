@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Product;
 
+use App\Filters\Product\ProductFilters;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
@@ -11,11 +12,12 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param \App\Filters\Product\ProductFilters $filters
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ProductFilters $filters)
     {
-        $products = Product::with('inventories')->inRandomOrder()->paginate(6);
+        $products = Product::with('inventories')->filter($filters)->inRandomOrder()->paginate(6);
 
         return view('products.index', compact('products'));
     }

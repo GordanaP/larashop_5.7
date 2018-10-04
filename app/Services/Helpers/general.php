@@ -1,6 +1,36 @@
 <?php
 
 /**
+ * Get the query string.
+ *
+ * @param  array  $query
+ * @return  array
+ */
+function getQueryString(array $query)
+{
+    $queryString = array_merge( request()->query(), $query);
+
+    $filteredQuery = array_except($queryString, ['page']);
+
+    return $filteredQuery;
+}
+
+/**
+ * Remove the query string.
+ *
+ * @param  string $filter
+ * @return  array
+ */
+function removeQueryString($filter)
+{
+    $queryString = request()->query();
+
+    $filteredQuery = array_except($queryString, [$filter, 'page']);
+
+    return $filteredQuery;
+}
+
+/**
  * Format number to float.
  *
  * @param  integer  $number

@@ -175,6 +175,7 @@ return [
         App\Providers\ObserverServiceProvider::class,
         App\Providers\UtilityServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
     ],
 
     /*
