@@ -36,8 +36,8 @@
     <div class="clearfix"></div>
 
     <p class="mb-3 font-semibold text-grey-darkest">Order summary</p>
-    <p class="mb-1 text-sm"><span class="text-grey-darkest">Order number:</span> {{ $order->present_number }}</p>
-    <p class="text-sm"><span class="text-grey-darkest">Date:</span> {{ $order->placed_at }}</p>
+    <p class="mb-1 text-sm"><span class="text-grey-darkest font-semibold">Order number:</span> {{ $order->present_number }}</p>
+    <p class="text-sm"><span class="text-grey-darkest font-semibold">Date:</span> {{ $order->placed_at }}</p>
 
     <table class="w-full text-sm border-b border-t border-grey-light mt-4">
         <thead class="bg-card-header">
@@ -96,17 +96,15 @@
         </tbody>
     </table>
 
-    <p class="font-semibold text-grey-darkest mb-2">Shipping Information:</p>
+    <p class="font-semibold text-grey-darkest mb-1">Shipping Information:</p>
 
-    <p class="mb-0 text-sm">
-        {{ $order->customer->full_name }}
-    </p>
-    <p class="mb-0 text-sm">
-        {{ $order->customer->address }}
-    </p>
-    <p class="text-sm">
-        {{ $order->customer->full_city }}
-    </p>
+    <div  class="text-sm">
+        <p class="mb-0 font-semibold">{{ $order->customer->full_name }}</p>
+        <p class="mb-0">{{ $order->customer->address }}</p>
+        <p class="mb-0">{{ $order->customer->full_city }}</p>
+        <p class="mb-0">{{ $order->customer->email }}</p>
+        <p class="mb-0">{{ $order->customer->full_phone }}</p>
+    </div>
 
     <div>
         <p class="text-center mt-4">

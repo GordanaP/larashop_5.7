@@ -11,12 +11,20 @@
         <main class="py-4">
 
             <div class="container">
-                <nav aria-label="breadcrumb">
+
+                <nav class="flex justify-between items-center" aria-label="breadcrumb">
+
                     <ol class="breadcrumb bg-white pl-0 uppercase text-xs text-grey-darker">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Library</li>
                     </ol>
+
+                    <a href="{{ route('carts.show') }}" class="text-indigo-dark text-lg">
+                        <i class="icon icon_cart"></i>
+                        <span>{{ Cart::itemsCount() }}</span>
+                    </a>
                 </nav>
+
 
                 <div class="flex justify-between items-center">
                     <h3 class="font-semibold">

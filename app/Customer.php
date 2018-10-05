@@ -28,13 +28,16 @@ class Customer extends Model
     {
         $customer = new static;
 
+        $customer->email = $data['email'];
         $customer->first_name = $data['first_name'];
         $customer->last_name = $data['last_name'];
+        $customer->country = $data['country'];
         $customer->address = $data['address'];
         $customer->postcode = $data['postcode'];
         $customer->city = $data['city'];
+        $customer->country_code = $data['country_code'];
+        $customer->local_code = $data['local_code'];
         $customer->phone = $data['phone'];
-        $customer->email = $data['email'];
 
         $customer->save();
 
@@ -63,5 +66,17 @@ class Customer extends Model
         $full_city = $this->postcode .' '.$this->city;
 
         return $full_city;
+    }
+
+    /**
+     * Get the customer phone number.
+     *
+     * @return string
+     */
+    public function getFullPhoneAttribute()
+    {
+        $full_phone = $this->country_code . ' ' . $this->local_code . ' ' . $this->phone;
+
+        return $full_phone;
     }
 }

@@ -5,13 +5,15 @@
 @section('page_title', 'My Cart')
 
 @section('action_buttons')
-    <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker">
+    <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker font-normal">
         Continue shopping
     </a>
-    |
-    <a href="{{ route('carts.empty') }}" class="ml-1 text-indigo-dark hover:text-indigo-darker">
-        <span class="icon icon_trash"></span> Empty cart
-    </a>
+    @if ($cartItems->count())
+        |
+        <a href="{{ route('carts.empty') }}" class="ml-1 text-indigo-dark hover:text-indigo-darker font-normal">
+            Empty cart
+        </a>
+    @endif
 @endsection
 
 @section('content')

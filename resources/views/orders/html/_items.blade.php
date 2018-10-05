@@ -8,7 +8,7 @@
                     <img src="{{ $item->product->image }}" alt="{{ $item->name }}" class="image" >
                 </td>
 
-                <td >
+                <td>
                     {{ $item->name }}
                 </td>
 

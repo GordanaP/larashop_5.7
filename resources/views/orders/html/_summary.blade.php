@@ -5,7 +5,7 @@
     @endslot
 
     @slot('class')
-        class="font-semibold"
+        class="font-bold"
     @endslot
 
     @slot('value')
@@ -46,7 +46,7 @@
     @endslot
 
     @slot('class')
-        class="font-semibold"
+        class="font-bold"
     @endslot
 
     @slot('value')

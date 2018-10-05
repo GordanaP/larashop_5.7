@@ -18,15 +18,6 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
 
-                <li class="nav-link">
-                    <a href="{{ route('carts.show') }}" class="text-white">
-                        <i class="icon icon_cart_alt text-xl text-l absolute"></i>
-                        <span id="cartTotalBadge" class="bg-white text-xs text-indigo rounded-full relative mr-2">
-                            {{ Cart::itemsCount() }}
-                        </span>
-                    </a>
-                </li>
-
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">

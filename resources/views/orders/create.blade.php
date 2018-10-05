@@ -5,12 +5,8 @@
 @section('page_title', 'Place Order')
 
 @section('action_buttons')
-    <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker">
+    <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker font-normal">
         Continue shopping
-    </a>
-    |
-    <a href="{{ route('carts.show') }}" class="ml-1 text-indigo-dark hover:text-indigo-darker">
-        <i class="fa fa-shopping-cart"></i> View Cart
     </a>
 @endsection
 
@@ -25,7 +21,7 @@
                 <div class="col-md-8">
                     @inc
                         @slot('title')
-                            Shipping Detalis
+                            Delivery Address
                         @endslot
 
                         @slot('inc')

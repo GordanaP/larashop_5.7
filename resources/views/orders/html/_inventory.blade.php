@@ -2,7 +2,7 @@
     <td>
         <img src="{{ $inventory->product->image }}" alt="{{ $inventory->name }}" class="image">
     </td>
-    <td>
+    <td class="font-bold">
         {{ $inventory->name }}
     </td>
 

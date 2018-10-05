@@ -4,12 +4,6 @@
 
 @section('page_title', 'All Products')
 
-@section('action_buttons')
-    <a href="{{ route('carts.show') }}" class="text-indigo-dark hover:text-indigo-darker">
-        <i class="fa fa-shopping-cart"></i> View Cart
-    </a>
-@endsection
-
 @section('content')
     <div class="container">
 
