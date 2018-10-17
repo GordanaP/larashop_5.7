@@ -5,10 +5,11 @@ namespace App;
 use App\Traits\Order\HasPrice;
 use App\Traits\Order\IsPlaced;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Nova\Actions\Actionable;
 
 class Order extends Model
 {
-    use IsPlaced, HasPrice;
+    use Actionable, IsPlaced, HasPrice;
 
     /**
      * Get the route key for the model.

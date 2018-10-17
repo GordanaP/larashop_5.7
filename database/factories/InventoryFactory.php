@@ -10,6 +10,6 @@ $factory->define(App\Inventory::class, function (Faker $faker) {
         'product_id' => Product::all()->random()->id,
         'color_id' => Color::all()->random()->id,
         'size_id' => Size::all()->random()->id,
-        'price' => rand(1000, 10000)
+        'price' => rand(1, 100)
     ];
 });

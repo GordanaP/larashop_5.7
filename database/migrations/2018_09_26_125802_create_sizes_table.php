@@ -17,7 +17,7 @@ class CreateSizesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('code');
+            $table->string('code')->unique();
             $table->timestamps();
         });
     }

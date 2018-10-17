@@ -18,11 +18,10 @@ trait IsPlaced
     {
         $customer = Customer::createNew($data);
 
-        $inventories = Cart::getItems();
-
         $order = static::createNew($customer);
 
-        // static::linkToBuyables($order, $buyables);
+        $inventories = Cart::getItems();
+
         static::linkToInventories($order, $inventories);
 
         Cart::empty();
@@ -75,24 +74,6 @@ trait IsPlaced
         return $order;
     }
 
-    /**
-     * Link the order to the products.
-     *
-     * @param  \App\Order $order
-     * @param  \Illuminate\Support\Collection $buyables
-     * @return void
-     */
-    // private static function linkToBuyables($order, $buyables)
-    // {
-    //     foreach ($buyables as $buyable)
-    //     {
-    //         $order->buyables()->attach($buyable->id, [
-    //             'qty' => $buyable->qty,
-    //             'price' => formatFloat($buyable->price),
-    //         ]);
-    //     }
-    // }
-    //
     private static function linkToInventories($order, $inventories)
     {
         foreach ($inventories as $inventory)

@@ -29,6 +29,6 @@ class ThankYouForYourOrder
     public function handle(OrderHasBeenPlaced $event)
     {
         Mail::to($event->order->customer)
-            ->send(new OrderPlaced($event->order));
+            ->send(new OrderPlaced($event->order, $event->invoice));
     }
 }

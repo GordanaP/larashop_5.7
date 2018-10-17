@@ -2,11 +2,11 @@
 
 namespace App\Mail;
 
-use App\Customer;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use PDF;
 
 class OrderPlaced extends Mailable
 {
@@ -14,14 +14,18 @@ class OrderPlaced extends Mailable
 
     public $order;
 
+    public $invoice;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct($order, $invoice)
     {
         $this->order = $order;
+
+        $this->invoice = $invoice;
     }
 
     /**
@@ -31,6 +35,9 @@ class OrderPlaced extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.order.placed');
+        return $this->markdown('emails.order.placed')
+            ->attachData($this->invoice, 'invoice.pdf', [
+                'mime' => 'application/pdf',
+            ]);
     }
 }

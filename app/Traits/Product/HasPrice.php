@@ -5,24 +5,27 @@ namespace App\Traits\Product;
 trait HasPrice
 {
     /**
-     * Get the product price provided that all inventories have the same price.
+     * Get the product's minimum price.
      *
      * @return float
      */
-    public function getPriceAttribute()
-    {
-        $price = $this->inventories->pluck('price')->unique()->first();
-
-        return $price;
-    }
-
-
-
     public function getMinPriceAttribute()
     {
-        $min_price = $this->inventories->pluck('price')->min();
+        $min_price = $this->inventories->map->price->min();
 
         return $min_price;
+    }
+
+    /**
+     * Get the product's maximum price.
+     *
+     * @return float
+     */
+    public function getMaxPriceAttribute()
+    {
+        $max_price = $this->inventories->map->price->max();
+
+        return $max_price;
     }
 
     /**
@@ -32,7 +35,14 @@ trait HasPrice
      */
     public function getPresentPriceAttribute()
     {
-        $presented_price = presentPrice($this->price);
+        if($this->min_price == $this->max_price)
+        {
+            $presented_price = presentPrice($this->min_price);
+        }
+        else
+        {
+            $presented_price  = 'From ' .presentPrice($this->min_price);
+        }
 
         return $presented_price;
     }

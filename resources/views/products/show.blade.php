@@ -14,10 +14,11 @@
     <div class="container">
         <div>
             <div class="row">
-
+                {{-- {{ $product->inventories->groupBy('size_id')->keys() }} --}}
+                {{-- {{ $product->inventories->groupBy('color_id')->keys() }} --}}
                 <!-- Image -->
                 <div class="col-md-6">
-                    <img src="{{ $product->image }}" alt="{{ $product->name }}" class="image min-h-full">
+                    <img src="{{ $product->getImage($product->image, $product) }}" alt="{{ $product->name }}" class="mb-2" />
                 </div>
 
                 <div class="col-md-6 pl-5">

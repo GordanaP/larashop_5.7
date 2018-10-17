@@ -1,6 +1,8 @@
 div.card-product {min-height: 95%}
 table#displayCartTable tr:last-child td {margin-bottom: 20px}
 
+a#navbarDropdown.nav-link.dropdown-toggle {color: #fff !important}
+
 
 .invalid-feedback {display: inline-block;}
 .bg-card-header { background: #f1f5f8; }
@@ -16,5 +18,5 @@ table#displayCartTable tr:last-child td {margin-bottom: 20px}
 .text-gold { color: #DFA938}
 .bg-gold-dark { background: #000}
 
-a { color: inherit; text-decoration: none}
+a { color: inherit; text-decoration: none !important}
 a:hover { color: #000;}

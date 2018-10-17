@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +176,7 @@ return [
         App\Providers\UtilityServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
+        App\Providers\NovaServiceProvider::class,
     ],
 
     /*
@@ -226,7 +227,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => App\Facades\Cart::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        'Keygen' => Keygen\Keygen::class
+        'Keygen' => Keygen\Keygen::class,
+        'Status' => App\Services\Utilities\Product\Status::class,
+        'AppPDF' => App\Services\Utilities\Product\AppPDF::class,
     ],
 
 ];

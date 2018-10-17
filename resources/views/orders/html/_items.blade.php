@@ -4,8 +4,8 @@
         @foreach ($cartItems as $item)
 
             <tr class="text-xs">
-                <td class="pl-0 width="20%>
-                    <img src="{{ $item->product->image }}" alt="{{ $item->name }}" class="image" >
+                <td class="pl-0" width="20%">
+                    <img src="{{ $item->product->getImage($item->product->image, $item->product) }}" alt="{{ $item->name }}" class="image" />
                 </td>
 
                 <td>

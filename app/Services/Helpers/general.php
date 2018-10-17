@@ -60,6 +60,24 @@ function formatFloat($float)
 }
 
 /**
+ * Transform number to integer.
+ *
+ * @param  mixed  $number
+ * @param  integer $decimals
+ * @return integer
+ */
+function floatToInteger($number, $decimals = 2)
+{
+    $formatted_float = formatNumber($number, $decimals);
+
+    $decimalsCount = strlen(substr(strrchr($formatted_float, "."), 1));
+
+    $integer = $formatted_float * (10 ** $decimalsCount);
+
+    return $integer;
+}
+
+/**
  * Display currency along with the price.
  *
  * @param  string $currency

@@ -11,13 +11,17 @@ class OrderHasBeenPlaced
 
     public $order;
 
+    public $invoice;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct($order, $invoice)
     {
         $this->order = $order;
+
+        $this->invoice = $invoice;
     }
 }

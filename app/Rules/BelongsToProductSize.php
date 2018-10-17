@@ -41,7 +41,6 @@ class BelongsToProductSize implements Rule
      */
     public function passes($attribute, $value)
     {
-        // $buyable = $this->product->findBuyable($this->product->id, $this->size_id, $value);
         $inventory = $this->product->findInventory($this->product->id, $this->size_id, $value);
 
         return optional($inventory)->exists;

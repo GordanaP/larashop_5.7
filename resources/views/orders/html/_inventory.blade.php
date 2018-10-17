@@ -1,13 +1,14 @@
 <tr>
     <td>
-        <img src="{{ $inventory->product->image }}" alt="{{ $inventory->name }}" class="image">
+        <img src="{{ $inventory->product->getImage($inventory->product->image, $inventory->product) }}" alt="{{ $inventory->name }}" class="image" />
     </td>
+
     <td class="font-bold">
         {{ $inventory->name }}
     </td>
 
     <td class="text-center">
-        {{ $inventory->present_price }}
+        {{ presentPrice(formatNumber($inventory->attribute->price/100)) }}
     </td>
 
     <td class="text-center">

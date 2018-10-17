@@ -1,10 +1,10 @@
 <tr>
-    <!-- Name -->
+    <!-- Imagw -->
     <td class="border-b border-grey-light">
-        <img src="{{ $item->product->image }}" alt="{{ $item->name }}">
+        <img src="{{ $item->product->getImage($item->product->image, $item->product) }}" alt="{{ $item->product->name }}" class="mb-2" />
     </td>
 
-    <!-- Description -->
+    <!-- Sku, Name & Description -->
     <td class="border-b border-grey-light">
         <p class="mb-2 text-muted text-xs">
             SKU {{ $item->sku }}

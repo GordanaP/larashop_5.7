@@ -7,22 +7,11 @@ use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Order;
-use PDF;
-use Illuminate\Http\Request;
+use App\Services\Utilities\PDF\AppPDF;
 use Illuminate\Support\Facades\View;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -52,7 +41,9 @@ class OrderController extends Controller
     {
         $order = Order::placeNew($request);
 
-        event(new OrderHasBeenPlaced($order));
+        $invoice = AppPDF::generate('orders.pdf._invoice', compact('order'));
+
+        event(new OrderHasBeenPlaced($order, $invoice));
 
         return redirect()->route('orders.show', $order);
     }
@@ -66,46 +57,5 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         return view('orders.show', compact('order'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
-    {
-        //
-    }
-
-    public function printPDF()
-    {
-        $pdf = PDF::loadView('invoice');
-
-        return $pdf->download('order.pdf');
     }
 }

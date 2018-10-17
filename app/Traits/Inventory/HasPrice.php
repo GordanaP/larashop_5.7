@@ -5,7 +5,18 @@ namespace App\Traits\Inventory;
 trait HasPrice
 {
     /**
-     * Get the inventory price.
+     * Set the inventory's price.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] = floatToInteger($value);
+    }
+
+    /**
+     * Get the inventory's price.
      *
      * @param  int $value
      * @return float
@@ -20,7 +31,7 @@ trait HasPrice
     }
 
     /**
-     * Display the currency along with the inventory price.
+     * Display the currency along with the inventory's price.
      *
      * @return string
      */
@@ -32,7 +43,7 @@ trait HasPrice
     }
 
     /**
-     * Get the inventory subtotal.
+     * Get the inventory's subtotal.
      *
      * @param  integer $qty
      * @return float
@@ -47,7 +58,7 @@ trait HasPrice
     }
 
     /**
-     * Get the currency along with the inventory subtotal.
+     * Get the currency along with the inventory's subtotal.
      *
      * @param  integer $qty
      * @return string

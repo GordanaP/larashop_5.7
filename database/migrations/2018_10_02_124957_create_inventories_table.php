@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+use App\Services\Utilities\Inventory\Status;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateInventoriesTable extends Migration
 {
@@ -15,7 +16,7 @@ class CreateInventoriesTable extends Migration
     {
         Schema::create('inventories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sku');
+            $table->string('sku')->unique();
             $table->string('name');
 
             $table->unsignedInteger('product_id')->index();
@@ -28,7 +29,7 @@ class CreateInventoriesTable extends Migration
             $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');
 
             $table->integer('price');
-            $table->integer('cost')->nullable();
+            $table->enum('status', array_keys(Status::all()))->default('active');
             $table->timestamps();
         });
     }
