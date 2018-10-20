@@ -2,7 +2,7 @@
 
 @section('title', 'My order')
 
-@section('page_title', 'Place Order')
+@section('page_title', 'Order Details')
 
 @section('action_buttons')
     <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker font-normal">
@@ -12,6 +12,8 @@
 
 @section('content')
     <div class="container">
+
+        <hr class="mb-10 mt-1 border-t border-grey-light">
 
         <form action="{{ route('orders.store') }}" method="POST">
 
@@ -25,7 +27,11 @@
                         @endslot
 
                         @slot('inc')
-                            @include('orders.forms._shippingdetails')
+                            @if (optional(Auth::user())->customer)
+                                @include('orders.html._customerdetails')
+                            @else
+                                @include('orders.forms._customerdetails')
+                            @endif
                         @endslot
                     @endinc
                 </div>

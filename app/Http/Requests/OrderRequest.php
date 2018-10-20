@@ -25,25 +25,25 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|max:100',
+            'email' => 'sometimes|required|email|max:100',
             'first_name' => [
-                'required', 'string', 'max:50',
+                'sometimes', 'required', 'string', 'max:50',
                 new AlphaNumSpace()
             ],
             'last_name' => [
-                'required', 'string', 'max:50',
+                'sometimes', 'required', 'string', 'max:50',
                 new AlphaNumSpace()
             ],
-            'country' => 'required',
-            'address' => 'required|max:100',
-            'postcode' => 'required|string|alpha_num|max:10',
+            'country' => 'sometimes|required',
+            'address' => 'sometimes|required|max:100',
+            'postcode' => 'sometimes|required|string|alpha_num|max:10',
             'city' => [
-                'required', 'string', 'max:50',
+                'sometimes', 'required', 'string', 'max:50',
                 new AlphaNumSpace()
             ],
-            'country_code' => 'required',
-            'local_code' => 'required',
-            'phone' => 'required',
+            'country_code' => 'sometimes|required',
+            'local_code' => 'sometimes|required',
+            'phone' => 'sometimes|required',
         ];
     }
 }

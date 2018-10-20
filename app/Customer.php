@@ -19,6 +19,16 @@ class Customer extends Model
     }
 
     /**
+     * Get the user who owns the customer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
      * Create the new customer from an array of attributes.
      *
      * @param  array $data
@@ -38,6 +48,7 @@ class Customer extends Model
         $customer->country_code = $data['country_code'];
         $customer->local_code = $data['local_code'];
         $customer->phone = $data['phone'];
+        \Auth::user() ? $customer->user()->associate(\Auth::user()) : '';
 
         $customer->save();
 

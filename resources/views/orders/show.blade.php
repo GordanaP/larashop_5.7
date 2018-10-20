@@ -18,22 +18,23 @@
 
 @section('content')
     <div class="container">
+        <hr class="mb-10 mt-1 border-t border-grey-light">
 
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
 
-                        <p class="text-xl font-bold mb-2 pl-3">
+                        <p class="text-xl font-bold mb-2 pl-2">
                             <span class="mr-2">Order summary</span>
                         </p>
 
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="mb-1 mt-3 pl-3 text-muted">
+                                <p class="mb-1 mt-3 pl-2 text-muted">
                                     <span class="font-semibold">Order number:</span> {{ $order->present_number }}
                                 </p>
-                                <p class="pl-3 text-muted">
+                                <p class="pl-2 text-muted">
                                     <span class="font-semibold">Date:</span> {{ $order->placed_at }};
                                 </p>
                             </div>
@@ -74,39 +75,10 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body" id="createAccount">
-                        <p class="text-lg font-semibold">Create an Account</p>
-                        <hr>
-                        <p class="text-grey-dark">
-                            Create an account with us to track your order and view your past orders. Your details are saved for faster checkout in future.
-                        </p>
 
-                        <div class="flex justify-around my-4">
-                            <div class="text-center">
-                                <img src="{{ asset('images/checkout.png') }}" alt="">
-                                <p class="text-grey-darker font-semibold mt-2">Fast Checkout</p>
-                            </div>
-                            <div class="text-center">
-                                <img src="{{ asset('images/track_order.png') }}" alt="">
-                                <p class="text-grey-darker font-semibold mt-2">Track Order</p>
-                            </div>
-                            <div class="text-center">
-                                <img src="{{ asset('images/past_orders.png') }}" alt="">
-                                <p class="text-grey-darker font-semibold mt-2">Past Orders</p>
-                            </div>
-                        </div>
+                        <!-- Create account -->
+                        @include('orders.html._createaccount')
 
-                        <form action="#" method="POST">
-                            @csrf
-
-                            <div class="form-group">
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Choose a password" style="background: #f9f9f9">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-block bg-grey-darker hover:bg-grey-darkest text-white uppercase">
-                                    Create Account
-                                </button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>

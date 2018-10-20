@@ -7,6 +7,8 @@
 @section('content')
     <div class="container">
 
+        <hr class="mb-10 mt-1 border-t border-grey-light">
+
         <div class="row">
 
             <div class="col-md-3">

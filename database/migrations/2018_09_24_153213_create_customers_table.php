@@ -15,6 +15,10 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->oDelete('set NULL');
+
             $table->string('email');
             $table->string('first_name');
             $table->string('last_name');
@@ -23,7 +27,7 @@ class CreateCustomersTable extends Migration
             $table->string('postcode');
             $table->string('city');
             $table->string('country_code');
-            $table->integer('local_code');
+            $table->string('local_code');
             $table->integer('phone');
             $table->timestamps();
         });

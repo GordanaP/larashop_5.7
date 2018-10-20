@@ -4,6 +4,7 @@ namespace App\Traits\Order;
 
 use App\Customer;
 use App\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Keygen\Keygen;
 
 trait IsPlaced
@@ -16,7 +17,7 @@ trait IsPlaced
      */
     public static function placeNew($data)
     {
-        $customer = Customer::createNew($data);
+        $customer = optional(Auth::user())->customer ?: Customer::createNew($data);
 
         $order = static::createNew($customer);
 

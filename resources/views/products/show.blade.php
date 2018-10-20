@@ -12,10 +12,11 @@
 
 @section('content')
     <div class="container">
+        <hr class="mb-10 mt-1 border-t border-grey-light">
+
         <div>
             <div class="row">
-                {{-- {{ $product->inventories->groupBy('size_id')->keys() }} --}}
-                {{-- {{ $product->inventories->groupBy('color_id')->keys() }} --}}
+
                 <!-- Image -->
                 <div class="col-md-6">
                     <img src="{{ $product->getImage($product->image, $product) }}" alt="{{ $product->name }}" class="mb-2" />

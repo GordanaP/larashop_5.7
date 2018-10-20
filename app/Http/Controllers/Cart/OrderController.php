@@ -8,10 +8,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Order;
 use App\Services\Utilities\PDF\AppPDF;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        return view('orders.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

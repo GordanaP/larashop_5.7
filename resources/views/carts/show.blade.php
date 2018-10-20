@@ -18,6 +18,9 @@
 
 @section('content')
     <div class="container">
+
+        <hr class="mb-10 mt-1 border-t border-grey-light">
+
         @if ($cartItems->count())
 
             <table class="table bg-white border-b border-grey-light" id="displayCartTable">
@@ -43,7 +46,7 @@
                 </tbody>
             </table>
 
-            <a href="{{ route('orders.create') }}" class="btn btn-lg bg-indigo-darker hover:bg-indigo-darkest text-white uppercase pull-right">
+            <a href="{{ Auth::check() ? route('orders.create') : route('carts.checkout') }}" class="btn btn-lg bg-indigo-darker hover:bg-indigo-darkest text-white uppercase pull-right">
                 Checkout
             </a>
 
@@ -51,4 +54,5 @@
             <span class="pull-left mr-3">Your cart is empty.</span>
         @endif
     </div>
+
 @endsection

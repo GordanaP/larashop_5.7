@@ -10,7 +10,6 @@
         @page {
             margin: 0px;
         }
-
         body {
             margin: 0px;
         }
@@ -89,7 +88,9 @@ Status: Paid
 <br/>
 
 <div class="invoice">
+
     <h3>Invoice specification #123</h3>
+
     <table width="100%">
         <thead>
             <tr>
@@ -104,7 +105,7 @@ Status: Paid
             <tr>
                 <td>{{ $inventory->name }}</td>
                 <td>{{ presentPrice(formatNumber($inventory->attribute->price/100)) }}</td>
-                <td>{{ $inventory->attribute->qty) }}</td>
+                <td>{{ $inventory->attribute->qty }}</td>
                 <td align="left">{{ $inventory->presentSubtotal($inventory->attribute->qty) }}</td>
             </tr>
             @endforeach

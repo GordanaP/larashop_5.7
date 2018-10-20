@@ -3,6 +3,7 @@
 <head>
     @include('partials.top._head')
 </head>
+
 <body class="bg-white">
     <div id="app">
 
@@ -26,7 +27,7 @@
                 </nav>
 
 
-                <div class="flex justify-between items-center">
+                <div class="mt-3 flex justify-between items-center">
                     <h3 class="font-semibold">
 
                         @yield('page_title')
@@ -42,7 +43,7 @@
 
                 @yield('notification')
 
-                <hr class="mb-10 border-t border-grey">
+                {{-- <hr class="mb-10 border-t border-grey"> --}}
 
             </div>
 
