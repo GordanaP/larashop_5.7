@@ -1,5 +1,5 @@
 <p class="text-lg font-semibold">
-    A Step Toward Your Account
+    A Step Toward Sign Up
 </p>
 
 <hr>

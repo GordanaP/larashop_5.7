@@ -4,11 +4,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/checkout/login', 'UserAuthController@login')->name('checkout.login');
-Route::get('/checkout/register', 'UserAuthController@register')->name('checkout.register');
-
-
 Route::resource('users', 'UserController');
 Auth::routes();
 
@@ -41,5 +36,5 @@ Route::namespace('Cart')->group(function(){
 
 Route::get('/orders/print-pdf/{order}', 'PDFController@pdfOrder')->name('pdf.order');
 
-Route::get('my-profile', 'ProfileController@show')->name('profiles.show');
-Route::put('my-profile', 'ProfileController@update')->name('profiles.update');
+// Route::get('my-profile', 'ProfileController@show')->name('profiles.show');
+// Route::put('my-profile', 'ProfileController@update')->name('profiles.update');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Customer;
+use App\Rules\UserDoesNotExist;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -23,8 +25,13 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        $latestCustomer = Customer::latest()->first();
+
         return [
-            'password' => 'required|string|min:6'
+            'password' => [
+                'required', 'string', 'min:6',
+                new UserDoesNotExist($latestCustomer)
+            ]
         ];
     }
 }

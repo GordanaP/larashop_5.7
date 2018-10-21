@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         User::createNew($request);
 
-        return back();
+        return back()->with(getAlert('Thank you for registering with us. You can now sign in to track your order.'));
     }
 
     /**

@@ -39,4 +39,18 @@ class CartRequest extends FormRequest
             'qty' => 'required|integer|min:1|max:5'
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+                'qty.required' => 'Required value',
+                'qty.max' => 'Max 5 items',
+                'qty.min' => 'Min 1 item',
+            ];
+    }
 }

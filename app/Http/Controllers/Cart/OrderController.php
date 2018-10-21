@@ -13,9 +13,21 @@ use Illuminate\Support\Facades\View;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('order.pending')->only('create');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('orders.index');
+        return view('orders.index')->with([
+            'user' => Auth::user()
+        ]);
     }
 
     /**
@@ -51,7 +63,8 @@ class OrderController extends Controller
 
         event(new OrderHasBeenPlaced($order, $invoice));
 
-        return redirect()->route('orders.show', $order);
+        return redirect()->route('orders.show', $order)
+            ->with(getAlert('Thank you for your order.', 'success'));
     }
 
     /**

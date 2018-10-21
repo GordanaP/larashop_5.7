@@ -21,7 +21,7 @@
         <hr class="mb-10 mt-1 border-t border-grey-light">
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="{{ Auth::check() ? 'col-md-12' : 'col-md-8' }}">
                 <div class="card">
                     <div class="card-body">
 
@@ -72,16 +72,18 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body" id="createAccount">
+            @guest
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body" id="createAccount">
 
-                        <!-- Create account -->
-                        @include('orders.html._createaccount')
+                            <!-- Create account -->
+                            @include('orders.html._createaccount')
 
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endguest
         </div>
 
     </div>

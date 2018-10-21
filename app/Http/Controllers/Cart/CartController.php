@@ -21,9 +21,13 @@ class CartController extends Controller
     {
         $inventory = $product->findInventory($product->id, $request->size_id, $request->color_id);
 
+        $preAddCount = Cart::itemsCount();
+
         Cart::addItem($inventory, $request->qty);
 
-        return back();
+        $postAddCount = Cart::itemsCount();
+
+        return back()->with($this->storeAlert($preAddCount, $postAddCount));
     }
 
     /**
@@ -45,11 +49,11 @@ class CartController extends Controller
      * @param  string  $rowId
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $rowId)
+    public function update(CartRequest $request, $rowId)
     {
         Cart::updateItem($rowId, $request->qty);
 
-        return back();
+        return back()->with(getAlert('The cart has been updated', 'success'));
     }
 
     /**
@@ -62,7 +66,7 @@ class CartController extends Controller
     {
         Cart::removeItem($rowId);
 
-        return back();
+        return back()->with(getAlert('The item has been removed from the cart.', 'success'));
     }
 
     /**
@@ -74,11 +78,30 @@ class CartController extends Controller
     {
         Cart::empty();
 
-        return back();
+        return back()->with(getAlert('The cart is now empty!', 'success'));
     }
 
+    /**
+     * Display checkout page.
+     *
+     * @return  \Illuminate\Http\Response
+     */
     public function checkout()
     {
         return view('carts.checkout');
+    }
+
+    /**
+     * Get the alert.
+     *
+     * @param  string $preAddCount
+     * @param  string $postAddCount
+     * @return array
+     */
+    protected function storeAlert($preAddCount, $postAddCount)
+    {
+        return $preAddCount == $postAddCount
+            ? getAlert('The item is already in the cart.', 'warning')
+            : getAlert('The item has been added to cart.', 'success');
     }
 }

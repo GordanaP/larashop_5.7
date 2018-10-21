@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-indigo-dark border-t border-yellow-dark">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand text-white" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
@@ -35,7 +35,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('profiles.show') }}">
+                            <a class="dropdown-item" href="#">
                                 My profile
                             </a>
                             <a class="dropdown-item" href="{{ route('orders.index') }}">    My orders
