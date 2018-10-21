@@ -12,7 +12,6 @@
 
 @section('content')
     <div class="container">
-
         <hr class="mb-10 mt-1 border-t border-grey-light">
 
         <form action="{{ route('orders.store') }}" method="POST">

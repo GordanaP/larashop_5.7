@@ -46,8 +46,8 @@
                 </tbody>
             </table>
 
-            <a href="{{ Auth::check() ? route('orders.create') : route('carts.checkout') }}" class="btn btn-lg bg-indigo-darker hover:bg-indigo-darkest text-white uppercase pull-right">
-                Checkout
+            <a href="{{ Auth::check() ? route('orders.create') : route('carts.checkout') }}" class="btn btn-lg bg-indigo-darker hover:bg-indigo-darkest text-white pull-right">
+                Proceed to Checkout
             </a>
 
         @else

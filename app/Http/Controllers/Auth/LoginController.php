@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Facades\Cart;
 use App\Http\Controllers\Controller;
+use App\Traits\Auth\HasUrl;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
-    use AuthenticatesUsers;
+    use AuthenticatesUsers, HasUrl;
 
     /**
      * Create a new controller instance.
@@ -20,5 +19,29 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        $this->storeSessionUrl(url()->previous(), url()->current());
+
+        return view('auth.login');
+    }
+
+    /**
+     * Get the path the user should be redirected to.
+     *
+     * @return string
+     */
+    public function redirectTo()
+    {
+        return $this->SessionUrlsAreEqual('previous', 'current')
+            ? route('orders.create')
+            : $this->getSessionUrl('previous');
     }
 }
