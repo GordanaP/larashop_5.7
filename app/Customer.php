@@ -2,14 +2,23 @@
 
 namespace App;
 
+use App\Services\Utilities\Customer\Country;
+use Illuminate\Database\Eloquent\Concerns\HasAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+    use HasAttributes;
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
     protected $appends = ['full_name'];
 
     /**
-     * Get the orders that belong to the customer
+     * Get the orders that belong to the customer.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -29,65 +38,26 @@ class Customer extends Model
     }
 
     /**
-     * Create the new customer from an array of attributes.
+     * Create the new customer.
      *
      * @param  array $data
      * @return \App\Customer
      */
     public static function createNew($data)
     {
-        $customer = new static;
+        return tap(new static, function($customer) use ($data) {
 
-        $customer->email = $data['email'];
-        $customer->first_name = $data['first_name'];
-        $customer->last_name = $data['last_name'];
-        $customer->country = $data['country'];
-        $customer->address = $data['address'];
-        $customer->postcode = $data['postcode'];
-        $customer->city = $data['city'];
-        $customer->country_code = $data['country_code'];
-        $customer->local_code = $data['local_code'];
-        $customer->phone = $data['phone'];
-        \Auth::user() ? $customer->user()->associate(\Auth::user()) : '';
+            $customer->email = $data['email'];
+            $customer->first_name = $data['first_name'];
+            $customer->last_name = $data['last_name'];
+            $customer->country = $data['country'];
+            $customer->address = $data['address'];
+            $customer->postal_code = $data['postal_code'];
+            $customer->city = $data['city'];
+            $customer->phone = $data['phone'];
+            \Auth::user() ? $customer->user()->associate(\Auth::user()) : '';
 
-        $customer->save();
-
-        return $customer;
-    }
-
-    /**
-     * Get the customer fuul name.
-     *
-     * @return string
-     */
-    public function getFullNameAttribute()
-    {
-        $full_name = $this->first_name .' '.$this->last_name;
-
-        return $full_name;
-    }
-
-    /**
-     * Get the postcode along with the customer city.
-     *
-     * @return string
-     */
-    public function getFullCityAttribute()
-    {
-        $full_city = $this->postcode .' '.$this->city;
-
-        return $full_city;
-    }
-
-    /**
-     * Get the customer phone number.
-     *
-     * @return string
-     */
-    public function getFullPhoneAttribute()
-    {
-        $full_phone = $this->country_code . ' ' . $this->local_code . ' ' . $this->phone;
-
-        return $full_phone;
+            $customer->save();
+        });
     }
 }

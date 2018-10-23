@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('order.pending')->only('checkout');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

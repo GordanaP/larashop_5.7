@@ -16,7 +16,7 @@ class BladeServiceProvider extends ServiceProvider
     {
         Blade::component('components.cart.price', 'price');
         Blade::component('components.order.summary', 'summary');
-        Blade::component('components.order.include', 'inc');
+        Blade::component('components.order.include', 'incl');
     }
 
     /**

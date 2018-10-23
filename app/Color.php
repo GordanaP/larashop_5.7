@@ -16,6 +16,12 @@ class Color extends Model
         return $this->hasMany(Inventory::class);
     }
 
+    /**
+     * Get the color name.
+     *
+     * @param  string $value
+     * @return string
+     */
     public function getNameAttribute($value)
     {
         return ucfirst($value);

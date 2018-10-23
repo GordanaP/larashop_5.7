@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\View;
 
 class OrderController extends Controller
 {
+    /**
+     * Create an instance of the controller.
+     *
+     * @return  void
+     */
     public function __construct()
     {
         $this->middleware('order.pending')->only('create');
@@ -57,7 +62,7 @@ class OrderController extends Controller
      */
     public function store(OrderRequest $request)
     {
-        $order = Order::placeNew($request);
+        $order = Order::placeNew($request->validated());
 
         $invoice = AppPDF::generate('orders.pdf._invoice', compact('order'));
 

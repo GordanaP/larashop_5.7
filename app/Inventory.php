@@ -12,7 +12,7 @@ class Inventory extends Model
     use HasPrice;
 
     /**
-     * Get the product that owns the byuable.
+     * Get the product that owns the inventories.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -22,7 +22,7 @@ class Inventory extends Model
     }
 
     /**
-     * Get the color that owns the byuable.
+     * Get the color that owns the inventories.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -32,7 +32,7 @@ class Inventory extends Model
     }
 
     /**
-     * Get the size that owns the byuable.
+     * Get the size that owns the inventories.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -42,7 +42,7 @@ class Inventory extends Model
     }
 
     /**
-     * Get the orders that have buyables.
+     * Get the orders that have inventories.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -58,8 +58,7 @@ class Inventory extends Model
      */
     public function generateSku()
     {
-        return Keygen::bytes()->generate(
-            function($key) {
+        return Keygen::bytes()->generate( function($key) {
 
                 // Generate a random numeric key
                 $random = Keygen::numeric()->generate();
@@ -73,7 +72,7 @@ class Inventory extends Model
     }
 
     /**
-     * Generate the inventory name.
+     * Generate the inventory's name.
      *
      * @return string.
      */

@@ -20,6 +20,9 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('customer_id')->index();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
 
+            $table->unsignedInteger('shipping_id')->nullable();
+            $table->foreign('shipping_id')->references('id')->on('shippings')->onDelete('cascade');
+
             $table->integer('subtotal');
             $table->integer('tax');
             $table->integer('total');

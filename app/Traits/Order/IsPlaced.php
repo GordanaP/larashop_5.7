@@ -19,9 +19,9 @@ trait IsPlaced
     {
         $customer = optional(Auth::user())->customer ?: Customer::createNew($data);
 
-        $order = static::createNew($customer);
-
         $inventories = Cart::getItems();
+
+        $order = static::createNew($customer);
 
         static::linkToInventories($order, $inventories);
 
@@ -63,16 +63,15 @@ trait IsPlaced
      */
     private static function createNew($customer)
     {
-        $order = new static;
+        return tap(new static, function($order) use($customer) {
 
-        $order->subtotal = formatFloat(Cart::subtotal());
-        $order->tax = formatFloat(Cart::tax());
-        $order->total = formatFloat(Cart::total());
-        $order->customer()->associate($customer);
+            $order->subtotal = formatFloat(Cart::subtotal());
+            $order->tax = formatFloat(Cart::tax());
+            $order->total = formatFloat(Cart::total());
+            $order->customer()->associate($customer);
 
-        $order->save();
-
-        return $order;
+            $order->save();
+        });
     }
 
     private static function linkToInventories($order, $inventories)

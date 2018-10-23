@@ -1,11 +1,10 @@
 <p class="text-sm font-gabriela">
-    <span class="text-red">*</span> <span class="text-grey-dark">Required fields</span>
+    <span class="text-red">*</span> <span class="text-grey-darker text-xs">Required fields</span>
 </p>
 
 <!-- Email -->
 <div class="form-group">
-    <label for="email"><b>E-mail address:<span class="text-red">*</span></b></label>
-    <input type="text" name="email" id="email" class="form-control" placeholder="example@domain.com" value={{ old('email') }}>
+    <input type="text" name="email" id="email" class="form-control" placeholder="user@example.com" value={{ old('email') }}>
 
     @if ($errors->has('email'))
         <span class="invalid-feedback" role="alert">
@@ -14,44 +13,41 @@
     @endif
 </div>
 
+<!-- First name -->
+<div class="form-group">
+    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" value={{ old('first_name') }}>
 
-<div class="row">
+    @if ($errors->has('first_name'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('first_name') }}</strong>
+        </span>
+    @endif
+</div>
 
-    <!-- First name -->
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="first_name"><b>First name:<span class="text-red">*</span></b></label>
-            <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" value={{ old('first_name') }}>
+<!-- Last name -->
+<div class="form-group">
+    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" value={{ old('last_name') }}>
 
-            @if ($errors->has('first_name'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('first_name') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-
-    <!-- Last name -->
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="last_name"><b>Last name:<span class="text-red">*</span></b></label>
-            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" value={{ old('last_name') }}>
-
-            @if ($errors->has('last_name'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('last_name') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-
+    @if ($errors->has('last_name'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('last_name') }}</strong>
+        </span>
+    @endif
 </div>
 
 <!-- Country -->
 <div class="form-group">
-    <label for="country"><b>Country:<span class="text-red">*</span></b></label>
 
-    <input type="text"  name="country" id="country" class="form-control" placeholder="Country" value="{{ old('country') }}">
+    <select name="country" id="country" class="form-control" value="{{ old('country') }}">
+        <option value="">Select a country</option>
+        @foreach (Country::all() as $name=>$code)
+            <option value="{{ $code }}"
+                {{ getSelected($code , old('country')) }}
+            >
+                {{ $name }}
+            </option>
+        @endforeach
+    </select>
 
     @if ($errors->has('country'))
         <span class="invalid-feedback" role="alert">
@@ -62,8 +58,6 @@
 
 <!-- Address -->
 <div class="form-group">
-    <label for="address"><b>Street address:<span class="text-red">*</span></b></label>
-
     <input type="text"  name="address" id="address" class="form-control" placeholder="Street address" value="{{ old('address') }}">
 
     @if ($errors->has('address'))
@@ -73,68 +67,36 @@
     @endif
 </div>
 
-<div class="row">
 
-    <!-- Postcode -->
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="postcode"><b>Postal code:<span class="text-red">*</span></b></label>
-            <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postal code" value={{ old('postcode') }}>
+<!-- Postcode -->
+<div class="form-group">
+    <input type="text" name="postal_code" id="postal_code" class="form-control" placeholder="Postal code" value={{ old('postal_code') }}>
 
-            @if ($errors->has('postcode'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('postcode') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
+    @if ($errors->has('postal_code'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('postal_code') }}</strong>
+        </span>
+    @endif
+</div>
 
-    <!-- City -->
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="city"><b>City:<span class="text-red">*</span></b></label>
-            <input type="text" name="city" id="city" class="form-control" placeholder="City" value={{ old('city') }}>
+<!-- City -->
+<div class="form-group">
+    <input type="text" name="city" id="city" class="form-control" placeholder="City" value={{ old('city') }}>
 
-            @if ($errors->has('city'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('city') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-
+    @if ($errors->has('city'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('city') }}</strong>
+        </span>
+    @endif
 </div>
 
 <!-- Phone -->
 <div class="form-group">
-    <label for="phone"><b>Phone number:<span class="text-red">*</span></b></label>
+    <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone Number" value="{{ old('phone') }}">
 
-    <div class="flex justify-between">
-        <div class="w-1/5 mr-1">
-            <input type="text" name="country_code" id="country_code" class="form-control" placeholder="+">
-            @if ($errors->has('country_code'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('country') }}</strong>
-                </span>
-            @endif
-        </div>
-
-        <div class="w-1/5 mr-1 ml-1">
-            <input type="text" name="local_code" id="local_code" class="form-control" placeholder="Local Code">
-            @if ($errors->has('local_code'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('local_code') }}</strong>
-                </span>
-            @endif
-        </div>
-
-        <div  class="w-3/5 ml-1">
-            <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone Number" value="{{ old('phone') }}">
-            @if ($errors->has('phone'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('phone') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
+    @if ($errors->has('phone'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('phone') }}</strong>
+        </span>
+    @endif
 </div>

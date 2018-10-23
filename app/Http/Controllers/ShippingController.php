@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
-use App\User;
+use App\Shipping;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ShippingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,20 +33,18 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        User::signUp($request);
-
-        return back()->with(getAlert('Thank you for registering with us. You can now sign in to track your order.', 'success'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  \App\Shipping  $shipping
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Shipping $shipping)
     {
         //
     }
@@ -55,10 +52,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  \App\Shipping  $shipping
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Shipping $shipping)
     {
         //
     }
@@ -67,10 +64,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param  \App\Shipping  $shipping
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Shipping $shipping)
     {
         //
     }
@@ -78,10 +75,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $user
+     * @param  \App\Shipping  $shipping
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Shipping $shipping)
     {
         //
     }

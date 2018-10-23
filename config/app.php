@@ -230,6 +230,7 @@ return [
         'Keygen' => Keygen\Keygen::class,
         'Status' => App\Services\Utilities\Product\Status::class,
         'AppPDF' => App\Services\Utilities\Product\AppPDF::class,
+        'Country' => App\Services\Utilities\Customer\Country::class,
     ],
 
 ];

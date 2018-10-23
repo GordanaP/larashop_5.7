@@ -28,7 +28,7 @@
 
 
                 <div class="mt-3 flex justify-between items-center">
-                    <h3 class="font-semibold">
+                    <h3 class="font-bold">
 
                         @yield('page_title')
 
@@ -42,8 +42,6 @@
                 </div>
 
                 @yield('notification')
-
-                {{-- <hr class="mb-10 border-t border-grey"> --}}
 
             </div>
 

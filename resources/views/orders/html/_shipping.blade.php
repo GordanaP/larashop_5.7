@@ -1,5 +1,5 @@
-<p class="text-lg font-semibold mb-2">
-    Shipping Information:
+<p class="text-normal underline font-semibold mb-2">
+    Billing Information
 </p>
 
 <p class="mb-0">
@@ -10,6 +10,10 @@
     {{ $order->customer->address }}
 </p>
 
-<p>
+<p class="mb-0">
     {{ $order->customer->full_city }}
+</p>
+
+<p>
+    {{ $order->customer->country }}
 </p>

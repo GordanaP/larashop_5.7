@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Rules\AlphaNumSpace;
+use App\Services\Utilities\Customer\Country;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderRequest extends FormRequest
@@ -34,15 +35,13 @@ class OrderRequest extends FormRequest
                 'sometimes', 'required', 'string', 'max:50',
                 new AlphaNumSpace()
             ],
-            'country' => 'sometimes|required',
+            'country' => 'sometimes|required|in:'.implode(',', array_values(Country::all())),
             'address' => 'sometimes|required|max:100',
-            'postcode' => 'sometimes|required|string|alpha_num|max:10',
+            'postal_code' => 'sometimes|required|string|alpha_num|max:10',
             'city' => [
                 'sometimes', 'required', 'string', 'max:50',
                 new AlphaNumSpace()
             ],
-            'country_code' => 'sometimes|required',
-            'local_code' => 'sometimes|required',
             'phone' => 'sometimes|required',
         ];
     }

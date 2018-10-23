@@ -16,6 +16,12 @@ class Size extends Model
         return $this->hasMany(Inventory::class);
     }
 
+    /**
+     * Get the size's name.
+     *
+     * @param  string $value
+     * @return string
+     */
     public function getNameAttribute($value)
     {
         return ucfirst($value);

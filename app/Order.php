@@ -32,7 +32,17 @@ class Order extends Model
     }
 
     /**
-     * Get the products that have inventories.
+     * Get the shipping address that owns the order.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function shipping()
+    {
+        return $this->belongsTo(Shipping::class);
+    }
+
+    /**
+     * Get the inventories that have orders.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

@@ -1,5 +1,5 @@
 <p class="text-lg font-semibold">
-    A Step Toward Sign Up
+    Quick Sign Up
 </p>
 
 <hr>

@@ -55,7 +55,7 @@
                                 <th width="14%" class="text-right">Subtotal</th>
                             </thead>
 
-                            <!-- Buyable -->
+                            <!-- Inventory -->
                             <tbody>
                                 @each ('orders.html._inventory', $order->inventories, 'inventory')
                             </tbody>
