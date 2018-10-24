@@ -2,7 +2,9 @@
 
 namespace App\Traits\Address;
 
-trait HassAttributes
+use App\Services\Utilities\Customer\Country;
+
+trait HasAttributes
 {
     /**
      * Get the address customer's full name.

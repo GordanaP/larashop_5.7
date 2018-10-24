@@ -4,6 +4,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route::view('/test', 'test');
+
 Route::resource('users', 'UserController');
 Auth::routes();
 
@@ -35,6 +37,10 @@ Route::namespace('Cart')->group(function(){
 });
 
 Route::get('/orders/print-pdf/{order}', 'PDFController@pdfOrder')->name('pdf.order');
+
+// Route::resource('shippings', 'Order\ShippingController');
+
+Route::get('/shippings/create', 'AjaxController@createShipping')->name('shippings.create');
 
 // Route::get('my-profile', 'ProfileController@show')->name('profiles.show');
 // Route::put('my-profile', 'ProfileController@update')->name('profiles.update');

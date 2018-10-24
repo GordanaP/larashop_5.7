@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Concerns\HasAttributes;
+use App\Traits\Address\HasAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Shipping extends Model
@@ -29,13 +29,13 @@ class Shipping extends Model
     {
         return tap(new static, function($shipping) use ($data) {
 
-            $shipping->first_name = $data['first_name'];
-            $shipping->last_name = $data['last_name'];
-            $shipping->country = $data['country'];
-            $shipping->address = $data['address'];
-            $shipping->postal_code = $data['postal_code'];
-            $shipping->city = $data['city'];
-            $shipping->phone = $data['phone'];
+            $shipping->first_name = $data['first_name_s'];
+            $shipping->last_name = $data['last_name_s'];
+            $shipping->country = $data['country_s'];
+            $shipping->address = $data['address_s'];
+            $shipping->postal_code = $data['postal_code_s'];
+            $shipping->city = $data['city_s'];
+            $shipping->phone = $data['phone_s'];
 
             $shipping->save();
         });

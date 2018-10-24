@@ -43,6 +43,22 @@ class OrderRequest extends FormRequest
                 new AlphaNumSpace()
             ],
             'phone' => 'sometimes|required',
+            'first_name_s' => [
+                'sometimes', 'required', 'string', 'max:50',
+                new AlphaNumSpace()
+            ],
+            'last_name_s' => [
+                'sometimes', 'required', 'string', 'max:50',
+                new AlphaNumSpace()
+            ],
+            'country_s' => 'sometimes|required|in:'.implode(',', array_values(Country::all())),
+            'address_s' => 'sometimes|required|max:100',
+            'postal_code_s' => 'sometimes|required|string|alpha_num|max:10',
+            'city_s' => [
+                'sometimes', 'required', 'string', 'max:50',
+                new AlphaNumSpace()
+            ],
+            'phone_s' => 'sometimes|required',
         ];
     }
 }

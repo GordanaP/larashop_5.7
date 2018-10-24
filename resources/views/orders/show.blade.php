@@ -65,8 +65,13 @@
 
                         </table>
 
-                        <!-- Shipping Customer -->
-                        @include('orders.html._shipping')
+                        <div class="flex">
+                            <!-- Billing -->
+                            @include('orders.html._billingaddress')
+
+                            <!-- Shipping -->
+                            @include('orders.html._shippingaddress')
+                        </div>
 
                     </div>
                 </div>

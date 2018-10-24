@@ -62,7 +62,7 @@ class OrderController extends Controller
      */
     public function store(OrderRequest $request)
     {
-        $order = Order::placeNew($request->validated());
+        $order = Order::placeNew($request);
 
         $invoice = AppPDF::generate('orders.pdf._invoice', compact('order'));
 

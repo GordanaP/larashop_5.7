@@ -4,6 +4,7 @@ namespace App\Traits\Order;
 
 use App\Customer;
 use App\Facades\Cart;
+use App\Shipping;
 use Illuminate\Support\Facades\Auth;
 use Keygen\Keygen;
 
@@ -18,10 +19,10 @@ trait IsPlaced
     public static function placeNew($data)
     {
         $customer = optional(Auth::user())->customer ?: Customer::createNew($data);
-
+        $shipping = ! request()->has('shipping') ? Shipping::createNew($data) : '';
         $inventories = Cart::getItems();
 
-        $order = static::createNew($customer);
+        $order = static::createNew($customer, $shipping);
 
         static::linkToInventories($order, $inventories);
 
@@ -44,36 +45,32 @@ trait IsPlaced
     }
 
     /**
-     * Display # along with the order number.
-     *
-     * @return string
-     */
-    public function getPresentNumberAttribute()
-    {
-        $presented_number = '#' . $this->number;
-
-        return $presented_number;
-    }
-
-    /**
      * Create a new order for the customer.
      *
      * @param  \App\Customer $customer
      * @return \App\Order
      */
-    private static function createNew($customer)
+    private static function createNew($customer, $shipping = null)
     {
-        return tap(new static, function($order) use($customer) {
+        return tap(new static, function($order) use($customer, $shipping) {
 
             $order->subtotal = formatFloat(Cart::subtotal());
             $order->tax = formatFloat(Cart::tax());
             $order->total = formatFloat(Cart::total());
             $order->customer()->associate($customer);
+            $shipping ? $order->shipping()->associate($shipping) : '';
 
             $order->save();
         });
     }
 
+    /**
+     * Link the placed order with inventories.
+     *
+     * @param  \App\Order $order
+     * @param  array $inventories
+     * @return void
+     */
     private static function linkToInventories($order, $inventories)
     {
         foreach ($inventories as $inventory)
@@ -83,6 +80,18 @@ trait IsPlaced
                 'price' => formatFloat($inventory->price),
             ]);
         }
+    }
+
+    /**
+     * Display # along with the order number.
+     *
+     * @return string
+     */
+    public function getPresentNumberAttribute()
+    {
+        $presented_number = '#' . $this->number;
+
+        return $presented_number;
     }
 
     /**

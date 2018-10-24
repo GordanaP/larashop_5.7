@@ -1,1 +1,9 @@
-<span class="inline-block rounded-full w-2 h-2 bg-success"></span>
+@extends('layouts.app')
+
+@section('content')
+
+@endsection
+
+@section('scripts')
+
+@endsection

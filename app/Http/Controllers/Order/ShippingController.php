@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Order;
 
+use App\Http\Controllers\Controller;
 use App\Shipping;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,9 @@ class ShippingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Shipping::createNew($request);
+
+        // return back();
     }
 
     /**

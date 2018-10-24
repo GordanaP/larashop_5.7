@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Services\Utilities\Customer\Country;
-use Illuminate\Database\Eloquent\Concerns\HasAttributes;
+use App\Traits\Address\HasAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model

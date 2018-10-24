@@ -17,6 +17,7 @@
 @section('content')
     <div class="container">
         <hr class="mb-10 mt-1 border-t border-grey-light">
+
         <form action="{{ route('orders.store') }}" method="POST">
 
             @csrf
@@ -47,10 +48,18 @@
                         @slot('inc')
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" name="shipping" id="shipping" checked>
-                                <label class="form-check-label" for="shipping">Same ad the billing address</label>
+                                <label class="form-check-label" for="shipping">Same as the billing address</label>
+                            </div>
+
+                            <div id="shippingDetails">
+                                <!-- Append html using ajax call -->
                             </div>
                         @endslot
                     @endincl
+
+                    <div class="mt-2">
+                        @include('errors.list')
+                    </div>
                 </div>
 
 
@@ -86,7 +95,9 @@
 
         @include('orders.js._displayitems')
 
-         removeErrorOnNewInput()
+        @include('orders.js._displayshipping')
+
+        removeErrorOnNewInput()
 
     </script>
 @endsection
