@@ -56,7 +56,7 @@
                 <pre>
 {{ $order->customer->address }}
 {{ $order->customer->full_city }}
-{{ $order->customer->country }}
+{{ $order->customer->country_name }}
 <br /><br />
 Date: {{ $order->placed_at }}
 No: {{ $order->present_number }}

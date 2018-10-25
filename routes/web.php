@@ -6,7 +6,16 @@ Route::get('/', function () {
 
 //Route::view('/test', 'test');
 
-Route::resource('users', 'UserController');
+Route::resource('users', 'User\AccountController', [
+    'only' => ['store']
+]);
+
+Route::get('my-profile', 'User\CustomerController@show')->name('customers.show');
+Route::patch('my-profile', 'User\CustomerController@update')->name('customers.update');
+Route::post('my-profile', 'User\CustomerController@store')->name('customers.store');
+Route::get('/settings/account', 'User\AccountController@show')->name('accounts.show');
+Route::patch('/settings/account', 'User\AccountController@update')->name('accounts.update');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -38,9 +47,6 @@ Route::namespace('Cart')->group(function(){
 
 Route::get('/orders/print-pdf/{order}', 'PDFController@pdfOrder')->name('pdf.order');
 
-// Route::resource('shippings', 'Order\ShippingController');
-
 Route::get('/shippings/create', 'AjaxController@createShipping')->name('shippings.create');
-
-// Route::get('my-profile', 'ProfileController@show')->name('profiles.show');
-// Route::put('my-profile', 'ProfileController@update')->name('profiles.update');
+Route::get('/order/create', 'AjaxController@createOrder')->name('order.create');
+Route::get('/product/{product}', 'AjaxController@showProduct')->name('product.show');

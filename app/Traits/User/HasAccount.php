@@ -45,6 +45,24 @@ trait HasAccount
     }
 
     /**
+     * Save the account changes.
+     *
+     * @param  array $data
+     * @return void
+     */
+    public function saveChanges($data)
+    {
+        $this->name = $data['name'];
+        $this->email = $data['email'];
+
+        if ($data['password']) {
+            $this->password = Hash::make($data['password']);
+        }
+
+        $this->save();
+    }
+
+    /**
      * Determine if the user exists.
      *
      * @param  \App\Customer $latestCustomer

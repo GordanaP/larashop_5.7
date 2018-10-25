@@ -16,6 +16,6 @@
     </p>
 
     <p>
-        {{ optional($order->shipping)->country ?: $order->customer->country }}
+        {{ optional($order->shipping)->country_code ?: $order->customer->country_code }}
     </p>
 </div>

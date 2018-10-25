@@ -16,6 +16,6 @@
     </p>
 
     <p>
-        {{ $order->customer->country }}
+        {{ $order->customer->country_name }}
     </p>
 </div>

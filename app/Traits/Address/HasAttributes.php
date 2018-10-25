@@ -36,10 +36,17 @@ trait HasAttributes
      * @param  string $value
      * @return string
      */
-    public function getCountryAttribute($value)
+    public function getCountryCodeAttribute()
     {
-        $country = array_search($value, Country::all());
+        $country_code = $this->country;
 
-        return $country;
+        return $country_code;
+    }
+
+    public function getCountryNameAttribute()
+    {
+        $country_name = array_search($this->country_code, Country::all());
+
+        return $country_name;
     }
 }

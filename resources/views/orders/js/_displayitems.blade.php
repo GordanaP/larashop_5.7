@@ -1,5 +1,5 @@
 // Display ordered items
-var createOrderUrl = "{{ route('orders.create') }}";
+var createOrderUrl = "{{ route('order.create') }}";
 
 $.ajax({
     url : createOrderUrl,

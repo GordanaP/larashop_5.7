@@ -1,4 +1,5 @@
-var showProductUrl ="{{ route('products.show', $product) }}";
+// var showProductUrl ="{{ route('products.show', $product) }}";
+var showProductUrl ="{{ route('product.show', $product) }}";
 var indexColorsUrl = "{{ route('colors.index') }}";
 var selectSize = $('select#size_id');
 var selectColor = $('select#color_id');

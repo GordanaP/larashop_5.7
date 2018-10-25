@@ -9,6 +9,7 @@ use App\Http\Requests\OrderRequest;
 use App\Order;
 use App\Services\Utilities\PDF\AppPDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 class OrderController extends Controller
@@ -42,15 +43,6 @@ class OrderController extends Controller
      */
     public function create()
     {
-        if (request()->ajax()) {
-
-            $cartItems = Cart::getItems();
-
-            $view = View::make('orders.html._items', compact('cartItems'))->render();
-
-            return response([ 'view' => $view ]);
-        }
-
         return view('orders.create');
     }
 
