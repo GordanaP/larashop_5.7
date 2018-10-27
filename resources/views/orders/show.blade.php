@@ -39,7 +39,7 @@
                                 </p>
                             </div>
                             <div>
-                                <a href="{{ route('pdf.order', $order) }}" class="btn btn-sm bg-grey-darkest text-white">
+                                <a href="{{ route('orders.pdf', $order) }}" class="btn btn-sm bg-grey-darkest text-white">
                                     <i class="fa fa-print"></i> Print order
                                 </a>
                             </div>
@@ -70,7 +70,9 @@
                             @include('orders.html._billingaddress')
 
                             <!-- Shipping -->
-                            @include('orders.html._shippingaddress')
+                            @if ($order->shipping)
+                                @include('orders.html._shippingaddress')
+                            @endif
                         </div>
 
                     </div>

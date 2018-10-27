@@ -1,6 +1,6 @@
 <div class="ml-5">
     <p class="text-normal underline font-semibold mb-2">
-        Shipping Information
+        Shipping Address
     </p>
 
     <p class="mb-0">

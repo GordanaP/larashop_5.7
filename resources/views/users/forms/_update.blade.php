@@ -30,24 +30,29 @@
 
     </div>
 
-    <div class="form-group">
-        <label for="password" class="font-bold text-grey-darker">Password</label>
-        <input type="password" name="password" id="password" class="form-control" placeholder="Choose a password">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="password" class="font-bold text-grey-darker">Password</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Choose a password">
 
-        @if ($errors->has('password'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('password') }}</strong>
-            </span>
-        @endif
+                @if ($errors->has('password'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="password_confirm" class="font-bold text-grey-darker">Password</label>
+                <input type="password" name="password_confirmation" id="password_confirm" class="form-control" placeholder="Retype password">
+            </div>
+        </div>
     </div>
 
     <div class="form-group">
-        <label for="password_confirm" class="font-bold text-grey-darker">Password</label>
-        <input type="password" name="password_confirmation" id="password_confirm" class="form-control" placeholder="Retype password">
-    </div>
-
-    <div class="form-group">
-        <button type="submit" class="btn bg-indigo-darker text-white font-bold tracking-wide">
+        <button type="submit" class="btn bg-white text-indigo-dark uppercase" style="border: 2px solid #5661B3; font-weight: 800">
             Save Changes
         </button>
     </div>

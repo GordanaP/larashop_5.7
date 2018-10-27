@@ -38,4 +38,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Customer::class);
     }
+
+
+    public function orders()
+    {
+        return $this->hasManyThrough('App\Order', 'App\Customer');
+    }
 }

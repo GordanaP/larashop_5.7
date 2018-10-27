@@ -4,6 +4,10 @@
 
 @section('page_title', 'Checkout')
 
+@section('notification')
+    <span class="text-grey-dark">Please choose your preferred way of checkout.</span>
+@endsection
+
 @section('action_buttons')
     <a href="{{ route('products.index') }}" class="text-indigo-dark hover:text-indigo-darker font-normal">
         Continue shopping

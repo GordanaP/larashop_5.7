@@ -22,6 +22,7 @@ class OrderController extends Controller
     public function __construct()
     {
         $this->middleware('order.pending')->only('create');
+        $this->middleware('auth')->only('index');
     }
 
     /**
@@ -32,7 +33,8 @@ class OrderController extends Controller
     public function index()
     {
         return view('orders.index')->with([
-            'user' => Auth::user()
+            'user' => Auth::user()->load('customer.orders.shipping'),
+            'userOrders' => Auth::user()->customer->orders->load('customer')
         ]);
     }
 

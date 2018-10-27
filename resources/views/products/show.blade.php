@@ -4,10 +4,21 @@
 
 @section('page_title', $product->name)
 
+@section('notification')
+    <span class="text-grey-dark">Please choose the product size, color, and quantity.</span>
+@endsection
+
 @section('action_buttons')
     <a href="{{ route('products.index') }}" class="text-indigo-dark hover:text-indigo-darker font-normal">
         Continue shopping
     </a>
+
+    @if (Cart::itemsCount() > 0)
+       |
+        <a href="{{ route('carts.checkout') }}" class="ml-1 text-indigo-dark hover:text-indigo-darker font-normal">
+            Checkout
+        </a>
+    @endif
 @endsection
 
 @section('content')

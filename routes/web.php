@@ -45,7 +45,7 @@ Route::namespace('Cart')->group(function(){
     ]);
 });
 
-Route::get('/orders/print-pdf/{order}', 'PDFController@pdfOrder')->name('pdf.order');
+Route::get('/orders/print-pdf/{order}', 'PDFController@pdfOrder')->name('orders.pdf');
 
 Route::get('/shippings/create', 'AjaxController@createShipping')->name('shippings.create');
 Route::get('/order/create', 'AjaxController@createOrder')->name('order.create');

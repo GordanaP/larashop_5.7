@@ -4,6 +4,14 @@
 
 @section('page_title', 'All Products')
 
+@section('action_buttons')
+    @if (Cart::itemsCount() > 0)
+        <a href="{{ route('carts.checkout') }}" class="ml-1 text-indigo-dark hover:text-indigo-darker font-normal">
+            Checkout
+        </a>
+    @endif
+@endsection
+
 @section('content')
     <div class="container">
         <hr class="mb-10 mt-1 border-t border-grey-light">

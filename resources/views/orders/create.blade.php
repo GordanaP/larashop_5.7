@@ -4,15 +4,21 @@
 
 @section('page_title', 'Order Details')
 
+@section('notification')
+    <span class="text-grey-darker">Please fill in the fields below and click Place Order to complete purchase.</span>
+@endsection
+
 @section('action_buttons')
     <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker font-normal">
         Continue shopping
     </a>
+
+    |
+    <a href="{{ route('carts.show') }}" class="ml-1 text-indigo-dark hover:text-indigo-darker font-normal">
+        Back to cart
+    </a>
 @endsection
 
-@section('notification')
-    <span class="text-grey-darker">Please fill in the fields below and click Place Order to complete purchase.</span>
-@endsection
 
 @section('content')
     <div class="container">

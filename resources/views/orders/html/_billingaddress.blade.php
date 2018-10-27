@@ -1,6 +1,8 @@
 <div class="mr-5">
     <p class="text-normal underline font-semibold mb-2">
-        Billing Information
+        Billing @if (! $order->shipping)
+                & Shipping
+        @endif Address
     </p>
 
     <p class="mb-0">

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {{-- <meta charset="UTF-8"> --}}
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <title>Order</title>
@@ -39,7 +38,7 @@
     <p class="mb-1 text-sm"><span class="text-grey-darkest font-semibold">Order number:</span> {{ $order->present_number }}</p>
     <p class="text-sm"><span class="text-grey-darkest font-semibold">Date:</span> {{ $order->placed_at }}</p>
 
-    <table class="w-full text-sm border-b border-t border-grey-light mt-4">
+    <table class="w-full text-sm border-b border-t border-grey-light mt-4 mb-0">
         <thead class="bg-card-header">
             <tr>
                 <td width="40%" class="border-b border-grey-light p-2 uppercase">Item</td>
@@ -87,21 +86,23 @@
         </tbody>
     </table>
 
-    <p class="font-semibold text-grey-darkest mb-1">Shipping Information:</p>
-
-    <div  class="text-sm">
-        <p class="mb-0 font-semibold">{{ $order->customer->full_name }}</p>
-        <p class="mb-0">{{ $order->customer->address }}</p>
-        <p class="mb-0">{{ $order->customer->full_city }}</p>
-        <p class="mb-0">{{ $order->customer->email }}</p>
-        <p class="mb-0">{{ $order->customer->full_phone }}</p>
-    </div>
-
     <div>
-        <p class="text-center mt-4">
-            Thank you for purchase from <a href="#">larashop.com</a>
-        </p>
+        <div class="float-left text-sm">
+            @include('orders.html._billingaddress')
+        </div>
+
+        @if ($order->shipping)
+            <div class="float-left text-sm">
+                @include('orders.html._shippingaddress')
+            </div>
+        @endif
     </div>
+
+    <div class="clearfix"></div>
+
+    <p class="text-center mt-4">
+        Thank you for purchase from <a href="#">larashop.com</a>
+    </p>
 </body>
 
 </html>
