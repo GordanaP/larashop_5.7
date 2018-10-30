@@ -6,15 +6,24 @@ Route::get('/', function () {
 
 //Route::view('/test', 'test');
 
-Route::resource('users', 'User\AccountController', [
-    'only' => ['store']
-]);
+Route::namespace('User')->group(function () {
+    Route::prefix('my-profile')->as('customers.')->group(function () {
+        Route::get('/', 'CustomerController@show')->name('show');
+        Route::patch('/', 'CustomerController@update')->name('update');
+        Route::post('/', 'CustomerController@store')->name('store');
+    });
 
-Route::get('my-profile', 'User\CustomerController@show')->name('customers.show');
-Route::patch('my-profile', 'User\CustomerController@update')->name('customers.update');
-Route::post('my-profile', 'User\CustomerController@store')->name('customers.store');
-Route::get('/settings/account', 'User\AccountController@show')->name('accounts.show');
-Route::patch('/settings/account', 'User\AccountController@update')->name('accounts.update');
+    Route::prefix('my-settings/account')->as('accounts.')->group(function () {
+        Route::get('/', 'AccountController@show')->name('show');
+        Route::post('/', 'AccountController@store')->name('store');
+        Route::patch('/', 'AccountController@update')->name('update');
+    });
+
+    Route::prefix('my-favorites')->as('favorites.')->group(function () {
+        Route::get('/', 'FavoriteController@index')->name('index');
+        Route::post('/{product}', 'FavoriteController@store')->name('store');
+    });
+});
 
 Auth::routes();
 
@@ -30,8 +39,8 @@ Route::namespace('Product')->group(function() {
     Route::post('colors', 'ColorController@index')->name('colors.index');
 });
 
-Route::namespace('Cart')->group(function(){
-    Route::prefix('my-cart')->as('carts.')->group(function(){
+Route::namespace('Cart')->group(function() {
+    Route::prefix('my-cart')->as('carts.')->group(function() {
         Route::get('/', 'CartController@show')->name('show');
         Route::get('/checkout', 'CartController@checkout')->name('checkout');
         Route::get('/empty', 'CartController@empty')->name('empty');
@@ -39,13 +48,14 @@ Route::namespace('Cart')->group(function(){
         Route::get('/{rowId}', 'CartController@remove')->name('remove');
         Route::patch('/{rowId}', 'CartController@update')->name('update');
     });
-
-    Route::resource('orders', 'OrderController', [
-        'only' => ['index', 'create', 'store', 'show']
-    ]);
 });
 
+
 Route::get('/orders/print-pdf/{order}', 'PDFController@pdfOrder')->name('orders.pdf');
+
+Route::resource('orders', 'Order\OrderController', [
+    'only' => ['index', 'create', 'store', 'show']
+]);
 
 Route::get('/shippings/create', 'AjaxController@createShipping')->name('shippings.create');
 Route::get('/order/create', 'AjaxController@createOrder')->name('order.create');

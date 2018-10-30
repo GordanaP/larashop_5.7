@@ -4,12 +4,13 @@ namespace App;
 
 use App\Traits\Product\HasInventory;
 use App\Traits\Product\HasPrice;
+use App\Traits\Product\HasScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
-    use HasInventory, HasPrice;
+    use HasInventory, HasPrice, HasScope;
 
     /**
      * Get the route key for the model.
@@ -39,29 +40,6 @@ class Product extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class);
-    }
-
-    /**
-     * Scope a query to include filtered products only.
-     *
-     * @param \App\Filters\Filters  $filters
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-    */
-    public function scopeFilter($query, $filters)
-    {
-        return $filters->apply($query);  //App\Filters\Filters.php - apply(Builder $builder);
-    }
-
-    /**
-     * Scope a query to include available products only.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return  \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeAvailable($query)
-    {
-        return $query->whereIn('status', ['active', 'new_arrival', 'on_sale']);
     }
 
     /**

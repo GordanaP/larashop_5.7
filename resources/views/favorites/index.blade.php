@@ -1,13 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'My Account')
+@section('title', 'My Favorites')
 
 @section('page_title')
-    My account
-@endsection
-
-@section('notification')
-    <span class="text-grey-darker">Update your account details</span>
+    My favorites
 @endsection
 
 @section('action_buttons')
@@ -25,7 +21,7 @@
 
 @section('content')
     <div class="container">
-        <hr class="mb-10 mt-1 border-t border-grey">
+        <hr class="mb-10 mt-1 border-t border-grey-light">
 
         <div class="row">
 
@@ -33,14 +29,18 @@
                 @include('partials.side._auth')
             </div>
 
-            <div class="col-md-8 offset-md-1">
-                <div class="card">
-                    <div class="card-body bg-custom-grey-lightest">
-                        @include('users.forms._update')
-                    </div>
-                </div>
-            </div>
+            <div class="col-md-9">
+                @if ($favorites->count())
+                    @foreach ($favorites->chunk(3) as $chunk)
+                        <div class="row mb-20">
+                            @each ('products.html._product', $chunk, 'product')
+                        </div>
+                    @endforeach
+                @else
+                    No products at present.
+                @endif
 
+            </div>
         </div>
     </div>
 @endsection

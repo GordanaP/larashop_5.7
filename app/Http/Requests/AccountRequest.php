@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class AccountRequest extends FormRequest
 {
@@ -25,7 +27,10 @@ class AccountRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:30',
-            'email' => 'required|string|email|max:100|unique:users',
+            'email' => [
+                'required','string','email','max:100',
+                Rule::unique('users')->ignore(Auth::id()),
+            ],
             'password' => 'nullable|string|min:6|confirmed',
         ];
     }

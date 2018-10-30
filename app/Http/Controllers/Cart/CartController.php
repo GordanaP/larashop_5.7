@@ -6,10 +6,15 @@ use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CartRequest;
 use App\Product;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return  void
+     */
     public function __construct()
     {
         $this->middleware('order.pending')->only('checkout');
@@ -18,7 +23,7 @@ class CartController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CartRequest  $request
      * @param  \App\Product $product
      * @return \Illuminate\Http\Response
      */
@@ -50,7 +55,7 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CartRequest  $request
      * @param  string  $rowId
      * @return \Illuminate\Http\Response
      */
@@ -87,7 +92,7 @@ class CartController extends Controller
     }
 
     /**
-     * Display checkout page.
+     * Display the checkout page.
      *
      * @return  \Illuminate\Http\Response
      */
@@ -97,7 +102,7 @@ class CartController extends Controller
     }
 
     /**
-     * Get the alert.
+     * Get the alert for the store method.
      *
      * @param  string $preAddCount
      * @param  string $postAddCount

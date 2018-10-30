@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\Product\HasFavorite;
 use App\Traits\User\HasAccount;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasAccount, Notifiable;
+    use HasAccount, HasFavorite, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -39,9 +40,13 @@ class User extends Authenticatable
         return $this->hasOne(Customer::class);
     }
 
-
-    public function orders()
+    /**
+     * Get the products that belong to the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function favorites()
     {
-        return $this->hasManyThrough('App\Order', 'App\Customer');
+        return $this->belongsToMany(Product::class, 'favorites');
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Size;
 use App\Traits\Inventory\HasPrice;
 use Illuminate\Database\Eloquent\Model;
 use Keygen\Keygen;

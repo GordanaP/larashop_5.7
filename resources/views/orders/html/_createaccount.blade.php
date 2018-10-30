@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<form action="{{ route('users.store') }}" method="POST">
+<form action="{{ route('accounts.store') }}" method="POST">
 
     @csrf
 

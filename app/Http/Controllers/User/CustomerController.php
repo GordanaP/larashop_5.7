@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class CustomerController extends Controller
 {
     /**
-     * Create an instance of the controller class.
+     * Create a new controller instance.
      *
      * @return void
      */
@@ -56,15 +56,5 @@ class CustomerController extends Controller
         Auth::user()->customer->saveChanges($request);
 
         return back()->with(getAlert('Your profile has been saved.', 'success'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy()
-    {
-        //
     }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Services\Utilities\PDF\AppPDF;
-use Illuminate\Http\Request;
 
 class PDFController extends Controller
 {

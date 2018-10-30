@@ -1,11 +1,17 @@
 <div class="col-md-4">
-
     <div class="flex flex-col justify-between h-full">
         <div>
             <!-- Image -->
-            <a href="{{ route('products.show', $product) }}" class="font-semibold text-base">
-                <img src="{{ $product->getImage($product->image, $product) }}" alt="{{ $product->name }}" class="mb-2" />
-            </a>
+            <div class="product-image-container relative">
+                <a href="{{ route('products.show', $product) }}" class="font-semibold text-base">
+                    <img src="{{ $product->getImage($product->image, $product) }}" alt="{{ $product->name }}" class="mb-2" />
+                </a>
+
+                <!-- Add to favorites -->
+                <div class="top-right absolute pin-t pin-r mr-2 mt-2">
+                    @include('products.forms._addtofavorites')
+                </div>
+            </div>
 
             <!-- Colors -->
             @if ($product->hasColors())
@@ -28,7 +34,7 @@
         </div>
 
         <!-- Cart Icon -->
-        <div>
+        <div class="flex justify-between">
             <a href="{{ route('products.show', $product) }}" class="text-grey-darker">
                 <i class="icon icon_cart_alt"></i> <span class="uppercase text-xs font-semibold">Add to cart</span>
             </a>

@@ -20,10 +20,17 @@
                         <li class="breadcrumb-item active" aria-current="page">Library</li>
                     </ol>
 
-                    <a href="{{ route('carts.show') }}" class="text-indigo-dark text-lg">
-                        <i class="icon icon_cart"></i>
-                        <span>{{ Cart::itemsCount() }}</span>
-                    </a>
+                    <div>
+                        <a href="{{ route('favorites.index') }}" class="text-indigo-dark text-lg mr-4">
+                            <i class="icon icon_heart_alt"></i>
+                            <span>{{ Auth::user()->favoritesCount() }}</span>
+                        </a>
+
+                        <a href="{{ route('carts.show') }}" class="text-indigo-dark text-lg">
+                            <i class="icon icon_cart"></i>
+                            <span>{{ Cart::itemsCount() }}</span>
+                        </a>
+                    </div>
                 </nav>
 
 

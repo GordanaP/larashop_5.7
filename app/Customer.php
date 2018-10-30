@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Services\Utilities\Customer\Country;
 use App\Traits\Address\HasAttributes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +41,7 @@ class Customer extends Model
      * Create the new customer.
      *
      * @param  array $data
-     * @return \App\Customer
+     * @return  void
      */
     public static function createNew($data)
     {
@@ -62,6 +61,12 @@ class Customer extends Model
         });
     }
 
+    /**
+     * Update the existing customer.
+     *
+     * @param  array $data
+     * @return void
+     */
     public function saveChanges($data)
     {
 

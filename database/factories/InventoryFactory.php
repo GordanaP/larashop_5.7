@@ -7,9 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Inventory::class, function (Faker $faker) {
     return [
-        'product_id' => Product::all()->random()->id,
-        'color_id' => Color::all()->random()->id,
-        'size_id' => Size::all()->random()->id,
+        'product_id' => Product::inRandomOrder()->first()->id,
+        'color_id' => Color::inRandomOrder()->first()->id,
+        'size_id' => Size::inRandomOrder()->first()->id,
         'price' => rand(10, 100)
     ];
 });

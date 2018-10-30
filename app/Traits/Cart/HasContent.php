@@ -87,6 +87,55 @@ trait HasContent
     }
 
     /**
+     * The product is not in any cart.
+     *
+     * @param  \App\Product $product
+     * @param  string $cart
+     * @return boolean
+     */
+    // protected function productIsNotInAnyCart($product, $cart)
+    // {
+    //     $defaultCartItem =  $this->hasProduct($product);
+
+    //     $customCartItem =  $this->hasProduct($product, $cart);
+
+    //     return ! $defaultCartItem && ! $customCartItem;
+    // }
+
+    /**
+     * Get the cart item identifier.
+     *
+     * @param  string $cart
+     * @return integer
+     */
+    protected function itemIdentifier($cart = 'default')
+    {
+        $identifier = $cart == 'default' ? 'product_id' : 'id';
+
+        return $identifier;
+    }
+
+    /**
+     * Get the cart item rowId.
+     *
+     * @param  array $item
+     * @param  \App\Product $product
+     * @return string
+     */
+    // protected function getRowId($items, $product)
+    // {
+    //     $rowId = '';
+
+    //     foreach($items as $key => $item)
+    //     {
+    //         if ( $item['id'] === $product->id )
+    //              $rowId = $key;
+    //     }
+
+    //     return $rowId;
+    // }
+
+    /**
      * Create the cart item.
      *
      * @param  \App\Product $product
@@ -168,4 +217,6 @@ trait HasContent
 
         return $rowId;
     }
+
+
 }

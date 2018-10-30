@@ -85,7 +85,45 @@ class Cart
         return $items_count;
     }
 
-     /**
+
+    /**
+     * Toggle the wishlist.
+     *
+     * @param  \App\Product $product
+     * @param  string $cart
+     * @return void
+     */
+    // public function toggleWishList($product, $cart)
+    // {
+    //     $items = $this->getItems($cart);
+
+    //     $rowId = $this->getRowId($items, $product);
+
+    //     if($this->productIsNotInAnyCart($product, $cart))
+    //     {
+    //         $this->addItem($product, 1, $cart);
+    //     }
+    //     else if ($this->hasProduct($product, $cart))
+    //     {
+    //         $this->removeItem($rowId, $cart);
+    //     }
+    // }
+
+    /**
+     * The cart contains a specific product.
+     *
+     * @param  \App\Product  $product
+     * @param  string  $cart
+     * @return boolean
+     */
+    public function hasProduct($product, $cart='default')
+    {
+        $product = Cart::getItems($cart)->firstWhere($this->itemIdentifier($cart), $product->id);
+
+        return $product;
+    }
+
+    /**
      * Get the cart subtotal (total - tax).
      *
      * @param string $cart

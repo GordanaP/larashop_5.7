@@ -1,8 +1,8 @@
-<ul class="m-0 p-0 bg-custom-grey-lightest p-2">
+<ul class="m-0 p-0 bg-custom-grey-lightest border border-grey p-2">
 
     <li class="flex p-2">
         <a href="{{ route('accounts.show') }}" class=" text-grey-dark">
-            <span class="icon icon_cog mr-2"></span> Settings
+            <span class="icon icon_cog mr-2"></span> My account
         </a>
     </li>
 
@@ -18,4 +18,9 @@
         </a>
     </li>
 
+    <li class="flex p-2">
+        <a href="{{ route('favorites.index') }}" class=" text-grey-dark">
+            <span class="icon icon_heart_alt mr-2"></span> My favorites
+        </a>
+    </li>
 </ul>

@@ -10,7 +10,18 @@ class DatabaseSeeder extends Seeder
      * @var array
      */
     protected $tables = [
-        'products', 'customers', 'shippings', 'colors', 'sizes', 'inventories', 'orders', 'inventory_order', 'categories', 'category_product'
+        'users',
+        'products',
+        'customers',
+        'shippings',
+        'colors',
+        'sizes',
+        'inventories',
+        'orders',
+        'inventory_order',
+        'categories',
+        'category_product',
+        'favorites'
     ];
 
     /**
@@ -22,7 +33,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->cleanDatabase();
 
-        // $this->call(UsersTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
         $this->call(CustomersTableSeeder::class);
         $this->call(ShippingsTableSeeder::class);
@@ -31,6 +42,7 @@ class DatabaseSeeder extends Seeder
         $this->call(InventoriesTableSeeder::class);
         $this->call(OrdersTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
+        $this->call(FavoritesTableSeeder::class);
     }
 
     /**

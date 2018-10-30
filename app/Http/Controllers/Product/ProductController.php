@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Product;
 use App\Filters\Product\ProductFilters;
 use App\Http\Controllers\Controller;
 use App\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller

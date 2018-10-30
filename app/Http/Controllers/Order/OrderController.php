@@ -1,21 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Cart;
+namespace App\Http\Controllers\Order;
 
 use App\Events\OrderHasBeenPlaced;
-use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Order;
 use App\Services\Utilities\PDF\AppPDF;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\View;
 
 class OrderController extends Controller
 {
     /**
-     * Create an instance of the controller.
+     * Create a new controller instance.
      *
      * @return  void
      */
@@ -51,7 +48,7 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\OrderRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(OrderRequest $request)

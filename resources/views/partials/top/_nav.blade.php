@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-indigo-dark border-t border-yellow-dark">
+<nav class="navbar navbar-expand-md navbar-light bg-indigo-lighter border-t border-yellow-dark">
     <div class="container-fluid">
         <a class="navbar-brand text-white" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -36,18 +36,20 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('accounts.show') }}">
-                                Settings
+                                <span class="icon icon_cog mr-2"></span> My account
                             </a>
                             <a class="dropdown-item" href="{{ route('customers.show') }}">
-                                My profile
+                                <span class="icon icon_profile mr-2"></span> My profile
                             </a>
                             <a class="dropdown-item" href="{{ route('orders.index') }}">
-                                My orders
+                                <span class="icon icon_toolbox_alt mr-2"></span> My orders
+                            </a>
+                            <a class="dropdown-item" href="{{ route('favorites.index') }}">
+                                <span class="icon icon_heart_alt mr-2"></span> My favorites
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
