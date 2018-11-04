@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits\Product;
+namespace App\Traits\User;
 
 trait HasFavorite
 {

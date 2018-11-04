@@ -31,7 +31,7 @@ class OrderController extends Controller
     {
         return view('orders.index')->with([
             'user' => Auth::user()->load('customer.orders.shipping'),
-            'userOrders' => Auth::user()->customer->orders->load('customer')
+            'userOrders' => optional(Auth::user()->customer)->orders
         ]);
     }
 

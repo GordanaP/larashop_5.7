@@ -2,14 +2,15 @@
 
 @section('title', 'All Products')
 
-@section('page_title', 'All Products')
+@section('page_title', 'Shop now')
+
+@section('notification')
+    Showing selected results.
+@endsection
 
 @section('action_buttons')
-    @if (Cart::itemsCount() > 0)
-        <a href="{{ Auth::check() ? route('orders.create') : route('carts.checkout') }}" class="ml-1 text-indigo-dark hover:text-indigo-darker font-normal">
-            Checkout
-        </a>
-    @endif
+    @checkout
+    @endcheckout
 @endsection
 
 @section('content')
@@ -27,7 +28,7 @@
                 <!-- Products -->
                 @if ($products->count())
                     @foreach ($products->chunk(3) as $chunk)
-                        <div class="row mb-20">
+                        <div class="row mb-10">
                             @each ('products.html._product', $chunk, 'product')
                         </div>
                     @endforeach

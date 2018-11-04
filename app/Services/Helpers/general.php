@@ -114,7 +114,7 @@ function getActiveClass($value1, $value2)
 }
 
 /**
- * Get selected option.
+ * Get the selected option.
  *
  * @param  string $value1
  * @param  string $value2
@@ -123,6 +123,18 @@ function getActiveClass($value1, $value2)
 function getSelected($value1 , $value2)
 {
     return $value1 == $value2 ? 'selected' : '';
+}
+
+/**
+ * Get the checked option.
+ *
+ * @param  string $value1
+ * @param  string $value2
+ * @return string
+ */
+function getChecked($value1 , $value2)
+{
+    return $value1 == $value2 ? 'checked' : '';
 }
 
 /**
@@ -138,4 +150,47 @@ function getAlert($message, $type)
     $alert['type'] = $type;
 
     return $alert;
+}
+
+/**
+ * Display rating stars.
+ *
+ * @param  integer|float $number
+ * @return array
+ */
+function showStars($number)
+{
+    $stars = [];
+
+    $float = strpos($number,'.');
+    $min = $float ? 1 : 0;
+
+    for ($i = $min; $i < $number; $i++) {
+        array_push($stars, getStars()['orange']);
+    }
+
+    if($float)
+    {
+        array_push($stars, getStars()['half']);
+    }
+
+    for ($i = $min; $i < (5 - $number); $i++) {
+        array_push($stars, getStars()['grey']);
+    }
+
+    return $stars;
+}
+
+/**
+ * Get the stars.
+ *
+ * @return array
+ */
+function getStars()
+{
+    $stars['orange'] = '<i class="fa fa-star text-orange"></i>';
+    $stars['half'] = '<i class="fa fa-star-half-o text-orange"></i>';
+    $stars['grey'] = '<i class="fa fa-star-o text-orange-dark"></i>';
+
+    return $stars;
 }

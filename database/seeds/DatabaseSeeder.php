@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
         'inventory_order',
         'categories',
         'category_product',
-        'favorites'
+        'favorites',
+        'reviews'
     ];
 
     /**
@@ -43,6 +44,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OrdersTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(FavoritesTableSeeder::class);
+        $this->call(ReviewsTableSeeder::class);
     }
 
     /**

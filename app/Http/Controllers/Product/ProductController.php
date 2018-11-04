@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index(ProductFilters $filters)
     {
-        $products = Product::with('inventories')->available()->filter($filters)->inRandomOrder()->paginate(6);
+        $products = Product::with('inventories', 'reviews')->available()->filter($filters)->inRandomOrder()->paginate(6);
 
         return view('products.index', compact('products'));
     }

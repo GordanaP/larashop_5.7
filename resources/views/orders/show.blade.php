@@ -7,13 +7,12 @@
 @endsection
 
 @section('notification')
-    <p class="text-grey-dark">You will receive an email confirmation at g@gmail.com</p>
+    You will receive an email confirmation at g@gmail.com
 @endsection
 
 @section('action_buttons')
-    <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker">
-        Continue shopping
-    </a>
+    @shop
+    @endshop
 @endsection
 
 @section('content')

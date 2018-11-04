@@ -5,13 +5,12 @@
 @section('page_title', 'Checkout')
 
 @section('notification')
-    <span class="text-grey-dark">Please choose your preferred way of checkout.</span>
+    Please choose your preferred way of checkout.
 @endsection
 
 @section('action_buttons')
-    <a href="{{ route('products.index') }}" class="text-indigo-dark hover:text-indigo-darker font-normal">
-        Continue shopping
-    </a>
+    @shop
+    @endshop
 @endsection
 
 @section('content')
@@ -36,6 +35,5 @@
             </div>
         </div>
     </div>
-
 @endsection
 

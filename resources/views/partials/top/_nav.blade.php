@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-indigo-lighter border-t border-yellow-dark">
+<nav class="navbar navbar-expand-md navbar-light bg-indigo-dark border-t border-yellow-dark">
     <div class="container-fluid">
         <a class="navbar-brand text-white" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -21,11 +21,11 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
                     </li>
                     <li class="nav-item">
                         @if (Route::has('register'))
-                            <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link text-white" href="{{ route('register') }}">Register</a>
                         @endif
                     </li>
                 @else
@@ -50,6 +50,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
+                                Logout
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -5,19 +5,15 @@
 @section('page_title', 'My Cart')
 
 @section('notification')
-    <span class="text-grey-dark">Review and update your cart details.</span>
+    Review and update your cart details.
 @endsection
 
 @section('action_buttons')
-    <a href="{{ route('products.index') }}" class="mr-1 text-indigo-dark hover:text-indigo-darker font-normal">
-        Continue shopping
-    </a>
-    @if ($cartItems->count())
-        |
-        <a href="{{ route('carts.empty') }}" class="ml-1 text-indigo-dark hover:text-indigo-darker font-normal">
-            Empty cart
-        </a>
-    @endif
+    @shop
+    @endshop
+
+    @emptycart
+    @endemptycart
 @endsection
 
 @section('content')

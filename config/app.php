@@ -229,7 +229,8 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Keygen' => Keygen\Keygen::class,
         'Status' => App\Services\Utilities\Product\Status::class,
-        'AppPDF' => App\Services\Utilities\Product\AppPDF::class,
+        'AppPDF' => App\Services\Utilities\PDF\AppPDF::class,
+        'Rating' => App\Services\Utilities\Product\Rating::class,
         'Country' => App\Services\Utilities\Customer\Country::class,
     ],
 

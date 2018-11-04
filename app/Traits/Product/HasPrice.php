@@ -41,7 +41,8 @@ trait HasPrice
         }
         else
         {
-            $presented_price  = 'From ' .presentPrice($this->min_price);
+            // $presented_price  = 'From ' .presentPrice($this->min_price);
+            $presented_price  = presentPrice($this->min_price) .' - '. presentPrice($this->max_price);
         }
 
         return $presented_price;

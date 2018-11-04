@@ -37,6 +37,13 @@ Route::namespace('Product')->group(function() {
     ]);
 
     Route::post('colors', 'ColorController@index')->name('colors.index');
+
+    Route::prefix('reviews')->as('reviews.')->group(function () {
+        Route::get('/{product}', 'ReviewController@index')->name('index');
+        Route::get('/{product}/save', 'ReviewController@create')->name('create');
+        Route::post('/{product}', 'ReviewController@store')->name('store');
+        Route::put('/{product}', 'ReviewController@update')->name('update');
+    });
 });
 
 Route::namespace('Cart')->group(function() {

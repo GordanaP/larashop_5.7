@@ -22,8 +22,10 @@
 
                     <div>
                         <a href="{{ route('favorites.index') }}" class="text-indigo-dark text-lg mr-4">
-                            <i class="icon icon_heart_alt"></i>
-                            <span>{{ Auth::user()->favoritesCount() }}</span>
+                            @auth
+                                <i class="icon icon_heart_alt"></i>
+                                <span>{{ Auth::user()->favoritesCount() }}</span>
+                             @endauth
                         </a>
 
                         <a href="{{ route('carts.show') }}" class="text-indigo-dark text-lg">
@@ -35,7 +37,7 @@
 
 
                 <div class="mt-3 flex justify-between items-center">
-                    <h3 class="font-bold">
+                    <h3 class="font-bold mb-1">
 
                         @yield('page_title')
 
@@ -48,7 +50,11 @@
                     </div>
                 </div>
 
-                @yield('notification')
+                <span class="text-grey-darker text-sm">
+
+                    @yield('notification')
+
+                </span>
 
             </div>
 

@@ -4,13 +4,14 @@ namespace App;
 
 use App\Traits\Product\HasInventory;
 use App\Traits\Product\HasPrice;
+use App\Traits\Product\HasReview;
 use App\Traits\Product\HasScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
-    use HasInventory, HasPrice, HasScope;
+    use HasInventory, HasPrice, HasReview, HasScope;
 
     /**
      * Get the route key for the model.
@@ -40,6 +41,16 @@ class Product extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    /**
+     * Get the reviews that belong to the product.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 
     /**
