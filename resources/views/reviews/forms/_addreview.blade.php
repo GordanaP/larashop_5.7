@@ -17,7 +17,7 @@
 
             @foreach (Rating::all() as $rating => $description)
                 <div class="form-check mr-3">
-                    <input class="form-check-input" type="radio" name="stars" id="stars_{{ $rating }}" value="{{ $rating }}" {{ getChecked($rating, optional(Auth::user()->getReview($product))->stars ) }}>
+                    <input class="form-check-input" type="radio" name="stars" id="stars_{{ $rating }}" value="{{ $rating }}" {{ getChecked($rating, optional(Auth::user()->getReview($product))->stars ) }} style="border-radius: 0">
 
                     <label class="form-check-label" for="{{ $rating }}">
                         {{ $description }}
@@ -36,7 +36,7 @@
     <!-- Title -->
     <div class="form-group mt-2">
         <label for="title" class="font-semibold">Title:</label>
-        <input type="text" class="form-control" name="title" id="title" placeholder="Choose a title" value="{{ old('title') ?: optional(Auth::user()->getReview($product))->title }}">
+        <input type="text" class="form-control" name="title" id="title" placeholder="Choose a title" value="{{ old('title') ?: optional(Auth::user()->getReview($product))->title }}"  style="border-radius: 0">
 
         @if ($errors->has('title'))
             <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
     <!-- Body -->
     <div class="form-group">
         <label for="body" class="font-semibold">Review:</label>
-        <textarea name="body" id="body" class="form-control" rows="4" placeholder="Write a review">{{ old('body') ?: optional(Auth::user()->getReview($product))->body}}</textarea>
+        <textarea name="body" id="body" class="form-control" rows="4" placeholder="Write a review"  style="border-radius: 0">{{ old('body') ?: optional(Auth::user()->getReview($product))->body}}</textarea>
 
         @if ($errors->has('body'))
             <span class="invalid-feedback" role="alert">
@@ -59,8 +59,8 @@
 
     <!-- Button -->
     <div class="form-group">
-        <button type="submit" class="btn bg-gold hover:bg-yellow-dark text-white uppercase tracking-wide font-bold" style="font-weight: 600;">
-            Submit
+        <button type="submit" class="btn bg-grey-darker hover:bg-grey-darkest uppercase text-white font-medium tracking-wide"  style="border-radius: 0">
+            Place Order
         </button>
     </div>
 

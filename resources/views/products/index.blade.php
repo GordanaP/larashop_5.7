@@ -2,47 +2,38 @@
 
 @section('title', 'All Products')
 
-@section('page_title', 'Shop now')
-
-@section('notification')
-    Showing selected results.
-@endsection
-
-@section('action_buttons')
-    @checkout
-    @endcheckout
+@section('navbar')
+    @include('partials.top._navbottom')
 @endsection
 
 @section('content')
-    <div class="container">
-        <hr class="mb-10 mt-1 border-t border-grey-light">
+    <div class="container mt-4" style="width: 78%">
 
-        <div class="row">
+        <!-- Products -->
+        @if ($products->count())
 
-            <div class="col-md-3">
-                @include('products.html._sidebar')
-            </div>
+            <div class="row">
+                @if (request()->query())
+                    <div class="col-md-4">
+                        @include('products.html._sidebar')
+                    </div>
+                @endif
 
-            <div class="col-md-9">
-
-                <!-- Products -->
-                @if ($products->count())
-                    @foreach ($products->chunk(3) as $chunk)
+                <div class="{{ request()->query() ? 'col-md-8' : 'col-md-12' }}">
+                    @foreach ($products->chunk(request()->query() ? 3 : 4) as $chunk)
                         <div class="row mb-10">
                             @each ('products.html._product', $chunk, 'product')
                         </div>
                     @endforeach
-                @else
-                    No products at present.
-                @endif
-
-                <!-- Pagination -->
-                <div class="pagination pull-right">
-                    {{ $products->appends(request()->query())->links() }}
                 </div>
-
             </div>
+        @else
+            No products at present.
+        @endif
 
+        <!-- Pagination -->
+        <div class="pagination pull-right">
+            {{ $products->appends(request()->query())->links() }}
         </div>
     </div>
 @endsection

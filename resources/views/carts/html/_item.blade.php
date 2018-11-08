@@ -34,7 +34,7 @@
     <!-- Trash -->
     <td class="border-b border-grey-light text-center">
         <a href="{{ route('carts.remove', $rowId) }}">
-            <i class="icon icon_trash_alt text-lg text-grey-dark"></i>
+            <i class="icon icon_trash_alt text-lg text-orange"></i>
         </a>
     </td>
 </tr>

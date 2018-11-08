@@ -4,14 +4,23 @@ namespace App;
 
 use App\Traits\Product\HasInventory;
 use App\Traits\Product\HasPrice;
-use App\Traits\Product\HasReview;
 use App\Traits\Product\HasScope;
+use App\Traits\Product\Reviewable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
-    use HasInventory, HasPrice, HasReview, HasScope;
+    use HasInventory, HasPrice, Reviewable, HasScope;
+
+    /**
+     * The attributes that should have default values
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'status' => 'inactive',
+    ];
 
     /**
      * Get the route key for the model.

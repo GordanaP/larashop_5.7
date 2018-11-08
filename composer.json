@@ -11,23 +11,24 @@
         "gladcodes/keygen": "^1.1",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "laravel/nova": "*"
+        "laravel/nova": "~1.0"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
         "beyondcode/laravel-dump-server": "^1.0",
+        "beyondcode/laravel-query-detector": "^0.6.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^7.0"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "./nova"
-        }
-    ],
     "autoload": {
         "classmap": [
             "database/seeds",

@@ -6,7 +6,7 @@
     <div class="form-group row mb-4">
         <div class="col-sm-8 {{ $product->hasSizes() ? '' : 'pt-7' }}">
             @if ( $product->hasSizes())
-                <select name="size_id" id="size_id" class="form-control">
+                <select name="size_id" id="size_id" class="form-control" style="border-radius: 0">
                     <option value="">Select a size</option>
 
                     @foreach ($product->getSizes() as $size)
@@ -33,7 +33,7 @@
     <div class="form-group row mb-3">
         <div class="col-sm-8 {{ $product->hasColors() ? '' : 'pt-7' }}">
             @if ($product->hasColors())
-                <select name="color_id" id="color_id" class="form-control">
+                <select name="color_id" id="color_id" class="form-control"  style="border-radius: 0">
                     <option value="">Select a color</option>
 
                     @if ($product->hasSizes())
@@ -65,9 +65,9 @@
     <!-- Qty -->
     <div class="form-group row">
         <div class="col-sm-8 flex">
-            <input type="text" name="qty" id="qty" class="form-control text-center mr-2 w-40" value="{{ old('qty') ?: 1 }}">
+            <input type="text" name="qty" id="qty" class="form-control text-center mr-2 w-40" value="{{ old('qty') ?: 1 }}"  style="border-radius: 0">
 
-            <button class="btn bg-indigo-light hover:bg-indigo text-white uppercase ml-2 w-60">
+            <button class="rounded-none bg-grey-darker hover:bg-grey-darkest text-white uppercase ml-2 w-60" style="border-radius: 0">
                 Add to Cart
             </button>
         </div>

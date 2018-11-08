@@ -2,33 +2,14 @@
 
 @section('title', 'My Account')
 
-@section('page_title', 'My Account')
-
-@section('notification')
-    Update your account details
-@endsection
-
-@section('action_buttons')
-    @shop
-    @endshop
-
-    @checkout
-    @endcheckout
-@endsection
-
 @section('content')
-    <div class="container">
-        <hr class="mb-10 mt-1 border-t border-grey">
+    <div class="container mt-4" style="width: 78%">
 
         <div class="row">
 
-            <div class="col-md-3">
-                @include('partials.side._auth')
-            </div>
-
-            <div class="col-md-8 offset-md-1">
-                <div class="card">
-                    <div class="card-body bg-custom-grey-lightest">
+            <div class="col-md-8 offset-md-2">
+                <div class="card"  style="border-radius: 0; border: none">
+                    <div class="card-body" style="background: #f9f9f9">
                         @include('users.forms._update')
                     </div>
                 </div>

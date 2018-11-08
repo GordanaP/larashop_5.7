@@ -8,7 +8,7 @@
             You will have an opportunity to create account later if you'd like.
         </p>
 
-        <a href="{{ route('orders.create') }}" class="btn btn-lg bg-white border hover:bg-grey-lighter">
+        <a href="{{ route('orders.create') }}" class="btn btn-lg bg-white"  style="border-radius: 0; border: 2px solid orange">
             Proceed as Guest
         </a>
    </div>

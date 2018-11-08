@@ -28,7 +28,7 @@
     @csrf
 
     <div class="form-group">
-        <input type="password" name="password" id="password" class="form-control bg-custom-grey-lightest" placeholder="Choose password">
+        <input type="password" name="password" id="password" class="form-control bg-custom-grey-lightest" placeholder="Choose password"  style="border-radius: 0">
 
         @if ($errors->has('password'))
             <span class="invalid-feedback" role="alert">
@@ -38,7 +38,7 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-block bg-grey-darker hover:bg-grey-darkest text-white uppercase">
+        <button type="submit" class="btn btn-block bg-orange-dark hover:bg-orange-darker text-white uppercase"  style="border-radius: 0">
             Create Account
         </button>
     </div>

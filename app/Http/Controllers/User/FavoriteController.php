@@ -26,7 +26,7 @@ class FavoriteController extends Controller
     public function index()
     {
         return view('favorites.index')->with([
-            'favorites' => Auth::user()->favorites->load('inventories')
+            'favorites' => Auth::user()->favorites->load('inventories', 'reviews')
         ]);
     }
 

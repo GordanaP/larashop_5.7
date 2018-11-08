@@ -1,31 +1,12 @@
 
 @extends('layouts.app')
 
-@section('title', 'My Profile')
-
-@section('page_title', 'My Profile')
-
-@section('action_buttons')
-    @shop
-    @endshop
-
-    @checkout
-    @endcheckout
-@endsection
-
 @section('content')
-    <div class="container">
-        <hr class="mb-10 mt-1 border-t border-grey">
-
+    <div class="container mt-4">
         <div class="row">
-
-            <div class="col-md-3">
-                @include('partials.side._auth')
-            </div>
-
-            <div class="col-md-8 offset-md-1">
-                <div class="card">
-                    <div class="card-body bg-custom-grey-lightest">
+            <div class="col-md-8 offset-md-2">
+                <div class="card"  style="border-radius: 0; border: none; background: #f9f9f9">
+                    <div class="card-body">
                         @include('customers.forms._save')
                     </div>
                 </div>

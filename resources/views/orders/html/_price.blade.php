@@ -11,7 +11,7 @@
     </td>
 
     <td class="text-right">
-        <p class="mb-2 font-bold">
+        <p class="pb-2 font-bold">
             {{ $order->present_subtotal }}
         </p>
         <p class="mb-2">

@@ -55,11 +55,11 @@
             @endincl
 
             <div class="flex justify-between align-center mt-2">
-                <a href="{{ route('carts.empty') }}" class="btn btn-block bg-gold uppercase text-white tracking-wide bold mr-1">
+                <a href="{{ route('carts.empty') }}" class="btn btn-block bg-orange-dark uppercase text-white tracking-wide bold mr-1" style="border-radius: 0">
                     Cancel
                 </a>
 
-                <button class="btn btn-block bg-indigo-darker hover:bg-indigo-darkest uppercase text-white font-medium tracking-wide bold ml-1 mt-0">
+                <button class="btn btn-block bg-grey-darker hover:bg-grey-darkest uppercase text-white font-medium tracking-wide bold ml-1 mt-0"  style="border-radius: 0">
                     Place Order
                 </button>
             </div>

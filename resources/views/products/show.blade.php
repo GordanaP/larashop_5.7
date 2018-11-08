@@ -2,19 +2,8 @@
 
 @section('title', $product->name)
 
-@section('page_title', $product->name)
-
-@section('action_buttons')
-    @shop
-    @endshop
-
-    @checkout
-    @endcheckout
-@endsection
-
 @section('content')
-    <div class="container">
-        <hr class="mb-10 mt-1 border-t border-grey-light">
+    <div class="container mt-4" style="width: 78%">
 
         <div class="row">
 
@@ -25,8 +14,11 @@
 
             <div class="col-md-6 pl-5">
 
+                <!-- Name -->
+                <div class="text-xl font-bold mb-2">{{ $product->name }}</div>
+
                 <!-- Price -->
-                <div class="text-xl font-bold mb-2">{{ $product->present_price }}</div>
+                <div class="mb-2">{{ $product->present_price }}</div>
 
                 <!-- Rating -->
                 <div class="product-rating flex text-sm text-blue">

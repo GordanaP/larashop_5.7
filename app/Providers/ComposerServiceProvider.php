@@ -16,6 +16,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('products.html._sidebar', ProductFiltersComposer::class);
+        View::composer('partials.top._navbottom', ProductFiltersComposer::class);
     }
 
     /**

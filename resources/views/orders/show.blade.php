@@ -10,18 +10,12 @@
     You will receive an email confirmation at g@gmail.com
 @endsection
 
-@section('action_buttons')
-    @shop
-    @endshop
-@endsection
-
 @section('content')
-    <div class="container">
-        <hr class="mb-10 mt-1 border-t border-grey-light">
+    <div class="container mt-4" style="width: 78%">
 
         <div class="row">
             <div class="{{ Auth::check() ? 'col-md-12' : 'col-md-8' }}">
-                <div class="card">
+                <div class="card" style="border-radius: 0">
                     <div class="card-body">
 
                         <p class="text-xl font-bold mb-2 pl-2">
@@ -34,11 +28,11 @@
                                     <span class="font-semibold">Order number:</span> {{ $order->present_number }}
                                 </p>
                                 <p class="pl-2 text-muted">
-                                    <span class="font-semibold">Date:</span> {{ $order->placed_at }};
+                                    <span class="font-semibold">Date:</span> {{ $order->placed_at }}
                                 </p>
                             </div>
                             <div>
-                                <a href="{{ route('orders.pdf', $order) }}" class="btn btn-sm bg-grey-darkest text-white">
+                                <a href="{{ route('orders.pdf', $order) }}" class="btn btn-sm bg-grey-darkest text-white" style="border-radius: 0">
                                     <i class="fa fa-print"></i> Print order
                                 </a>
                             </div>
@@ -46,7 +40,7 @@
 
                         <table class="table mb-4 border-b border-grey-light">
 
-                            <thead class="bg-card-header uppercase text-muted">
+                            <thead class="bg-grey-dark uppercase text-white">
                                 <th width="15%">Item</th>
                                 <th width="33%"></th>
                                 <th width="23%" class="text-center">Price</th>
@@ -55,7 +49,7 @@
                             </thead>
 
                             <!-- Inventory -->
-                            <tbody>
+                            <tbody style="background: #f9f9f9">
                                 @each ('orders.html._inventory', $order->inventories, 'inventory')
                             </tbody>
 
@@ -80,7 +74,7 @@
 
             @guest
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card"  style="border-radius: 0;">
                         <div class="card-body" id="createAccount">
 
                             <!-- Create account -->

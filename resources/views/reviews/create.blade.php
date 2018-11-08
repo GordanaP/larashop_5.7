@@ -4,22 +4,8 @@
 
 @section('page_title', $product->name)
 
-@section('notification')
-    Please tell us how you are satisfied with the product.
-@endsection
-
-@section('action_buttons')
-    @shop
-    @endshop
-
-    @checkout
-    @endcheckout
-@endsection
-
 @section('content')
-    <div class="container">
-        <hr class="mb-10 mt-1 border-t border-grey-light">
-
+    <div class="container mt-4" style="width: 78%">
         <div>
             <div class="row">
 

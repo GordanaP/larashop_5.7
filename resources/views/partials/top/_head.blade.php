@@ -16,7 +16,10 @@
 <!-- Styles -->
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"  rel="stylesheet" />
+<link href="{{ asset('vendor/slick-1.8/slick.css') }}"  rel="stylesheet" />
+<link href="{{ asset('vendor/slick-1.8/slick-theme.css') }}"  rel="stylesheet" />
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
 
 @yield('links')

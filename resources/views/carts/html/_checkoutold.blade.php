@@ -10,7 +10,7 @@
 
     <div class="form-group mb-4 row">
         <div class="col-sm-10 offset-sm-1">
-            <input type="text" id="email" class="form-control form-control-lg border-0" name="email" placeholder="user@domain.com" value="{{ old('email') }}">
+            <input type="text" id="email" class="form-control form-control-lg border-0" name="email" placeholder="user@domain.com" value="{{ old('email') }}"  style="border-radius: 0">
 
             @if ($errors->has('email'))
                 <span class="invalid-feedback" role="alert">
@@ -22,7 +22,7 @@
 
     <div class="form-group mb-4 row">
         <div class="col-sm-10 offset-sm-1">
-            <input id="password" type="password" class="form-control form-control-lg border-0" name="password" placeholder="********">
+            <input id="password" type="password" class="form-control form-control-lg border-0" name="password" placeholder="********"  style="border-radius: 0">
 
             @if ($errors->has('password'))
                 <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
 
     <div class="form-group row mb-0">
         <div class="col-md-10 offset-sm-1 flex justify-between">
-            <button type="submit" class="btn btn-lg bg-indigo-darker hover:bg-indigo-darkest text-white">
+            <button type="submit" class="btn btn-lg bg-grey-darker hover:bg-grey-darkest text-white"  style="border-radius: 0">
                 Login
             </button>
 

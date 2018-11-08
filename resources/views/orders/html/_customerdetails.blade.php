@@ -4,6 +4,6 @@
 <p class="mb-1">{{ Auth::user()->customer->country }}</p>
 <p class="mb-1">{{ Auth::user()->customer->phone }}</p>
 
-<a href="#" class="btn btn-sm text-white bg-gold-dark hover:bg-yellow-darker">
+<a href="{{ route('accounts.update') }}" class="btn btn-sm mt-2 hover:bg-yellow-darker uppercase tracking-wide" style="border: 2px solid #DE751F; font-weight: 600; border-radius: 0">
     Edit
 </a>

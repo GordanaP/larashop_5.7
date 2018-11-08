@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="{{ request()->query() ? 'col-md-4' : 'col-md-3' }}">
     <div class="product flex flex-col justify-between h-full">
 
         <div class="product-details">

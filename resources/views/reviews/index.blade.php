@@ -2,19 +2,8 @@
 
 @section('title', 'Customer Reviews')
 
-@section('page_title', 'Customer Reviews')
-
-@section('action_buttons')
-    @shop
-    @endshop
-
-    @checkout
-    @endcheckout
-@endsection
-
 @section('content')
-    <div class="container">
-        <hr class="mt-1 border-t border-grey-light">
+    <div class="container mt-4" style="width: 78%">
 
         <div class="flex mb-4">
             <div class="mr-5" style="width: 10%">

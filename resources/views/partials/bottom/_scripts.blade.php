@@ -1,6 +1,7 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{ asset('vendor/slick-1.8/slick.js') }}"></script>
 <script src="{{ asset('js/helpers.js') }}"></script>
 
 <script>
